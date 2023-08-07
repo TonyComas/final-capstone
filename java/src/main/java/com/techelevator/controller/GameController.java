@@ -33,7 +33,7 @@ public class GameController {
     }
 
     @RequestMapping (path = "/add-game" ,method = RequestMethod.POST)
-    public boolean addGame(){
+    public boolean addGame(@RequestBody Game game){
         return false;
     }
 
