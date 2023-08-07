@@ -31,9 +31,7 @@ public class JdbcGameDao implements GameDao{
             "\tFROM video_games\n" +
             "\t\n" +
             "\tLEFT JOIN game_genre ON video_games.game_id = game_genre.game_id\n" +
-            "    LEFT JOIN genre ON game_genre.genre_id = genre.genre_id\n" +
-            "\t\n" +
-            "\tGROUP BY video_games.game_id";
+            "    LEFT JOIN genre ON game_genre.genre_id = genre.genre_id\n";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -44,7 +42,7 @@ public class JdbcGameDao implements GameDao{
     @Override
     public List<Game> getAllGames() {
         List<Game> listy = new ArrayList<>();
-        String sql = fromVideoGameSQL +";";
+        String sql = fromVideoGameSQL +"GROUP BY video_games.game_id;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
             listy.add(mapRowToGame(result));
@@ -59,7 +57,7 @@ public class JdbcGameDao implements GameDao{
 
     @Override
     public boolean deleteGame(int id) {
-        String sql = "DELETE FROM video_games WHERE game_id = ?;";
+        String sql = "DELETE FROM video_games WHERE video_games.game_id = ?;";
 //        jdbcTemplate.update(sql,id);
 
         return false;
@@ -73,7 +71,7 @@ public class JdbcGameDao implements GameDao{
     @Override
     public Game getGameByID(int id) {
         Game game = new Game();
-        String sql = fromVideoGameSQL +"WHERE game_id = ?";
+        String sql = fromVideoGameSQL +" WHERE video_games.game_id = ? GROUP BY video_games.game_id;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         while(result.next()){
             game = mapRowToGame(result);
@@ -89,8 +87,8 @@ public class JdbcGameDao implements GameDao{
         if (results.getDate("release_date")!=null) {
             game.setRelease_date(results.getDate("release_date").toLocalDate());
         }
-        game.setDeveloper_name(results.getString("developer_name"));
-        game.setPublisher_Name(results.getString("publisher_name"));
+        game.setDeveloper_name(results.getString("developer_names"));
+        game.setPublisher_Name(results.getString("publisher_names"));
         game.setGame_logo(results.getString("game_logo"));
         game.setGenres(results.getString("genres"));
         return game;
