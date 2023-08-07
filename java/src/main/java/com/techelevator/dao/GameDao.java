@@ -9,4 +9,12 @@ public interface GameDao {
 
     List<Game> getAllGames();
 
+    boolean addGame();
+
+    boolean deleteGame();
+
+    boolean updateGame();
+
+
+    Game getGameByID(int id);
 }
