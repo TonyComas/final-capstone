@@ -19,7 +19,7 @@ CREATE TABLE video_games (
 	game_id SERIAL,
 	game_name varchar(100) NOT NULL UNIQUE,
 	description varchar(500) NOT NULL,
-	release_date varchar(50) NOT NULL,
+	release_date date NOT NULL,
 	developer varchar(100) NOT NULL,
 	publisher varchar(100),
 	CONSTRAINT PK_game PRIMARY KEY (game_id)
