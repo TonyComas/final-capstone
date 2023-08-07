@@ -1,7 +1,5 @@
 package com.techelevator.model;
 
-import org.springframework.cglib.core.Local;
-
 import java.time.LocalDate;
 
 public class Game {
@@ -12,32 +10,32 @@ public class Game {
     private LocalDate release_date;
     private String developer_name;
     private String publisher_Name;
-    private String game_Logo;
+    private String game_logo;
     private String genres;
 
     public Game (){
 
     }
 
-    public Game(int game_id, String game_name, String description, LocalDate release_date, String developer_name, String publisher_Name, String game_Logo, String genres) {
+    public Game(int game_id, String game_name, String description, LocalDate release_date, String developer_name, String publisher_Name, String game_logo, String genres) {
         this.game_id = game_id;
         this.game_name = game_name;
         this.description = description;
         this.release_date = release_date;
         this.developer_name = developer_name;
         this.publisher_Name = publisher_Name;
-        this.game_Logo = game_Logo;
+        this.game_logo = game_logo;
         this.genres = genres;
     }
 
-    public Game(int game_id, String game_name, String description, String release_date, String developer_name, String publisher_Name, String game_Logo, String genres) {
+    public Game(int game_id, String game_name, String description, String release_date, String developer_name, String publisher_Name, String game_logo, String genres) {
         this.game_id = game_id;
         this.game_name = game_name;
         this.description = description;
         this.release_date = LocalDate.parse(release_date);
         this.developer_name = developer_name;
         this.publisher_Name = publisher_Name;
-        this.game_Logo = game_Logo;
+        this.game_logo = game_logo;
         this.genres = genres;
     }
 
@@ -89,12 +87,12 @@ public class Game {
         this.publisher_Name = publisher_Name;
     }
 
-    public String getGame_Logo() {
-        return game_Logo;
+    public String getGame_logo() {
+        return game_logo;
     }
 
-    public void setGame_Logo(String game_Logo) {
-        this.game_Logo = game_Logo;
+    public void setGame_logo(String game_logo) {
+        this.game_logo = game_logo;
     }
 
     public String getGenres() {
