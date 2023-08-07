@@ -1,5 +1,5 @@
 
-DROP TABLE IF EXISTS users, video_games, game_genre, genre;
+DROP TABLE IF EXISTS users, video_games, game_genre, genre, companies, publisher, developer;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -15,14 +15,37 @@ CREATE TABLE genre (
 	CONSTRAINT PK_genre PRIMARY KEY (genre_id)
 );	
 
+CREATE TABLE publisher (
+	publisher_id SERIAL,
+	publisher_name varchar(100),
+	CONSTRAINT PK_publisher PRIMARY KEY (publisher_id)
+);
+
+CREATE TABLE developer (
+	developer_id SERIAL,
+	developer_name varchar(100),
+	CONSTRAINT PK_developer PRIMARY KEY (developer_id)
+);
+
+CREATE TABLE companies (
+	company_id SERIAL,
+	developer_name varchar(100) NOT NULL, 
+	publisher_name varchar(100),
+	CONSTRAINT PK_companies PRIMARY KEY (company_id)
+	CONSTRAINT FK_developer FOREIGN KEY (developer_name) REFERENCES developer (developer_id)
+	CONSTRAINT FK_publisher FOREIGN KEY (publisher_name) REFERENCES publisher (publisher_id)
+);
+
 CREATE TABLE video_games (
 	game_id SERIAL,
 	game_name varchar(100) NOT NULL UNIQUE,
 	description varchar(500) NOT NULL,
 	release_date date NOT NULL,
-	developer varchar(100) NOT NULL,
-	publisher varchar(100),
-	CONSTRAINT PK_game PRIMARY KEY (game_id)
+	developer INT NOT NULL,
+	publisher INT NOT NULL,
+	CONSTRAINT PK_game PRIMARY KEY (game_id),
+	CONSTRAINT FK_developer FOREIGN KEY (developer) REFERENCES companies (company_id),
+	CONSTRAINT FK_publisher FOREIGN KEY (publisher) REFERENCES companies (company_id)
 );
 
 CREATE TABLE game_genre (
