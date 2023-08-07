@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import org.springframework.cglib.core.Local;
+
 import java.time.LocalDate;
 
 public class Game {
@@ -17,11 +19,26 @@ public class Game {
 
     }
 
-    public Game (int game_ID, String game_name, String description, LocalDate release_date){
-        this.game_id = game_ID;
-        this.game_name=game_name;
-        this.description=description;
-        this.release_date=release_date;
+    public Game(int game_id, String game_name, String description, LocalDate release_date, String developer_name, String publisher_Name, String game_Logo, String genres) {
+        this.game_id = game_id;
+        this.game_name = game_name;
+        this.description = description;
+        this.release_date = release_date;
+        this.developer_name = developer_name;
+        this.publisher_Name = publisher_Name;
+        this.game_Logo = game_Logo;
+        this.genres = genres;
+    }
+
+    public Game(int game_id, String game_name, String description, String release_date, String developer_name, String publisher_Name, String game_Logo, String genres) {
+        this.game_id = game_id;
+        this.game_name = game_name;
+        this.description = description;
+        this.release_date = LocalDate.parse(release_date);
+        this.developer_name = developer_name;
+        this.publisher_Name = publisher_Name;
+        this.game_Logo = game_Logo;
+        this.genres = genres;
     }
 
     public int getGame_id() {
