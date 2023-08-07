@@ -9,7 +9,8 @@ public class Game {
     private String description;
     private LocalDate release_date;
     private String developer_name;
-    private String Publisher_name;
+    private String publisher_Name;
+    private String game_Logo;
 
     public Game (){
 
@@ -62,11 +63,19 @@ public class Game {
         this.developer_name = developer_name;
     }
 
-    public String getPublisher_name() {
-        return Publisher_name;
+    public String getPublisher_Name() {
+        return publisher_Name;
     }
 
-    public void setPublisher_name(String publisher_name) {
-        Publisher_name = publisher_name;
+    public void setPublisher_Name(String publisher_Name) {
+        this.publisher_Name = publisher_Name;
+    }
+
+    public String getGame_Logo() {
+        return game_Logo;
+    }
+
+    public void setGame_Logo(String game_Logo) {
+        this.game_Logo = game_Logo;
     }
 }
