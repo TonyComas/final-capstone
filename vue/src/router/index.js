@@ -61,16 +61,19 @@ const router = new Router({
       component: Games
     },
     {
-    path: '/games/:gameId',
-    name: 'single-game-view',
-    component: SingleGameView
-    },
-    {
       path: '/games/add-game',
       name: 'AddGame',
       component: AddGameView
     },
-     
+    
+    {
+    //KEEP THIS LAST
+    path: '/games/:gameId',
+    name: 'single-game-view',
+    component: SingleGameView
+    },
+
+
   ]
 })
 

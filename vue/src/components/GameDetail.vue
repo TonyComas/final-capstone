@@ -8,6 +8,8 @@
           }
           }">
            <h2>{{game.game_name}}</h2>
+           <img v-bind:src="game.game_logo" alt="">
+
           </router-link>
   </div>
 </template>
