@@ -31,7 +31,7 @@ CREATE TABLE video_games (
 	game_name varchar(100) NOT NULL UNIQUE,
 	description varchar(500) NOT NULL,
 	release_date date NOT NULL,
-	game_logo varchar(128) NOT NULL,
+	game_logo varchar(300) NOT NULL,
 	CONSTRAINT PK_game PRIMARY KEY (game_id)
 );
 
