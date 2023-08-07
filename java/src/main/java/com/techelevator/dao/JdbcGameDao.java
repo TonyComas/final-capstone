@@ -31,9 +31,7 @@ public class JdbcGameDao implements GameDao{
             "\tFROM video_games\n" +
             "\t\n" +
             "\tLEFT JOIN game_genre ON video_games.game_id = game_genre.game_id\n" +
-            "    LEFT JOIN genre ON game_genre.genre_id = genre.genre_id\n" +
-            "\t\n" +
-            "\tGROUP BY video_games.game_id";
+            "    LEFT JOIN genre ON game_genre.genre_id = genre.genre_id";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -44,7 +42,7 @@ public class JdbcGameDao implements GameDao{
     @Override
     public List<Game> getAllGames() {
         List<Game> listy = new ArrayList<>();
-        String sql = fromVideoGameSQL +";";
+        String sql = fromVideoGameSQL +" GROUP BY video_games.game_id;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
             listy.add(mapRowToGame(result));
@@ -73,7 +71,7 @@ public class JdbcGameDao implements GameDao{
     @Override
     public Game getGameByID(int id) {
         Game game = new Game();
-        String sql = fromVideoGameSQL +" WHERE game_id = ?";
+        String sql = fromVideoGameSQL +" WHERE video_games.game_id = ? GROUP BY video_games.game_id";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         while(result.next()){
             game = mapRowToGame(result);
