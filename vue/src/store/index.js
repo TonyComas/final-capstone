@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import GameServices from '../services/GameServices.js'
 
 Vue.use(Vuex)
 
@@ -19,7 +20,14 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    categoryFilter: 'All',
+    gameCategories: []
+  },
+  getters: {
+    categories(state) {
+      return state.categories;
+    },
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +45,22 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+
+  },
+  actions: {
+    loadGames(state) {
+      GameServices.getAllGames().then( response => {
+        const arrayFromApi = response.data;
+        arrayFromApi.unshift('All');
+        state.commit('',arrayFromApi);
+      }).catch( error => console.error(error));
+      
     }
-  }
+
+  },
+  modules: {
+
+  },
+  strict: true
 })
