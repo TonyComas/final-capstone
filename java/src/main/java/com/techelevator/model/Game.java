@@ -11,6 +11,7 @@ public class Game {
     private String developer_name;
     private String publisher_Name;
     private String game_Logo;
+    private String genres;
 
     public Game (){
 
@@ -77,5 +78,13 @@ public class Game {
 
     public void setGame_Logo(String game_Logo) {
         this.game_Logo = game_Logo;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
     }
 }

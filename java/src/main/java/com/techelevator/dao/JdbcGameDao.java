@@ -92,6 +92,7 @@ public class JdbcGameDao implements GameDao{
         game.setDeveloper_name(results.getString("developer_name"));
         game.setPublisher_Name(results.getString("publisher_name"));
         game.setGame_Logo(results.getString("game_logo"));
+        game.setGenres(results.getString("genres"));
         return game;
     }
 }
