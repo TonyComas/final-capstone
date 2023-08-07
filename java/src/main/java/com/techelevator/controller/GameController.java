@@ -32,17 +32,17 @@ public class GameController {
         return gameDao.getGameByID(id);
     }
 
-    @RequestMapping (path = "/?", method = RequestMethod.POST)
+    @RequestMapping (path = "/add-game" ,method = RequestMethod.POST)
     public boolean addGame(){
         return false;
     }
 
-    @RequestMapping (path = "/?", method = RequestMethod.DELETE)
-    public boolean deleteGame(){
-        return false;
+    @RequestMapping (path = "/{id}", method = RequestMethod.DELETE)
+    public boolean deleteGame(@PathVariable("id") int id){
+        return gameDao.deleteGame(id);
     }
 
-    @RequestMapping (path = "/?", method = RequestMethod.PUT)
+    @RequestMapping (path = "/{id}", method = RequestMethod.PUT)
     public boolean updateGame(){
         return false;
     }

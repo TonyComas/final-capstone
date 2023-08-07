@@ -8,6 +8,10 @@ public class Game {
     private String game_name;
     private String description;
     private LocalDate release_date;
+    private String developer_name;
+    private String publisher_Name;
+    private String game_Logo;
+    private String genres;
 
     public Game (){
 
@@ -50,5 +54,37 @@ public class Game {
 
     public void setRelease_date(LocalDate release_date) {
         this.release_date = release_date;
+    }
+
+    public String getDeveloper_name() {
+        return developer_name;
+    }
+
+    public void setDeveloper_name(String developer_name) {
+        this.developer_name = developer_name;
+    }
+
+    public String getPublisher_Name() {
+        return publisher_Name;
+    }
+
+    public void setPublisher_Name(String publisher_Name) {
+        this.publisher_Name = publisher_Name;
+    }
+
+    public String getGame_Logo() {
+        return game_Logo;
+    }
+
+    public void setGame_Logo(String game_Logo) {
+        this.game_Logo = game_Logo;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
     }
 }
