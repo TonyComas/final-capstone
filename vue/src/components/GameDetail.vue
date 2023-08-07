@@ -8,7 +8,6 @@
           }
           }">
            <h2>{{game.game_name}}</h2>
-           <p>{{game.game_logo}}</p>
            <img v-bind:src="game.game_logo" alt="">
 
           </router-link>
