@@ -32,7 +32,7 @@ public class GameController {
         return gameDao.getGameByID(id);
     }
 
-    @RequestMapping (method = RequestMethod.POST)
+    @RequestMapping (path = "/add-game" ,method = RequestMethod.POST)
     public boolean addGame(){
         return false;
     }
