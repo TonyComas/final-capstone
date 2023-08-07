@@ -1,9 +1,13 @@
 <template>
 <div>
 
-    <div class="singleProduct" v-if="game">
+    <div class="singleGame" v-if="game">
         <GameDetail :game="game" />
-        <p>Item Id: {{game.game_id}}</p>
+        <p>Game Name: {{game.game_name}}</p>
+        <p>Description: {{game.description}}</p>
+        <p>Game Release Date: {{game.release_date}}</p>
+        <p>Developers: {{game.developer_names}}</p>
+        <p>Publishers: {{game.publisher_names}}</p>
     
         <div>
             <router-link :to="{ name:'games' }">Back to Game Listing</router-link>

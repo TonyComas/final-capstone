@@ -8,6 +8,9 @@ export default {
 
     getGameById(gameId) {
         return axios.get(`/games/${gameId}`);
+    },
+    addGame(game) {
+        return axios.post(`/games/`,game);
     }
 
 }

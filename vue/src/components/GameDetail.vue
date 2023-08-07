@@ -1,12 +1,13 @@
 <template>
   <div class="game">
-      <h2>{{game.game_name}}</h2>
+     
       <router-link :to="{
           name: 'single-game-view',
           params: {
               gameId: game.game_id
           }
           }">
+           <h2>{{game.game_name}}</h2>
           </router-link>
   </div>
 </template>
