@@ -4,6 +4,8 @@
     <div class="singleGame" v-if="game">
         <GameDetail :game="game" />
         <p>Game Name: {{game.game_name}}</p>
+        <p>{{game.game_logo}}</p>
+        <img v-bind:src="game.game_logo" alt="">
         <p>Description: {{game.description}}</p>
         <p>Game Release Date: {{game.release_date}}</p>
         <p>Developers: {{game.developer_names}}</p>
