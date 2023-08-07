@@ -30,6 +30,32 @@ public class JdbcGameDao implements GameDao{
         return listy;
     }
 
+    @Override
+    public boolean addGame() {
+        return false;
+    }
+
+    @Override
+    public boolean deleteGame() {
+        return false;
+    }
+
+    @Override
+    public boolean updateGame() {
+        return false;
+    }
+
+    @Override
+    public Game getGameByID(int id) {
+        Game game = new Game();
+        String sql = "SELECT game_id, game_name, description, release_date FROM video_games WHERE game_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+        while(result.next()){
+            game =mapRowToGame(result);
+        }
+        return game;
+    }
+
     private Game mapRowToGame(SqlRowSet results){
         Game game = new Game();
         game.setGame_id(results.getInt("game_id"));
