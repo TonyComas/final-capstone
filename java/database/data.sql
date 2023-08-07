@@ -69,22 +69,21 @@ INSERT INTO video_games (game_name, game_logo, description, release_date) VALUES
 ('World of Warcraft', 'https://www.zilliondesigns.com/blog/wp-content/uploads/Warcraft-1280x720.jpg', 'World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) by Blizzard Entertainment. Players venture into the fantastical realm of Azeroth, choosing from various races and classes. They embark on quests, battle fierce creatures, and engage in epic raids and player-versus-player combat. With a rich lore, frequent content updates, and a vibrant community, WoW offers a captivating gaming experience in a constantly evolving virtual world.', '2004-11-23'),
 ('Fallout: New Vegas', 'https://static.wikia.nocookie.net/logopedia/images/d/d9/TankSTOP.png/revision/latest?cb=20151109232004', 'Fallout: New Vegas is a post-apocalyptic action role-playing game developed by Obsidian Entertainment. Set in a nuclear-blasted Mojave Desert, players assume the role of a courier on a mission for revenge and retrieval of a stolen package. They encounter factions vying for control, make impactful choices, and navigate a morally grey world. Through engaging storytelling, exploration, and tactical combat, players shape the outcome of the wasteland, creating a unique and immersive experience.', '2010-10-19'),
 ('Remnant II', 'https://images.squarespace-cdn.com/content/v1/55669e4ae4b0352887a893c6/1670594606560-JPMHFTTFAYW7EA0O0OVF/HD_Logo.png?format=1500w', 'Remnant II pits survivors of humanity against new deadly creatures and god-like bosses across terrifying worlds. Play solo or co-op with two other friends to explore the depths of the unknown to stop an evil from destroying reality itself.', '7-25-2023'),
-('The Legend of Zelda: Breath of the Wild', 'An action-adventure game set in a vast open world.', '2017-03-03'),
-('The Witcher 3: Wild Hunt', 'An epic role-playing game with a rich fantasy world.', '2015-05-19'),
-('Red Dead Redemption 2', 'An action-adventure game in a western setting.', '2018-10-26'),
-('Fortnite', 'A battle royale game with building mechanics.', '2017-07-25'),
-('Minecraft', 'A sandbox game with block-building and exploration.', '2011-11-18'),
-('Call of Duty: Modern Warfare', 'A first-person shooter with a modern military setting.', '2019-10-25'),
-('The Elder Scrolls V: Skyrim', 'An open-world role-playing game with a fantasy setting.', '2011-11-11'),
-('Super Mario Odyssey', 'A 3D platformer featuring the iconic plumber Mario.', '2017-10-27'),
-('Overwatch', 'A team-based multiplayer first-person shooter.', '2016-05-24'),
-('Among Us', 'A social deduction game set on a spaceship.', '2018-06-15'),
-('Animal Crossing: New Horizons', 'A life simulation game with a peaceful island setting.', '2020-03-20'),
-('Cyberpunk 2077', 'An open-world role-playing game set in a dystopian future.', '2020-12-10'),
-('Final Fantasy VII Remake', 'A remake of the classic role-playing game.', '2020-04-10'),
-('Super Smash Bros. Ultimate', 'Super Smash Bros. Ultimate is a 2018 crossover fighting game developed by Bandai Namco Studios and Sora Ltd. and published by Nintendo for the Nintendo Switch. It is the fifth installment in the Super Smash Bros. series, succeeding Super Smash Bros. for Nintendo 3DS and Wii U.', '2018-12-07')
-('Rocket League', 'Rocket League is a vehicular soccer video game developed and published by Psyonix. The game was first released for PlayStation 4 and Windows in July 2015, with ports for Xbox One and Nintendo Switch being released later on.', '2015-07-07')
-
+('The Legend of Zelda: Breath of the Wild', 'https://static.wikia.nocookie.net/logopedia/images/5/53/763px-BotW_NA_Logo.png/revision/latest?cb=20160701154320', 'An action-adventure game set in a vast open world.', '2017-03-03'),
+('The Witcher 3: Wild Hunt', 'https://wallpaperaccess.com/full/673914.jpg', 'An epic role-playing game with a rich fantasy world.', '2015-05-19'),
+('Red Dead Redemption 2', 'https://upload.wikimedia.org/wikipedia/commons/2/22/Red_Dead_Redemption_2_Logo.png', 'An action-adventure game in a western setting.', '2018-10-26'),
+('Fortnite', 'https://i.pinimg.com/originals/c2/0d/21/c20d2168ee2dbaecae37c903ab1b99a2.jpg', 'A battle royale game with building mechanics.', '2017-07-25'),
+('Minecraft', 'https://cdn.sanity.io/images/kts928pd/production/82883965c6a7fe6a4c35ed67fe9f21c5fbdcdf61-700x394.jpg', 'A sandbox game with block-building and exploration.', '2011-11-18'),
+('Call of Duty: Modern Warfare', 'https://imageio.forbes.com/specials-images/imageserve/626b3cd8de276ec1a91617f9/Modern-Warfare-2--2022--logo/960x0.jpg?format=jpg&width=960', 'A first-person shooter with a modern military setting.', '2019-10-25'),
+('The Elder Scrolls V: Skyrim', 'https://www.pockettactics.com/wp-content/sites/pockettactics/2022/10/skyrim-logo.jpg', 'An open-world role-playing game with a fantasy setting.', '2011-11-11'),
+('Super Mario Odyssey', 'https://static.wikia.nocookie.net/logopedia/images/7/74/Super_Mario_Odyssey_Logo.png/revision/latest?cb=20170914192321', 'A 3D platformer featuring the iconic plumber Mario.', '2017-10-27'),
+('Overwatch', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Overwatch_circle_logo.svg/2048px-Overwatch_circle_logo.svg.png', 'A team-based multiplayer first-person shooter.', '2016-05-24'),
+('Among Us', 'https://www.pockettactics.com/wp-content/uploads/2021/02/among-us-logo-1-1.jpg', 'A social deduction game set on a spaceship.', '2018-06-15'),
+('Animal Crossing: New Horizons', 'https://animalcrossing.nintendo.com/new-horizons/assets/img/global/logos/logo-acnh-en.png', 'A life simulation game with a peaceful island setting.', '2020-03-20'),
+('Cyberpunk 2077', 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/81a4e680815973.5cec6bcf6aa1a.jpg', 'An open-world role-playing game set in a dystopian future.', '2020-12-10'),
+('Final Fantasy VII Remake', 'https://imguscdn.gamespress.com/cdn/files/Square-Enix/2015/12/na-1-20151206221303/FFVIIREMAKE_1280x720_Logo.jpg?w=600&mode=max&otf=y&quality=90&format=jpg&bgcolor=white&ex=2023-09-01+03%3A00%3A00&sky=b6e359949dae5d99bdb21ebe21b89f04ff3ed9262930fd9fa197514928ffd1b2', 'A remake of the classic role-playing game.', '2020-04-10'),
+('Super Smash Bros. Ultimate', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Super_Smash_Bros._Ultimate_logo.svg/2560px-Super_Smash_Bros._Ultimate_logo.svg.png', 'Super Smash Bros. Ultimate is a 2018 crossover fighting game developed by Bandai Namco Studios and Sora Ltd. and published by Nintendo for the Nintendo Switch. It is the fifth installment in the Super Smash Bros. series, succeeding Super Smash Bros. for Nintendo 3DS and Wii U.', '2018-12-07'),
+('Rocket League', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Rocket_League_coverart.jpg/640px-Rocket_League_coverart.jpg', 'Rocket League is a vehicular soccer video game developed and published by Psyonix. The game was first released for PlayStation 4 and Windows in July 2015, with ports for Xbox One and Nintendo Switch being released later on.', '2015-07-07');
 
 INSERT INTO game_genre (game_id, genre_id) VALUES
 (1, 7),
