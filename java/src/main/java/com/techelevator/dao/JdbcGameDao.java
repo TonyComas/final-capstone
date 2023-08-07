@@ -73,7 +73,7 @@ public class JdbcGameDao implements GameDao{
     @Override
     public Game getGameByID(int id) {
         Game game = new Game();
-        String sql = fromVideoGameSQL +"WHERE game_id = ?";
+        String sql = fromVideoGameSQL +" WHERE game_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
         while(result.next()){
             game = mapRowToGame(result);
@@ -89,8 +89,8 @@ public class JdbcGameDao implements GameDao{
         if (results.getDate("release_date")!=null) {
             game.setRelease_date(results.getDate("release_date").toLocalDate());
         }
-        game.setDeveloper_name(results.getString("developer_name"));
-        game.setPublisher_Name(results.getString("publisher_name"));
+        game.setDeveloper_name(results.getString("developer_names"));
+        game.setPublisher_Name(results.getString("publisher_names"));
         game.setGame_Logo(results.getString("game_logo"));
         game.setGenres(results.getString("genres"));
         return game;
