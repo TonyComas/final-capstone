@@ -16,6 +16,7 @@ INSERT INTO genre (genre_name) VALUES
 ('Survival'),
 ('Massively multiplayer');
 
+
 INSERT INTO developers (developer_name) VALUES
 ('Blizzard Entertainment'),
 ('Bungie Inc.'),
@@ -23,21 +24,67 @@ INSERT INTO developers (developer_name) VALUES
 ('Radical Entertainment'),
 ('Rockstar Games'),
 ('Rockstar North'),
-('Obsidian Entertainment');
+('Obsidian Entertainment'),
+('Gunfire Games'),
+('Nintendo'),
+('CD Projekt RED'),
+('Epic Games'),
+('People Can Fly'),
+('Mojang Studios'),
+('Xbox Game Studios'),
+('4J Studios'),
+('Double Eleven'),
+('Infinity Ward'),
+('Bethesda Game Studios'),
+('InnerSloth LLC'),
+('PlayEveryWhere'),
+('Square Enix'),
+('Psyonix');
+
 
 INSERT INTO publishers (publisher_name) VALUES
 ('Blizzard Entertainment'),
 ('Activision'),
 ('Bungie Inc.'),
 ('Rockstar Games'),
-('Bethesda Softworks');
+('Bethesda Softworks'),
+('Gearbox Publishing'),
+('Nintendo'),
+('CD Projekt RED'),
+('Warner Bros. Games'),
+('Epic Games'),
+('Mojang Studios'),
+('Xbox Game Studios'),
+('Telltale Games'),
+('Sony Interactive Entertainment'),
+('InnerSloth LLC'),
+('Square Enix'),
+('Psyonix');
+
 
 INSERT INTO video_games (game_name, game_logo, description, release_date) VALUES
-('Destiny', '', 'Destiny is an online first-person shooter video game developed by Bungie. It was released worldwide on September 9, 2014, for the PlayStation 3, PlayStation 4, Xbox 360, and Xbox One consoles. Destiny marked Bungies first new console franchise since the Halo series, and it was the first game in a ten-year agreement between Bungie and Activision. Set in a "mythological science fiction" world, the game features a multiplayer "shared-world" environment with elements of role-playing games', '2014-09-09'),
-('Destiny 2', '', 'Set in a "mythic science fiction" world, Destiny 2 features a multiplayer first-person shooter "shared-world" environment with elements of role-playing games. Like the original, activities in Destiny 2 are divided among player versus environment (PvE) and player versus player (PvP) game types. In addition to normal story missions, PvE features three-player "strikes" and dungeons and six-player raids.', '2017-09-06'),
-('Grand Theft Auto V', '', 'GTA V (Grand Theft Auto V) is an action-adventure video game developed by Rockstar Games. Set in the fictional city of Los Santos, players explore a vast open-world, assuming the roles of three protagonists: Michael, a retired bank robber; Franklin, a hustler; and Trevor, a violent psychopath. They undertake daring heists, engage in car chases, shootouts, and various criminal activities, immersing players in a compelling narrative and unrestricted gameplay.', '2013-09-17'),
-('World of Warcraft', '', 'World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) by Blizzard Entertainment. Players venture into the fantastical realm of Azeroth, choosing from various races and classes. They embark on quests, battle fierce creatures, and engage in epic raids and player-versus-player combat. With a rich lore, frequent content updates, and a vibrant community, WoW offers a captivating gaming experience in a constantly evolving virtual world.', '2004-11-23'),
-('Fallout: New Vegas', '', 'Fallout: New Vegas is a post-apocalyptic action role-playing game developed by Obsidian Entertainment. Set in a nuclear-blasted Mojave Desert, players assume the role of a courier on a mission for revenge and retrieval of a stolen package. They encounter factions vying for control, make impactful choices, and navigate a morally grey world. Through engaging storytelling, exploration, and tactical combat, players shape the outcome of the wasteland, creating a unique and immersive experience.', '2010-10-19');
+('Destiny', 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/745af01a-5d51-441b-9c45-a8feda5f195c/d5yqbim-0308ff73-1e20-4796-ad45-f2b30c99f678.jpg/v1/fill/w_1192,h_670,q_70,strp/destiny_logo_tricorn_vector_by_valencygraphics_d5yqbim-pre.jpg', 'Destiny is an online first-person shooter video game developed by Bungie. It was released worldwide on September 9, 2014, for the PlayStation 3, PlayStation 4, Xbox 360, and Xbox One consoles. Destiny marked Bungies first new console franchise since the Halo series, and it was the first game in a ten-year agreement between Bungie and Activision. Set in a "mythological science fiction" world, the game features a multiplayer "shared-world" environment with elements of role-playing games', '2014-09-09'),
+('Destiny 2', 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/745af01a-5d51-441b-9c45-a8feda5f195c/d5yqbim-0308ff73-1e20-4796-ad45-f2b30c99f678.jpg/v1/fill/w_1192,h_670,q_70,strp/destiny_logo_tricorn_vector_by_valencygraphics_d5yqbim-pre.jpg', 'Set in a "mythic science fiction" world, Destiny 2 features a multiplayer first-person shooter "shared-world" environment with elements of role-playing games. Like the original, activities in Destiny 2 are divided among player versus environment (PvE) and player versus player (PvP) game types. In addition to normal story missions, PvE features three-player "strikes" and dungeons and six-player raids.', '2017-09-06'),
+('Grand Theft Auto V', 'https://w7.pngwing.com/pngs/798/301/png-transparent-grand-theft-auto-v-gta-5-online-gunrunning-logo-playstation-3-adobe-shop-pogba-text-pogba-area-thumbnail.png', 'GTA V (Grand Theft Auto V) is an action-adventure video game developed by Rockstar Games. Set in the fictional city of Los Santos, players explore a vast open-world, assuming the roles of three protagonists: Michael, a retired bank robber; Franklin, a hustler; and Trevor, a violent psychopath. They undertake daring heists, engage in car chases, shootouts, and various criminal activities, immersing players in a compelling narrative and unrestricted gameplay.', '2013-09-17'),
+('World of Warcraft', 'https://www.zilliondesigns.com/blog/wp-content/uploads/Warcraft-1280x720.jpg', 'World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG) by Blizzard Entertainment. Players venture into the fantastical realm of Azeroth, choosing from various races and classes. They embark on quests, battle fierce creatures, and engage in epic raids and player-versus-player combat. With a rich lore, frequent content updates, and a vibrant community, WoW offers a captivating gaming experience in a constantly evolving virtual world.', '2004-11-23'),
+('Fallout: New Vegas', 'https://static.wikia.nocookie.net/logopedia/images/d/d9/TankSTOP.png/revision/latest?cb=20151109232004', 'Fallout: New Vegas is a post-apocalyptic action role-playing game developed by Obsidian Entertainment. Set in a nuclear-blasted Mojave Desert, players assume the role of a courier on a mission for revenge and retrieval of a stolen package. They encounter factions vying for control, make impactful choices, and navigate a morally grey world. Through engaging storytelling, exploration, and tactical combat, players shape the outcome of the wasteland, creating a unique and immersive experience.', '2010-10-19'),
+('Remnant II', 'https://images.squarespace-cdn.com/content/v1/55669e4ae4b0352887a893c6/1670594606560-JPMHFTTFAYW7EA0O0OVF/HD_Logo.png?format=1500w', 'Remnant II pits survivors of humanity against new deadly creatures and god-like bosses across terrifying worlds. Play solo or co-op with two other friends to explore the depths of the unknown to stop an evil from destroying reality itself.', '7-25-2023'),
+('The Legend of Zelda: Breath of the Wild', 'An action-adventure game set in a vast open world.', '2017-03-03'),
+('The Witcher 3: Wild Hunt', 'An epic role-playing game with a rich fantasy world.', '2015-05-19'),
+('Red Dead Redemption 2', 'An action-adventure game in a western setting.', '2018-10-26'),
+('Fortnite', 'A battle royale game with building mechanics.', '2017-07-25'),
+('Minecraft', 'A sandbox game with block-building and exploration.', '2011-11-18'),
+('Call of Duty: Modern Warfare', 'A first-person shooter with a modern military setting.', '2019-10-25'),
+('The Elder Scrolls V: Skyrim', 'An open-world role-playing game with a fantasy setting.', '2011-11-11'),
+('Super Mario Odyssey', 'A 3D platformer featuring the iconic plumber Mario.', '2017-10-27'),
+('Overwatch', 'A team-based multiplayer first-person shooter.', '2016-05-24'),
+('Among Us', 'A social deduction game set on a spaceship.', '2018-06-15'),
+('Animal Crossing: New Horizons', 'A life simulation game with a peaceful island setting.', '2020-03-20'),
+('Cyberpunk 2077', 'An open-world role-playing game set in a dystopian future.', '2020-12-10'),
+('Final Fantasy VII Remake', 'A remake of the classic role-playing game.', '2020-04-10'),
+('Super Smash Bros. Ultimate', 'Super Smash Bros. Ultimate is a 2018 crossover fighting game developed by Bandai Namco Studios and Sora Ltd. and published by Nintendo for the Nintendo Switch. It is the fifth installment in the Super Smash Bros. series, succeeding Super Smash Bros. for Nintendo 3DS and Wii U.', '2018-12-07')
+('Rocket League', 'Rocket League is a vehicular soccer video game developed and published by Psyonix. The game was first released for PlayStation 4 and Windows in July 2015, with ports for Xbox One and Nintendo Switch being released later on.', '2015-07-07')
+
 
 INSERT INTO game_genre (game_id, genre_id) VALUES
 (1, 7),
@@ -58,7 +105,59 @@ INSERT INTO game_genre (game_id, genre_id) VALUES
 (5, 2),
 (5, 3),
 (5, 7),
-(5, 12);
+(5, 12),
+(6, 1),
+(6, 3),
+(6, 4),
+(7, 1),
+(7, 2),
+(7, 3),
+(7, 4),
+(8, 1),
+(8, 2),
+(8, 3),
+(8, 4),
+(9, 1),
+(9, 2),
+(9, 3),
+(10, 1),
+(10, 7),
+(10, 12),
+(10, 13),
+(11, 2),
+(11, 4),
+(11, 12),
+(12, 1),
+(12, 7),
+(12, 13),
+(13, 1),
+(13, 2),
+(13, 3),
+(13, 4),
+(14, 1),
+(14, 2),
+(14, 9),
+(15, 1),
+(15, 7),
+(15, 13),
+(16, 3),
+(16, 6),
+(16, 10),
+(17, 2),
+(17, 5),
+(18, 1),
+(18, 2),
+(18, 5),
+(18, 7),
+(19, 1),
+(19, 2),
+(19, 3),
+(19, 4),
+(20, 6),
+(20, 12),
+(21, 8),
+(21, 6);
+
 
 INSERT INTO game_developers (game_id, developer_id) VALUES
 (1, 2),
@@ -68,7 +167,29 @@ INSERT INTO game_developers (game_id, developer_id) VALUES
 (3, 5),
 (3, 6),
 (4, 1),
-(5, 7);
+(5, 7),
+(6, 8),
+(7, 9),
+(8, 10),
+(9, 5),
+(10, 11),
+(10, 12),
+(11, 13),
+(11, 14),
+(11, 15),
+(11, 16),
+(12, 17),
+(13, 18),
+(14, 9),
+(15, 1),
+(16, 19),
+(16, 20),
+(17, 9),
+(18, 10),
+(19, 21),
+(20, 9),
+(21, 22);
+
 
 INSERT INTO game_publishers (game_id, publisher_id) VALUES
 (1, 2),
@@ -76,4 +197,33 @@ INSERT INTO game_publishers (game_id, publisher_id) VALUES
 (2, 3),
 (3, 4),
 (4, 1),
-(5, 5);
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 4),
+(10, 10),
+(10, 9),
+(11, 11),
+(11, 12),
+(11, 13),
+(11, 14),
+(12, 2),
+(13, 5),
+(14, 8),
+(15, 1),
+(16, 15),
+(17, 7),
+(18, 8),
+(19, 16),
+(20, 7),
+(21, 17);
+
+
+
+
+
+
+
+
+
