@@ -28,7 +28,9 @@ methods: {
         GameServices.deleteGame(gameId)
             .then( response => {
                 if (response.status === 200) {
-                    this.$store.commit("DELETE_MESSAGE", gameId)
+                    this.router.push( {
+                        name: 'games'
+                    });
                 }
             })
     }

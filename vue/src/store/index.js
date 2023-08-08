@@ -22,7 +22,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     categoryFilter: 'All',
-    game: {
+    games: {
       game_id: 0,
       game_name: '',
       description: '',

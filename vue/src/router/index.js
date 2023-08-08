@@ -65,6 +65,9 @@ const router = new Router({
       name: 'AddGame',
       component: AddGameView
     },
+    {
+      
+    }
     
     {
     //KEEP THIS LAST
