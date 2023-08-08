@@ -11,15 +11,17 @@
       >
         <div class="individual">
           <img class="logo" v-bind:src="game.game_logo" alt="" />
-          <h2 class="name">{{ game.game_name }}</h2>
-          <input
+          <h1 class="name">{{ game.game_name }}</h1>
+          
+        </div>
+        
+      </router-link>
+      <input
             class="deleteButton"
             type="button"
             value="Remove"
             @click="deleteGame(game.game_id)"
           />
-        </div>
-      </router-link>
     </div>
   </div>
 </template>
@@ -45,21 +47,53 @@ export default {
 
 <style>
 img.logo {
-  margin-top: 30px;
   width: 300px;
   height: 300px;
   object-fit: contain;
+  border-radius: 25px;
+  background-color: white;
 }
-h2.class {
+h1.name {
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
 }
+
+
 div.game {
-  display: flex;
+    display: flexbox;
+    width: 313px;
+    margin-right: 30px;
 }
 
 div.individual {
+    display: flexbox;
+    padding-top: 4px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 4px;
+    margin-top: 30px;
+    border-color: rgba(80, 80, 80, 0.459);
+}
+
+div.individual:hover {
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 25px;
+    background-color: rgba(80, 80, 80, 0.4);
+    border-color: rgba(80, 80, 80, 0.658)
 }
 
 .deleteButton {
-  height: 30px;
+  font-size: 10px;
+  height: 20px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+}
+
+.deleteButton:hover {
+    background-color: gray;
+    font-size: 11px;
 }
 </style>

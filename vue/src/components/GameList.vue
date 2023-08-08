@@ -1,6 +1,5 @@
 <template>
   <div id="games">
-    <h1>Video Games</h1>
     <GameDetailVue v-for="game in $store.getters.games"
     :key="game.id"
     :game="game"/>
@@ -32,4 +31,9 @@ export default {
 </script>
 
 <style>
+
+div #games {
+  display:flex;
+  flex-wrap: wrap;
+}
 </style>
