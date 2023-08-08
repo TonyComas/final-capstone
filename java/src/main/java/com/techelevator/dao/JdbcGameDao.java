@@ -71,14 +71,50 @@ public class JdbcGameDao implements GameDao{
     }
 
     @Override
-    public boolean addGame(Game game) {
-        String addGameSQL = "INSERT INTO video_games (game_name, description, release_date) VALUES (?, ?, ?) RETURNING game_id;";
-        String addGameGenre = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
+    public Game addGame(Game game) {
+
+        Game newGame = game;
+        int gameId = 0;
+        String addGameSQL = "INSERT INTO video_games (game_name, description, release_date, game_logo) VALUES (?, ?, ?, ?) RETURNING game_id;";
+        SqlRowSet results=jdbcTemplate.queryForRowSet(addGameSQL,newGame.getGame_name(),newGame.getDescription(),newGame.getRelease_date(), newGame.getGame_logo());
+        while(results.next()){
+            newGame.setGame_id(results.getInt("game_id"));
+            gameId = results.getInt("game_id");
+        }
+
+        // adding Publisher : Start by constructing the SQL string.
+        String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
+        // converting a provided string of comma space separated devs to a list of devs
+        String compositeDevs = newGame.getDeveloper_names();
+        List<String> devs = List.of(compositeDevs.split(", "));
+        // run the SQL string for each dev in the list.
+        for (String dev : devs){
+            jdbcTemplate.update(addGameDevs,gameId, getDevID(dev));
+        }
+
+
+        // adding Publisher : repeating all steps done for Dev
         String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
-        String addGameDev = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
+        //
+        String compositePubs = newGame.getPublisher_names();
+        List<String> pubs = List.of(compositePubs.split(", "));
+        //
+        for (String pub : pubs){
+            jdbcTemplate.update(addGamePublisher,gameId, getPubID(pub));
+        }
+
+        // adding Genres : repeating steps for devs and publishers.
+        String addGameGenre = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
+        //
+        String compositeGenres = newGame.getGenres();
+        List<String> genres = List.of(compositeGenres.split(", "));
+        //
+        for (String genre : genres){
+            jdbcTemplate.update(addGameGenre,gameId, getGenID(genre));
+        }
 
 
-        return false;
+        return newGame;
     }
 
     @Override
@@ -121,10 +157,38 @@ public class JdbcGameDao implements GameDao{
         if (results.getDate("release_date")!=null) {
             game.setRelease_date(results.getDate("release_date").toLocalDate());
         }
-        game.setDeveloper_name(results.getString("developer_names"));
-        game.setPublisher_Name(results.getString("publisher_names"));
+        game.setDeveloper_names(results.getString("developer_names"));
+        game.setPublisher_names(results.getString("publisher_names"));
         game.setGame_logo(results.getString("game_logo"));
         game.setGenres(results.getString("genres"));
         return game;
+    }
+
+    private int getDevID(String devName){
+        String sql="SELECT developer_id FROM developers WHERE developer_name = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,devName);
+        int devId = 0;
+        while (result.next()){
+            devId= result.getInt("developer_id");
+        }
+        return devId;
+    }
+    private int getPubID(String pubName){
+        String sql="SELECT publisher_id FROM publishers WHERE publisher_name = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,pubName);
+        int pubId = 0;
+        while (result.next()){
+            pubId= result.getInt("publisher_id");
+        }
+        return pubId;
+    }
+    private int getGenID(String GenName){
+        String sql="SELECT genre_id FROM genre WHERE genre_name = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,GenName);
+        int GenId = 0;
+        while (result.next()){
+            GenId= result.getInt("genre_id");
+        }
+        return GenId;
     }
 }
