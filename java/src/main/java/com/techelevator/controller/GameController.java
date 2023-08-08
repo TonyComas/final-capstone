@@ -33,8 +33,8 @@ public class GameController {
     }
 
     @RequestMapping (path = "/add-game" ,method = RequestMethod.POST)
-    public boolean addGame(@RequestBody Game game){
-        return addGame(game);
+    public Game addGame(@RequestBody Game game){
+        return gameDao.addGame(game);
 
     }
 

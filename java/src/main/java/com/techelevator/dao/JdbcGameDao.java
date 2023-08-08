@@ -71,14 +71,24 @@ public class JdbcGameDao implements GameDao{
     }
 
     @Override
-    public boolean addGame(Game game) {
-        String addGameSQL = "INSERT INTO video_games (game_name, description, release_date) VALUES (?, ?, ?) RETURNING game_id;";
-        String addGameGenre = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
+    public Game addGame(Game game) {
+
+        Game newGame = game;
+        int gameId = 0;
+        String addGameSQL = "INSERT INTO video_games (game_name, description, release_date, game_logo) VALUES (?, ?, ?, ?) RETURNING game_id;";
+        SqlRowSet results=jdbcTemplate.queryForRowSet(addGameSQL,newGame.getGame_name(),newGame.getDescription(),newGame.getRelease_date(), newGame.getGame_logo());
+        while(results.next()){
+            newGame.setGame_id(results.getInt("game_id"));
+            gameId = results.getInt("game_id");
+        }
+        String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
+        jdbcTemplate.update(addGameDevs,gameId,getDevID(newGame.getDeveloper_name()));
         String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
-        String addGameDev = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
+        jdbcTemplate.update(addGamePublisher,gameId,getPubID(newGame.getPublisher_Name()));
+        String addGameGenre = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
+        jdbcTemplate.update(addGameGenre, gameId, getGenID(newGame.getGenres()));
 
-
-        return false;
+        return newGame;
     }
 
     @Override
@@ -126,5 +136,33 @@ public class JdbcGameDao implements GameDao{
         game.setGame_logo(results.getString("game_logo"));
         game.setGenres(results.getString("genres"));
         return game;
+    }
+
+    private int getDevID(String devName){
+        String sql="SELECT developer_id FROM developers WHERE developer_name = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,devName);
+        int devId = 0;
+        while (result.next()){
+            devId= result.getInt("developer_id");
+        }
+        return devId;
+    }
+    private int getPubID(String pubName){
+        String sql="SELECT publisher_id FROM publishers WHERE publisher_name = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,pubName);
+        int pubId = 0;
+        while (result.next()){
+            pubId= result.getInt("publisher_id");
+        }
+        return pubId;
+    }
+    private int getGenID(String GenName){
+        String sql="SELECT genre_id FROM genre WHERE genre_name = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql,GenName);
+        int GenId = 0;
+        while (result.next()){
+            GenId= result.getInt("genre_id");
+        }
+        return GenId;
     }
 }
