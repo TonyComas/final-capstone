@@ -5,14 +5,17 @@
         <p id="name" >Game Name: {{game.game_name}}</p>
         <p id="description">Description: {{game.description}}</p>
         <p id="release_date">Game Release Date: {{game.release_date}}</p>
-        <p id="developers">Developers: {{game.developer_name}}</p>
-        <p id="publishers">Publishers: {{game.publisher_Name}}</p>
+        <p id="developers">Developers: {{game.developer_names}}</p>
+        <p id="publishers">Publishers: {{game.publisher_names}}</p>
         <p id="genres">Genres: {{game.genres}}</p>
 
-        
+        <button v-on:click="updateGame()">CLICK ME</button>
         <form action="">
             <input type="text" v-model="game.game_name">
+            <input type="text" v-model="game.description">
+            
             <!-- submit/ -->
+            
         </form>
 
     
@@ -37,7 +40,17 @@ export default {
             game: null
         }
     },
+    methods: {
+        updateGame() {
+            console.log("Called UpdateGame Method");
+            console.log(this.game);
+            this.$store.dispatch("updateGame",this.game);
+        }
+    },
     created() {
+        if (this.$store.getters.games.length === 0) {
+            this.$store.dispatch("loadGames");
+        } 
         this.gameId = this.$route.params.gameId;
         GameServices.getGameById(this.gameId).then( response => {
             this.game = response.data;

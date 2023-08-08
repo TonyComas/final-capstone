@@ -63,6 +63,10 @@ export default new Vuex.Store({
         1
       )
     },
+    UPDATE_GAME(state,gameObject){
+      let gameIndex = state.games.findIndex(game => game.game_id === gameObject.game_id)
+      state.games[gameIndex] = gameObject;
+    } 
 
   },
   actions: {
@@ -73,13 +77,17 @@ export default new Vuex.Store({
       }).catch( error => console.error(error));
       
     },
-    // updateGame(state,game) {
-    //   //Find the game object in state
-    //   //Update the object in state
-    //   // Call API to update server
-      
-    // }
+    updateGame(state, gameObject) {
+      //Find the game object in state
+     state.commit("UPDATE_GAME",gameObject);
 
+      //Update the object in state
+
+      // Call API to update server
+      GameServices.updateGame(gameObject.game_id, gameObject)
+        .catch(err => console.error(err));
+    }
+    
   },
   modules: {
 

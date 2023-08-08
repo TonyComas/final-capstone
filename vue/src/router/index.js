@@ -56,8 +56,8 @@ const router = new Router({
       }
     },
     {
-      path: "/games",
-      name: "games",
+      path: '/games',
+      name: 'games',
       component: Games
     },
     {
