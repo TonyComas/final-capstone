@@ -59,7 +59,7 @@ export default {
       saveGame() {
           GameService.addGame(this.game)
             .then( response => {
-                if (response.status === 201) {
+                if (response.status === 200) {
                     this.$router.push( {
                         name: 'games'
                     });
