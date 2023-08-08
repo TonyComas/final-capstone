@@ -34,12 +34,13 @@ public class GameController {
 
     @RequestMapping (path = "/add-game" ,method = RequestMethod.POST)
     public boolean addGame(@RequestBody Game game){
-        return false;
+        return addGame(game);
+
     }
 
     @RequestMapping (path = "/{id}", method = RequestMethod.DELETE)
-    public boolean deleteGame(@PathVariable("id") int id){
-        return gameDao.deleteGame(id);
+    public void deleteGame(@PathVariable("id") int id){
+        gameDao.deleteGame(id);
     }
 
     @RequestMapping (path = "/{id}", method = RequestMethod.PUT)

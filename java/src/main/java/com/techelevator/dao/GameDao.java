@@ -9,9 +9,9 @@ public interface GameDao {
 
     List<Game> getAllGames();
 
-    boolean addGame();
+    boolean addGame(Game game);
 
-    boolean deleteGame(int id);
+    void deleteGame(int id);
 
     boolean updateGame();
 
