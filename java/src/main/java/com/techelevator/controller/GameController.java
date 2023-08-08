@@ -35,7 +35,6 @@ public class GameController {
     @RequestMapping (path = "/add-game" ,method = RequestMethod.POST)
     public boolean addGame(@RequestBody Game game){
         return addGame(game);
-
     }
 
     @RequestMapping (path = "/{id}", method = RequestMethod.DELETE)
