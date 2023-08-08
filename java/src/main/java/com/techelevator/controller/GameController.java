@@ -33,7 +33,6 @@ public class GameController {
     }
 
     @RequestMapping (path = "/" ,method = RequestMethod.POST)
-
     public Game addGame(@RequestBody Game game){
         return gameDao.addGame(game);
     }

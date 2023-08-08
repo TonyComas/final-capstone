@@ -87,7 +87,8 @@ button.addGame:hover {
 }
 
 label.addGame {
-  width: 400px;
+  max-width: 200px;
+  display: block;
 }
 
 input.addGame{
