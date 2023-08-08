@@ -13,8 +13,12 @@
         <form action="">
             <input type="text" v-model="game.game_name">
             <input type="text" v-model="game.description">
+            <input type="text" v-model="game.release_date">
+            <input type="text" v-model="game.developer_names">
+            <input type="text" v-model="game.publisher_names">
+            <input type="text" v-model="game.genres">
             
-            <!-- submit/ -->
+                      <!-- submit/ -->
             
         </form>
 
