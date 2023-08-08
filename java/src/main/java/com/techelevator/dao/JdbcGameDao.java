@@ -85,7 +85,7 @@ public class JdbcGameDao implements GameDao{
         // adding Publisher : Start by constructing the SQL string.
         String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
         // converting a provided string of comma space separated devs to a list of devs
-        String compositeDevs = newGame.getDeveloper_name();
+        String compositeDevs = newGame.getDeveloper_names();
         List<String> devs = List.of(compositeDevs.split(", "));
         // run the SQL string for each dev in the list.
         for (String dev : devs){
@@ -96,7 +96,7 @@ public class JdbcGameDao implements GameDao{
         // adding Publisher : repeating all steps done for Dev
         String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
         //
-        String compositePubs = newGame.getPublisher_Name();
+        String compositePubs = newGame.getPublisher_names();
         List<String> pubs = List.of(compositePubs.split(", "));
         //
         for (String pub : pubs){
@@ -157,8 +157,8 @@ public class JdbcGameDao implements GameDao{
         if (results.getDate("release_date")!=null) {
             game.setRelease_date(results.getDate("release_date").toLocalDate());
         }
-        game.setDeveloper_name(results.getString("developer_names"));
-        game.setPublisher_Name(results.getString("publisher_names"));
+        game.setDeveloper_names(results.getString("developer_names"));
+        game.setPublisher_names(results.getString("publisher_names"));
         game.setGame_logo(results.getString("game_logo"));
         game.setGenres(results.getString("genres"));
         return game;

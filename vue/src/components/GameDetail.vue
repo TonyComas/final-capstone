@@ -16,13 +16,14 @@
         </div>
         
       </router-link>
-      <input
+      
+    </div>
+    <input 
             class="deleteButton"
             type="button"
             value="Remove"
             @click="deleteGame(game.game_id)"
           />
-    </div>
   </div>
 </template>
 

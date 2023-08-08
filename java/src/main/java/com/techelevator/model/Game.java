@@ -8,8 +8,8 @@ public class Game {
     private String game_name;
     private String description;
     private LocalDate release_date;
-    private String developer_name;
-    private String publisher_Name;
+    private String developer_names;
+    private String publisher_names;
     private String game_logo;
     private String genres;
 
@@ -22,8 +22,8 @@ public class Game {
         this.game_name = game_name;
         this.description = description;
         this.release_date = release_date;
-        this.developer_name = developer_name;
-        this.publisher_Name = publisher_Name;
+        this.developer_names = developer_name;
+        this.publisher_names = publisher_Name;
         this.game_logo = game_logo;
         this.genres = genres;
     }
@@ -33,8 +33,8 @@ public class Game {
         this.game_name = game_name;
         this.description = description;
         this.release_date = LocalDate.parse(release_date);
-        this.developer_name = developer_name;
-        this.publisher_Name = publisher_Name;
+        this.developer_names = developer_name;
+        this.publisher_names = publisher_Name;
         this.game_logo = game_logo;
         this.genres = genres;
     }
@@ -71,20 +71,20 @@ public class Game {
         this.release_date = release_date;
     }
 
-    public String getDeveloper_name() {
-        return developer_name;
+    public String getDeveloper_names() {
+        return developer_names;
     }
 
-    public void setDeveloper_name(String developer_name) {
-        this.developer_name = developer_name;
+    public void setDeveloper_names(String developer_names) {
+        this.developer_names = developer_names;
     }
 
-    public String getPublisher_Name() {
-        return publisher_Name;
+    public String getPublisher_names() {
+        return publisher_names;
     }
 
-    public void setPublisher_Name(String publisher_Name) {
-        this.publisher_Name = publisher_Name;
+    public void setPublisher_names(String publisher_names) {
+        this.publisher_names = publisher_names;
     }
 
     public String getGame_logo() {

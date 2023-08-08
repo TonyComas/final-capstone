@@ -27,7 +27,7 @@ export default {
 <style>
 
 #app{
-  background-image: linear-gradient(to bottom, rgba(67, 245, 61, 0.404), rgba(233, 114, 233, 0.753));
+  background-image: linear-gradient(to bottom right, rgba(67, 245, 61, 0.404), rgba(233, 114, 233, 0.753));
   display: grid;
   grid-template-columns: 5vw 1fr 20vw;
   grid-template-rows: 100px 1fr 100px;
