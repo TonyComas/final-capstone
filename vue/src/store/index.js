@@ -31,7 +31,11 @@ export default new Vuex.Store({
     },
     games(state) {
       return state.games;
+    },
+    game(state,id) {
+      return state.games.find(game => game.game_id === id);
     }
+  
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -65,11 +69,16 @@ export default new Vuex.Store({
     loadGames(state) {
       GameServices.getAllGames().then( response => {
         const arrayFromApi = response.data;
-        arrayFromApi.unshift('All');
-        state.commit('',arrayFromApi);
+         state.commit("SET_ALL_GAMES",arrayFromApi);
       }).catch( error => console.error(error));
       
-    }
+    },
+    // updateGame(state,game) {
+    //   //Find the game object in state
+    //   //Update the object in state
+    //   // Call API to update server
+      
+    // }
 
   },
   modules: {

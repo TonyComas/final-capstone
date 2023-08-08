@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import GameService from '@/services/GameServices.js'
 import GameDetailVue from './GameDetail.vue';
 export default {
   name: "game-list",
@@ -24,9 +23,7 @@ export default {
 
   },
   created() {
-      GameService.getAllGames().then( response => {
-         this.$store.commit("SET_ALL_GAMES",response.data);
-      })
+      this.$store.dispatch("loadGames")
   }
 };
 </script>
