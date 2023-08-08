@@ -33,9 +33,9 @@ public class GameController {
     }
 
     @RequestMapping (path = "/add-game" ,method = RequestMethod.POST)
+
     public Game addGame(@RequestBody Game game){
         return gameDao.addGame(game);
-
     }
 
     @RequestMapping (path = "/{id}", method = RequestMethod.DELETE)
