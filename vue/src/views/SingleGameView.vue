@@ -12,6 +12,8 @@
         <button v-on:click="updateGame()">CLICK ME</button>
         <form action="">
             <input type="text" v-model="game.game_name">
+            <input type="text" v-model="game.description">
+            
             <!-- submit/ -->
             
         </form>
