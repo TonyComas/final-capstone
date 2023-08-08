@@ -59,6 +59,10 @@ h1.name {
     text-decoration: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 
 div.game {
     display: flexbox;
