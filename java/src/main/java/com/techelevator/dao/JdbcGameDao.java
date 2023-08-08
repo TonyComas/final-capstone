@@ -81,12 +81,38 @@ public class JdbcGameDao implements GameDao{
             newGame.setGame_id(results.getInt("game_id"));
             gameId = results.getInt("game_id");
         }
+
+        // adding Publisher : Start by constructing the SQL string.
         String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
-        jdbcTemplate.update(addGameDevs,gameId,getDevID(newGame.getDeveloper_name()));
+        // converting a provided string of comma space separated devs to a list of devs
+        String compositeDevs = newGame.getDeveloper_name();
+        List<String> devs = List.of(compositeDevs.split(", "));
+        // run the SQL string for each dev in the list.
+        for (String dev : devs){
+            jdbcTemplate.update(addGameDevs,gameId, getDevID(dev));
+        }
+
+
+        // adding Publisher : repeating all steps done for Dev
         String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
-        jdbcTemplate.update(addGamePublisher,gameId,getPubID(newGame.getPublisher_Name()));
+        //
+        String compositePubs = newGame.getPublisher_Name();
+        List<String> pubs = List.of(compositePubs.split(", "));
+        //
+        for (String pub : pubs){
+            jdbcTemplate.update(addGamePublisher,gameId, getPubID(pub));
+        }
+
+        // adding Genres : repeating steps for devs and publishers.
         String addGameGenre = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
-        jdbcTemplate.update(addGameGenre, gameId, getGenID(newGame.getGenres()));
+        //
+        String compositeGenres = newGame.getGenres();
+        List<String> genres = List.of(compositeGenres.split(", "));
+        //
+        for (String genre : genres){
+            jdbcTemplate.update(addGameGenre,gameId, getGenID(genre));
+        }
+
 
         return newGame;
     }
