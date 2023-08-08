@@ -35,6 +35,22 @@ public class JdbcGameDao implements GameDao{
             "    LEFT JOIN genre ON game_genre.genre_id = genre.genre_id";
 
 
+
+
+/*
+
+"INSERT INTO video_games (game_name, description, release_date) " + "VALUES (?, ?, ?) RETURNING game_id;"
+//if game id NOT null
+"INSERT INTO game_developers (game_id, developer_id) " + "VALUES (?, ?);"
+//for loop
+"INSERT INTO game_publishers (game_id, publisher_id) " + "VALUES (?, ?);"
+//for loop
+"INSERT INTO game_genre (game_id, genre_id) " + "VALUES (?, ?);"
+//for loop
+
+*/
+
+
     private JdbcTemplate jdbcTemplate;
 
     public JdbcGameDao(DataSource dataSource) {
@@ -55,16 +71,20 @@ public class JdbcGameDao implements GameDao{
     }
 
     @Override
-    public boolean addGame() {
+    public boolean addGame(Game game) {
+        String addGameSQL = "INSERT INTO video_games (game_name, description, release_date) VALUES (?, ?, ?) RETURNING game_id;";
+        String addGameGenre = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
+        String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
+        String addGameDev = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
+
+
         return false;
     }
 
     @Override
-    public boolean deleteGame(int id) {
+    public void deleteGame(int id) {
         String sql = "DELETE FROM video_games WHERE video_games.game_id = ?;";
-//        jdbcTemplate.update(sql,id);
-
-        return false;
+        jdbcTemplate.update(sql,id);
     }
 
     @Override
