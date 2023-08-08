@@ -1,36 +1,36 @@
 <template>
   <form v-on:submit.prevent>
-    <div>
+    <div id="addGame">
       <div class="Game_Title">
-        <label for="title">Game Name</label>
-        <input type="text" name="title" v-model="game.game_name" />
+        <label class="addGame" for="title">Game Name: </label>
+        <input class="addGame" type="text" name="title" v-model="game.game_name" />
       </div>
       <div class="Description">
-        <label for="description">Game Description</label>
-        <input type="text" name="description" v-model="game.description" />
+        <label class="addGame" for="description">Game Description: </label>
+        <input class="addGame" type="text" name="description" v-model="game.description" />
       </div>
       <div class="Release_Date">
-        <label for="release">Release Date</label>
-        <input type="date" name="release" v-model="game.release_date" />
+        <label class="addGame" for="release">Release Date: </label>
+        <input class="addGame" type="date" name="release" v-model="game.release_date" />
       </div>
       <div class="Developer">
-          <label for="developer">Developer Name</label>
-          <input type="text" name="developer" v-model="game.developer_names" />
+          <label class="addGame" for="developer">Developer Name: </label>
+          <input class="addGame" type="text" name="developer" v-model="game.developer_names" />
       </div>
       <div class="Publisher">
-          <label for="publisher">Publisher Name</label>
-          <input type="text" name="publisher" v-model="game.publisher_names" />
+          <label class="addGame" for="publisher">Publisher Name: </label>
+          <input class="addGame" type="text" name="publisher" v-model="game.publisher_names" />
       </div>
       <div class="Game_Logo">
-          <label for="logo">Input link for Image</label>
-          <input type="url" name="logo" v-model="game.game_logo" />
+          <label class="addGame" for="logo">Input link for Image: </label>
+          <input class="addGame" type="url" name="logo" v-model="game.game_logo" />
       </div>
       <div class="genre">
-          <label for="genre">Game Genres</label>
-          <input type="text" name="genre" v-model="game.genres">
+          <label class="addGame" for="genre">Game Genres: </label>
+          <input class="addGame" type="text" name="genre" v-model="game.genres">
       </div>
       <div class="actions">
-          <button type="submit" v-on:click="saveGame()">Add Game</button>
+          <button id="addGame" type="submit" v-on:click="saveGame()">Add Game</button>
       </div>
     </div>
   </form>
@@ -45,12 +45,12 @@ export default {
     return {
       game: {
         fullGame: this.fullGame,
-        game_name: "",
+        game_name: null,
         description: "",
-        release_date: null,
+        release_date: "2000-01-01",
         developer_names:"",
         publisher_names:"",
-        game_logo: null,
+        game_logo: "https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg",
         genres:""
       },
     };
@@ -71,4 +71,29 @@ export default {
 </script>
 
 <style>
+
+div {
+  padding-bottom: 10px;
+}
+
+button.addGame {
+  width: 100px;
+  border-radius: 4px;
+  border-width: 1px;
+}
+
+button.addGame:hover {
+  background-color: rgba(128, 128, 128, 0.4);
+}
+
+label.addGame {
+  width: 400px;
+}
+
+input.addGame{
+  width:200px;
+  border-radius: 4px;
+  border-width: 1px;
+}
+
 </style>
