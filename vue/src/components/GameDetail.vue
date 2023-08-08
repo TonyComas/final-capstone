@@ -9,8 +9,10 @@
           }">
            <h2>{{game.game_name}}</h2>
            <img v-bind:src="game.game_logo" alt="">
+          
 
           </router-link>
+           <input type='button' value='Remove' @click="deleteGame(game.game_id)" />
   </div>
 </template>
 
@@ -27,10 +29,9 @@ methods: {
     deleteGame(gameId) {
         GameServices.deleteGame(gameId)
             .then( response => {
-                if (response.status === 200) {
-                    this.router.push( {
-                        name: 'games'
-                    });
+                if (response.status === 200) { 
+                  this.$store.commit("DELETE_GAME",gameId)
+                    
                 }
             })
     }
