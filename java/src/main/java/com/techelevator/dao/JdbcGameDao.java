@@ -83,9 +83,17 @@ public class JdbcGameDao implements GameDao{
 
     @Override
     public void deleteGame(int id) {
-        String sql = "DELETE FROM video_games WHERE video_games.game_id = ?;";
+        String sql = "DELETE FROM game_publishers WHERE game_id = ?";
+        jdbcTemplate.update(sql,id);
+        sql = "DELETE FROM game_developers WHERE game_id = ?;";
+        jdbcTemplate.update(sql,id);
+        sql = "DELETE FROM game_genre WHERE game_id = ?;";
+        jdbcTemplate.update(sql,id);
+        sql = "DELETE FROM video_games WHERE game_id = ?;";
         jdbcTemplate.update(sql,id);
     }
+
+
 
     @Override
     public boolean updateGame() {
