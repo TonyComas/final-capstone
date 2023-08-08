@@ -24,7 +24,7 @@ export default {
 <style>
 
 #app{
-  height: 100vh;
+  background-image: linear-gradient(to bottom right, rgba(128, 128, 128, 0.205), white);
   display: grid;
   grid-template-columns: 5vw 1fr 5vw;
   grid-template-rows: 100px 1fr 100px;

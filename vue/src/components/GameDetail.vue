@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div>
-     
-    </div>
     <div class="game">
       <router-link
         :to="{
@@ -15,9 +12,14 @@
         <div class="individual">
           <img class="logo" v-bind:src="game.game_logo" alt="" />
           <h2 class="name">{{ game.game_name }}</h2>
+          <input
+            class="deleteButton"
+            type="button"
+            value="Remove"
+            @click="deleteGame(game.game_id)"
+          />
         </div>
       </router-link>
-      <input type="button" value="Remove" @click="deleteGame(game.game_id)" />
     </div>
   </div>
 </template>
@@ -43,8 +45,10 @@ export default {
 
 <style>
 img.logo {
-  width: 250px;
-  max-height: 300px;
+  margin-top: 30px;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
 }
 h2.class {
 }
@@ -53,5 +57,9 @@ div.game {
 }
 
 div.individual {
+}
+
+.deleteButton {
+  height: 30px;
 }
 </style>
