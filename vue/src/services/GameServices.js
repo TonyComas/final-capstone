@@ -11,6 +11,10 @@ export default {
     },
     addGame(game) {
         return axios.post(`/games/`,game);
-    }
+    },
+    deleteGame(gameId) {
+        return axios.delete(`/games/${gameId}`);
+    },
+    
 
 }

@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import GameServices from '../services/GameServices'
 export default {
 name: 'game-detail',
 props: ['game'],
@@ -23,7 +24,14 @@ computed: {
 },
 methods: {
     //This is where we will add games to list for users. Dope
-
+    deleteGame(gameId) {
+        GameServices.deleteGame(gameId)
+            .then( response => {
+                if (response.status === 200) {
+                    this.$store.commit("DELETE_MESSAGE", gameId)
+                }
+            })
+    }
 }
 }
 </script>

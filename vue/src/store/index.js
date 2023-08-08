@@ -22,7 +22,17 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     categoryFilter: 'All',
-    gameCategories: []
+    game: {
+      game_id: 0,
+      game_name: '',
+      description: '',
+      release_date: null,
+      developer_names: '',
+      publisher_names: '',
+      game_logo: '',
+      genres: ''
+    },
+
   },
   getters: {
     categories(state) {
@@ -45,6 +55,12 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    DELETE_GAME(state,id) {
+      state.game.splice(
+        state.game.findIndex(game => game.id === id),
+        1
+      )
     },
 
   },
