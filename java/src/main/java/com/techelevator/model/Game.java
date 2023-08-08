@@ -17,24 +17,23 @@ public class Game {
 
     }
 
-    public Game(int game_id, String game_name, String description, LocalDate release_date, String developer_name, String publisher_Name, String game_logo, String genres) {
+    public Game(int game_id, String game_name, String description, LocalDate release_date, String developer_names, String publisher_names, String game_logo, String genres) {
         this.game_id = game_id;
         this.game_name = game_name;
         this.description = description;
         this.release_date = release_date;
-        this.developer_names = developer_name;
-        this.publisher_names = publisher_Name;
+        this.developer_names = developer_names;
+        this.publisher_names = publisher_names;
         this.game_logo = game_logo;
         this.genres = genres;
     }
 
-    public Game(int game_id, String game_name, String description, String release_date, String developer_name, String publisher_Name, String game_logo, String genres) {
-        this.game_id = game_id;
+    public Game(String game_name, String description, String release_date, String developer_names, String publisher_names, String game_logo, String genres) {
         this.game_name = game_name;
         this.description = description;
         this.release_date = LocalDate.parse(release_date);
-        this.developer_names = developer_name;
-        this.publisher_names = publisher_Name;
+        this.developer_names = developer_names;
+        this.publisher_names = publisher_names;
         this.game_logo = game_logo;
         this.genres = genres;
     }
