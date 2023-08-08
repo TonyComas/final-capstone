@@ -1,7 +1,7 @@
 <template>
   <div id="games">
     <h1>Video Games</h1>
-    <GameDetailVue v-for="game in games"
+    <GameDetailVue v-for="game in $store.getters.games"
     :key="game.id"
     :game="game"/>
   </div>
@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-        games: []
+
     };
   },
   computed: {
@@ -25,7 +25,7 @@ export default {
   },
   created() {
       GameService.getAllGames().then( response => {
-          this.games = response.data;
+         this.$store.commit("SET_ALL_GAMES",response.data);
       })
   }
 };

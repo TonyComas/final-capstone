@@ -22,12 +22,16 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     categoryFilter: 'All',
-    gameCategories: []
+    games: [],
+
   },
   getters: {
     categories(state) {
       return state.categories;
     },
+    games(state) {
+      return state.games;
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -45,6 +49,15 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_ALL_GAMES(state,games) {
+      state.games = games;
+    },
+    DELETE_GAME(state,id) {
+      state.games.splice(
+        state.games.findIndex(game => game.game_id === id),
+        1
+      )
     },
 
   },
