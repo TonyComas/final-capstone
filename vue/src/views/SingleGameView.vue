@@ -2,25 +2,18 @@
 <div>
     <div class="singleGame" v-if="game">
         <GameDetail :game="game" />
-        <input 
-            class="deleteButton"
-            type="button"
-            value="Remove"
-            @click="deleteGame(game.game_id)"
-          />
         <p id="name" >Game Name: {{game.game_name}}</p>
         <p id="description">Description: {{game.description}}</p>
         <p id="release_date">Game Release Date: {{game.release_date}}</p>
         <p id="developers">Developers: {{game.developer_names}}</p>
         <p id="publishers">Publishers: {{game.publisher_names}}</p>
         <p id="genres">Genres: {{game.genres}}</p>
-        
 
         <button v-on:click="updateGame()">CLICK ME</button>
         <form action="">
             <input type="text" v-model="game.game_name">
             <input type="text" v-model="game.description">
-            <input type="date" v-model="game.release_date">
+            <input type="text" v-model="game.release_date">
             <input type="text" v-model="game.developer_names">
             <input type="text" v-model="game.publisher_names">
             <input type="text" v-model="game.genres">
@@ -71,16 +64,5 @@ export default {
 </script>
 
 <style>
-.deleteButton {
-  font-size: 10px;
-  height: 20px;
-  border-radius: 30px;
-  border-width: 1px;
-  text-align: right;
-}
 
-.deleteButton:hover {
-    background-color: gray;
-    font-size: 11px;
-}
 </style>
