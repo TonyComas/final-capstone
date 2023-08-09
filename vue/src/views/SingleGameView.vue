@@ -4,7 +4,7 @@
     <div class="single-game" v-if="game">
       <GameDetail :game="game" />
       <input 
-            class="deleteButton"
+            class="delete-Button"
             type="button"
             value="Remove"
             @click="deleteGame(game.game_id)"
