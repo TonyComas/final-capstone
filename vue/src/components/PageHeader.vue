@@ -1,9 +1,9 @@
 <template>
   <header class = "header">
-      <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-       <router-link :to="{ name: 'AddGame' }" > Add a Game!</router-link>&nbsp;|&nbsp;
-       <router-link :to="{ name: 'games' }">Game List</router-link>
+      <div id="nav" class = "nav-elements">
+      <router-link v-bind:to="{ name: 'home' }" class = "nav-link">Home</router-link>&nbsp;|&nbsp;
+       <router-link :to="{ name: 'AddGame' }" class = "nav-link">Add a Game!</router-link>&nbsp;|&nbsp;
+       <router-link :to="{ name: 'games' }" class = "nav-link">Game List</router-link>
        <!-- v-if="$store.state.token"  this goes ^ -->
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
@@ -49,6 +49,7 @@ header {
   flex-grow: 1;
 }
 
+
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 * {
   padding: 0;
@@ -74,7 +75,7 @@ body {
   display: inline-block;
   color: rgb(11, 6, 85);
   text-transform: uppercase;
-  animation: waviy 1s infinite;
+  animation: waviy 5s infinite;
   animation-delay: calc(.1s * var(--i));
   
 }
@@ -85,5 +86,43 @@ body {
   20% {
     transform: translateY(-10px)
   }
+}
+
+.nav-link {
+  background-image: linear-gradient(
+    to right,
+    #000008,
+    #54b3d6 50%,
+    #000 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none; /* Remove default underline */
+}
+
+.nav-link:before {
+  content: '';
+  background: #02126b;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  background-position: 0;
+}
+
+.nav-link:hover::before {
+  width: 100%;
 }
 </style>
