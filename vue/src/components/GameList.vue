@@ -48,7 +48,7 @@ div #searchBar{
 
 div #listPage {
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: 1fr 100px;
   grid-template-areas: "games search";
 }
 
