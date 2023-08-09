@@ -62,6 +62,7 @@ img.logo {
 }
 h1.name {
     font-size: 15px;
+    padding-left: 5px;
     color: black;
     text-decoration: none;
 }
@@ -112,6 +113,7 @@ div.individual:hover {
 
 .genres {
   font-size: 12px;
+  padding-left: 5px;
   color: black;
 }
 </style>
