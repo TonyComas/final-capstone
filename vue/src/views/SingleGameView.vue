@@ -4,7 +4,7 @@
     <div class="single-game" v-if="game">
       <GameDetail :game="game" />
       <input 
-            class="delete-Button"
+            class="delete-button"
             type="button"
             value="Remove"
             @click="deleteGame(game.game_id)"
@@ -125,7 +125,7 @@ export default {
 }
 
 .update-button:hover {
-  background-color: gray;
+  background-color: rgb(255, 255, 255);
   font-size: 11px;
 }
 
@@ -161,4 +161,146 @@ export default {
   background-color: #0056b3;
 }
 
+.delete-button {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Fantasy';
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.delete-button:hover,
+.delete-button:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.delete-button:hover {
+    background-color: rgb(196, 99, 99);
+    font-size: 11px;
+  box-shadow: 0 0 20px 20px #e74c3c inset;
+}
+
+.update-button {
+  font-size: 10px;
+  height: 20px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+}
+
+.update-button:hover {
+  background-color: rgb(255, 255, 255);
+  font-size: 11px;
+}
+
+.game-info p {
+  margin-bottom: 15px;
+}
+
+.game-info strong {
+  font-weight: bold;
+}
+
+.game-form {
+  margin-top: 20px;
+}
+
+.game-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.game-form button {
+  font-size: 10px;
+  height: 20px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+}
+
+.game-form button:hover {
+  background-color: #0056b3;
+}
+
+.update-button {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #0aa546;
+  border-radius: 0.6em;
+  color: #0aa546;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Fantasy';
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.update-button:hover,
+.update-button:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.update-button:hover {
+    background-color: rgb(99, 196, 120);
+    font-size: 11px;
+  box-shadow: 0 0 20px 20px #4ae73c inset;
+}
 </style>
