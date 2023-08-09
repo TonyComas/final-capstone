@@ -1,26 +1,26 @@
 <template>
-<div>
-    <div class="singleGame" v-if="game">
-        <GameDetail :game="game" />
-        <p id="name"><span style = "font-weight: bold; font-size: 18px;">Game Name</span>: {{game.game_name}}</p>
-        <p id="description"><span style = "font-weight: bold; font-size: 18px;">Description</span>: {{game.description}}</p>
-        <p id="release_date"><span style = "font-weight: bold; font-size: 18px;">Release Date</span>: {{game.release_date}}</p>
-        <p id="developers"><span style = "font-weight: bold; font-size: 18px;">Developers</span>: {{game.developer_names}}</p>
-        <p id="publishers"><span style = "font-weight: bold; font-size: 18px;">Publishers</span>: {{game.publisher_names}}</p>
-        <p id="genres"><span style = "font-weight: bold; font-size: 18px;">Genres</span>: {{game.genres}}</p>
+  <div class="body">
+    <div class="single-game" v-if="game">
+      <GameDetail :game="game" />
+      <input 
+            class="deleteButton"
+            type="button"
+            value="Remove"
+            @click="deleteGame(game.game_id)"
+          />
+      <button class="update-button" v-on:click="showForm = !showForm">
+        Update
+      </button>
 
-        <button v-on:click="updateGame()">CLICK ME</button>
-        <form action="">
-            <input type="text" v-model="game.game_name">
-            <input type="text" v-model="game.description">
-            <input type="text" v-model="game.release_date">
-            <input type="text" v-model="game.developer_names">
-            <input type="text" v-model="game.publisher_names">
-            <input type="text" v-model="game.genres">
-            
-                      <!-- submit/ -->
-            
-        </form>
+      <div class="game-info" v-if="!showForm">
+        <p>Game Name: {{ game.game_name }}</p>
+        <p>Description:{{ game.description }}</p>
+        <p>Game Release Date: {{ game.release_date }}</p>
+        <p>Developers: {{ game.developer_names }}</p>
+        <p>Publishers: {{ game.publisher_names }}</p>
+        <p>Genres: {{ game.genres }}</p>
+      </div>
+
 
       <form
         v-on:submit.prevent="updateGame()"
@@ -129,6 +129,34 @@ export default {
 
 .game-info p {
   margin-bottom: 15px;
+}
+
+.game-info strong {
+  font-weight: bold;
+}
+
+.game-form {
+  margin-top: 20px;
+}
+
+.game-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.game-form button {
+  font-size: 10px;
+  height: 20px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+}
+
+.game-form button:hover {
+  background-color: #0056b3;
 }
 
 </style>

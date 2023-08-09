@@ -85,47 +85,6 @@ div.individual:hover {
     border-color: rgba(80, 80, 80, 0.658)
 }
 
-.deleteButton {
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  border: 2px solid #e74c3c;
-  border-radius: 0.6em;
-  color: #e74c3c;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1;
-  margin: 5px;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: 'Fantasy';
-  font-weight: 700;
-  position: relative;
-  z-index: 1;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-}
-
-.deleteButton:hover,
-.deleteButton:focus {
-  color: #fff;
-  outline: 0;
-}
-
-.deleteButton:hover {
-  box-shadow: 0 0 20px 20px #e74c3c inset;
-}
 
 .genres {
   font-size: 12px;
