@@ -52,7 +52,7 @@
       </form>
 
       <div class="back-link">
-        <router-link :to="{ name: 'games' }">Back to Game Listing</router-link>
+        <button class = "back-link-style" @click = "$router.push({ name: 'games' })">Back to Game Listing</button>
       </div>
     </div>
   </div>
@@ -303,4 +303,39 @@ export default {
     font-size: 11px;
   box-shadow: 0 0 20px 20px #4ae73c inset;
 }
+
+.back-link-style {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+		-webkit-tap-highlight-color: transparent;
+}
+
+.back-link-style {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(0, 0, 0);
+	background-color: transparent;
+	border: 1px solid rgb(0, 0, 0);
+	box-shadow: 5px 5px 0 rgb(2, 9, 109),
+		-5px -5px 0 rgb(2, 9, 109),
+		-5px 5px 0 rgb(2, 9, 109),
+		5px -5px 0 rgb(2, 9, 109);
+	transition: 500ms ease-in-out;
+}
+
+.back-link-style:hover {
+	box-shadow: 20px 5px 0 rgb(151, 232, 247), -20px -5px 0 rgb(151, 232, 247);
+}
+
+.b:focus {
+	outline: none;
+}
+
 </style>
