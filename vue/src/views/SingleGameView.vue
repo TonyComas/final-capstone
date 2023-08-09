@@ -2,12 +2,19 @@
 <div>
     <div class="singleGame" v-if="game">
         <GameDetail :game="game" />
+        <input 
+            class="deleteButton"
+            type="button"
+            value="Remove"
+            @click="deleteGame(game.game_id)"
+          />
         <p id="name" >Game Name: {{game.game_name}}</p>
         <p id="description">Description: {{game.description}}</p>
         <p id="release_date">Game Release Date: {{game.release_date}}</p>
         <p id="developers">Developers: {{game.developer_names}}</p>
         <p id="publishers">Publishers: {{game.publisher_names}}</p>
         <p id="genres">Genres: {{game.genres}}</p>
+        
 
         <button v-on:click="updateGame()">CLICK ME</button>
         <form action="">
