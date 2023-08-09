@@ -22,7 +22,6 @@
           <input class="search" type="text" name="genre" v-model="search.genres">
       </div>
       <div class="actions">
-          <button id="search" type="submit" v-on:click="searchList">Search</button>
       </div>
     </div>
   </form>

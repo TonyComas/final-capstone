@@ -1,7 +1,16 @@
 <template>
-<div>
-    <div class="singleGame" v-if="game">
-        <GameDetail :game="game" />
+<div class="body">
+    <div class="single-game" v-if="game">
+      <GameDetail :game="game" />
+      <input 
+            class="deleteButton"
+            type="button"
+            value="Remove"
+            @click="deleteGame(game.game_id)"
+          />
+      <button class="update-button" v-on:click="showForm = !showForm">
+        Update
+      </button>
         <p id="name"><span style = "font-weight: bold; font-size: 18px;">Game Name</span>: {{game.game_name}}</p>
         <p id="description"><span style = "font-weight: bold; font-size: 18px;">Description</span>: {{game.description}}</p>
         <p id="release_date"><span style = "font-weight: bold; font-size: 18px;">Release Date</span>: {{game.release_date}}</p>
@@ -9,18 +18,8 @@
         <p id="publishers"><span style = "font-weight: bold; font-size: 18px;">Publishers</span>: {{game.publisher_names}}</p>
         <p id="genres"><span style = "font-weight: bold; font-size: 18px;">Genres</span>: {{game.genres}}</p>
 
-        <button v-on:click="updateGame()">CLICK ME</button>
-        <form action="">
-            <input type="text" v-model="game.game_name">
-            <input type="text" v-model="game.description">
-            <input type="text" v-model="game.release_date">
-            <input type="text" v-model="game.developer_names">
-            <input type="text" v-model="game.publisher_names">
-            <input type="text" v-model="game.genres">
-            
-                      <!-- submit/ -->
-            
-        </form>
+    
+        
 
       <form
         v-on:submit.prevent="updateGame()"
