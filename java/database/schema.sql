@@ -28,32 +28,32 @@ CREATE TABLE developers (
 
 CREATE TABLE video_games (
 	game_id SERIAL,
-	game_name varchar(100) NOT NULL UNIQUE,
-	description varchar(500) NOT NULL,
-	release_date date NOT NULL,
-	game_logo varchar(300) NOT NULL,
+	game_name varchar(100) UNIQUE,
+	description varchar(500),
+	release_date date,
+	game_logo varchar(300),
 	CONSTRAINT PK_game PRIMARY KEY (game_id)
 );
 
 CREATE TABLE game_publishers (
-	game_id INT NOT NULL, 
-	publisher_id INT NOT NULL,
+	game_id INT, 
+	publisher_id INT,
 	CONSTRAINT PK_publishers PRIMARY KEY (game_id, publisher_id),
 	CONSTRAINT FK_game_publishers FOREIGN KEY (game_id) REFERENCES video_games (game_id),
 	CONSTRAINT FK_publisher FOREIGN KEY (publisher_id) REFERENCES publishers (publisher_id)
 );
 
 CREATE TABLE game_developers (
-	game_id INT NOT NULL,
-	developer_id INT NOT NULL,
+	game_id INT,
+	developer_id INT,
 	CONSTRAINT PK_developers PRIMARY KEY (game_id, developer_id),
 	CONSTRAINT FK_game_developers FOREIGN KEY (game_id) REFERENCES video_games (game_id),
 	CONSTRAINT FK_developer FOREIGN KEY (developer_id) REFERENCES developers (developer_id)
 );
 
 CREATE TABLE game_genre (
-	game_id int NOT NULL,
-	genre_id int NOT NULL,
+	game_id int,
+	genre_id int,
 	game_genre_id SERIAL,
 	CONSTRAINT PK_game_genre PRIMARY KEY (game_genre_id),
 	CONSTRAINT FK_game FOREIGN KEY (game_id) REFERENCES video_games (game_id),
