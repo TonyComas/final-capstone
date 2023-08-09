@@ -19,12 +19,11 @@
       </router-link>
       
     </div>
-    
+   
   </div>
 </template>
 
 <script>
-import GameServices from "../services/GameServices";
 export default {
   data() {
     return {
@@ -36,13 +35,7 @@ export default {
   computed: {},
   methods: {
     //This is where we will add games to list for users. Dope
-    deleteGame(gameId) {
-      GameServices.deleteGame(gameId).then((response) => {
-        if (response.status === 200) {
-          this.$store.commit("DELETE_GAME", gameId);
-        }
-      });
-    },
+   
   },
 };
 </script>
@@ -82,7 +75,6 @@ div.individual {
     padding-bottom: 4px;
     margin-top: 30px;
     border-color: rgba(80, 80, 80, 0.459);
-
 }
 
 div.individual:hover {

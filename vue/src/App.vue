@@ -23,13 +23,19 @@ export default {
 
 <style>
 
-#app{
+body {
   background-image: linear-gradient(to bottom right, rgba(67, 245, 61, 0.404), rgba(233, 114, 233, 0.753));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+
+#app{
   display: grid;
-  grid-template-columns: 5vw 1fr 20vw;
-  grid-template-rows: 100px 1fr 300px;
+  grid-template-columns: 5vw 1fr 5vw;
+  grid-template-rows: 100px 1fr 100px;
   grid-template-areas: ". header ."
-                       "main main main"
+                       ". main ."
                        ". footer .";
 }
 

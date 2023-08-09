@@ -5,20 +5,16 @@
       :key="game.id"
       :game="game"/>
     </div>
-    <div id="searchBar">
-      <SearchBar />
-    </div>
   </div>
 </template>
 
 <script>
 import GameDetailVue from './GameDetail.vue';
-import SearchBar from '@/views/SearchBar.vue';
 export default {
   name: "game-list",
   components: {
       GameDetailVue,
-      SearchBar
+      
   },
   data() {
     return {
@@ -42,14 +38,12 @@ div #games {
   grid-area: games;
 }
 
-div #searchBar{
-  grid-area: search;
-}
+
 
 div #listPage {
   display: grid;
-  grid-template-columns: 100px 1fr 300px;
-  grid-template-areas: ". games search";
+  grid-template-columns: 1fr 200px;
+  grid-template-areas: "games search";
 }
 
 </style>
