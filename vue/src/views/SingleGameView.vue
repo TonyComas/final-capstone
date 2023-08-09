@@ -2,12 +2,12 @@
 <div>
     <div class="singleGame" v-if="game">
         <GameDetail :game="game" />
-        <p id="name" >Game Name: {{game.game_name}}</p>
-        <p id="description">Description: {{game.description}}</p>
-        <p id="release_date">Game Release Date: {{game.release_date}}</p>
-        <p id="developers">Developers: {{game.developer_names}}</p>
-        <p id="publishers">Publishers: {{game.publisher_names}}</p>
-        <p id="genres">Genres: {{game.genres}}</p>
+        <p id="name"><span style = "font-weight: bold; font-size: 18px;">Game Name</span>: {{game.game_name}}</p>
+        <p id="description"><span style = "font-weight: bold; font-size: 18px;">Description</span>: {{game.description}}</p>
+        <p id="release_date"><span style = "font-weight: bold; font-size: 18px;">Release Date</span>: {{game.release_date}}</p>
+        <p id="developers"><span style = "font-weight: bold; font-size: 18px;">Developers</span>: {{game.developer_names}}</p>
+        <p id="publishers"><span style = "font-weight: bold; font-size: 18px;">Publishers</span>: {{game.publisher_names}}</p>
+        <p id="genres"><span style = "font-weight: bold; font-size: 18px;">Genres</span>: {{game.genres}}</p>
 
         <button v-on:click="updateGame()">CLICK ME</button>
         <form action="">
