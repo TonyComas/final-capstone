@@ -71,5 +71,16 @@ export default {
 </script>
 
 <style>
+.deleteButton {
+  font-size: 10px;
+  height: 20px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+}
 
+.deleteButton:hover {
+    background-color: gray;
+    font-size: 11px;
+}
 </style>
