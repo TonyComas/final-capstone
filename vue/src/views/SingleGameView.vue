@@ -1,9 +1,8 @@
 <template>
   <div class="body">
-
     <div class="single-game" v-if="game">
       <GameDetail :game="game" />
-      <input 
+      <input
             class="deleteButton"
             type="button"
             value="Remove"
@@ -12,16 +11,14 @@
       <button class="update-button" v-on:click="showForm = !showForm">
         Update
       </button>
-
+      <div class="game_info" v-if="!showForm">
         <p id="name"><span style = "font-weight: bold; font-size: 18px;">Game Name</span>: {{game.game_name}}</p>
         <p id="description"><span style = "font-weight: bold; font-size: 18px;">Description</span>: {{game.description}}</p>
         <p id="release_date"><span style = "font-weight: bold; font-size: 18px;">Release Date</span>: {{game.release_date}}</p>
         <p id="developers"><span style = "font-weight: bold; font-size: 18px;">Developers</span>: {{game.developer_names}}</p>
         <p id="publishers"><span style = "font-weight: bold; font-size: 18px;">Publishers</span>: {{game.publisher_names}}</p>
         <p id="genres"><span style = "font-weight: bold; font-size: 18px;">Genres</span>: {{game.genres}}</p>
-
-    
-        
+        </div>
 
       <form
         v-on:submit.prevent="updateGame()"
@@ -49,18 +46,15 @@
         <input type="text" v-model="game.genres" placeholder="Genres" />
         <button class="update-button">Update</button>
       </form>
-
       <div class="back-link">
         <router-link :to="{ name: 'games' }">Back to Game Listing</router-link>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import GameDetail from "@/components/GameDetail.vue";
 import GameServices from "@/services/GameServices.js";
-
 export default {
   components: {
     GameDetail,
@@ -106,7 +100,6 @@ export default {
   },
 };
 </script>
-
 <style>
 .single-game {
   max-width: 600px;
@@ -114,7 +107,6 @@ export default {
   padding: 20px;
   border-radius: 5px;
 }
-
 .update-button {
   font-size: 10px;
   height: 20px;
@@ -122,24 +114,19 @@ export default {
   border-width: 1px;
   text-align: right;
 }
-
 .update-button:hover {
   background-color: gray;
   font-size: 11px;
 }
-
 .game-info p {
   margin-bottom: 15px;
 }
-
 .game-info strong {
   font-weight: bold;
 }
-
 .game-form {
   margin-top: 20px;
 }
-
 .game-form input {
   width: 100%;
   padding: 10px;
@@ -147,7 +134,6 @@ export default {
   font-size: 16px;
   margin-bottom: 10px;
 }
-
 .game-form button {
   font-size: 10px;
   height: 20px;
@@ -155,9 +141,7 @@ export default {
   border-width: 1px;
   text-align: right;
 }
-
 .game-form button:hover {
-  background-color: #0056b3;
+  background-color: #0056B3;
 }
-
 </style>
