@@ -4,7 +4,7 @@
       <GameDetail :game="game" />
 
       <input 
-            class="delete-Button"
+            class="delete-button"
             type="button"
             value="Remove"
             @click="deleteGame(game.game_id)"
@@ -12,7 +12,7 @@
       <button class="update-button" v-on:click="showForm = !showForm">
         Update
       </button>
-      <div class="game_info" v-if="!showForm">
+        <div class="game_info" v-if="!showForm">
         <p id="name"><span style = "font-weight: bold; font-size: 18px;">Game Name</span>: {{game.game_name}}</p>
         <p id="description"><span style = "font-weight: bold; font-size: 18px;">Description</span>: {{game.description}}</p>
         <p id="release_date"><span style = "font-weight: bold; font-size: 18px;">Release Date</span>: {{game.release_date}}</p>
@@ -20,6 +20,7 @@
         <p id="publishers"><span style = "font-weight: bold; font-size: 18px;">Publishers</span>: {{game.publisher_names}}</p>
         <p id="genres"><span style = "font-weight: bold; font-size: 18px;">Genres</span>: {{game.genres}}</p>
         </div>
+
 
       <form
         v-on:submit.prevent="updateGame()"
@@ -146,8 +147,7 @@ export default {
   background-color: #0056B3;
 }
 
-
-.deleteButton {
+.delete-button {
   font-size: 10px;
   height: 30px;
   border-radius: 30px;
@@ -184,13 +184,13 @@ export default {
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
-.deleteButton:hover,
-.deleteButton:focus {
+.delete-button:hover,
+.delete-button:focus {
   color: #fff;
   outline: 0;
 }
 
-.deleteButton:hover {
+.delete-button:hover {
     background-color: rgb(196, 99, 99);
     font-size: 11px;
   box-shadow: 0 0 20px 20px #e74c3c inset;
