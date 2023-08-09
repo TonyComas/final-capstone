@@ -30,7 +30,7 @@
           <input class="addGame" type="text" name="genre" v-model="game.genres">
       </div>
       <div class="actions">
-          <button id="addGame" type="submit" v-on:click="saveGame()">Add Game</button>
+          <button id="addGame" type="submit" v-if="game.game_name != ''" v-on:click="saveGame()">Add Game</button>
       </div>
     </div>
   </form>
@@ -45,7 +45,7 @@ export default {
     return {
       game: {
         fullGame: this.fullGame,
-        game_name: null,
+        game_name: "",
         description: "",
         release_date: "2000-01-01",
         developer_names:"",

@@ -4,7 +4,6 @@
     <main>
       <router-view />
     </main>
-    <div id="searchBar"><SearchBar /></div>
     <PageFooter />
   </div>
 </template>
@@ -12,14 +11,12 @@
 <script>
 import PageHeader from '@/components/PageHeader'
 import PageFooter from '@/components/PageFooter'
-import SearchBar from '@/components/SearchBar.vue'
 
 export default {
   name: 'App',
   components: {
     PageHeader,
-    PageFooter,
-    SearchBar
+    PageFooter
   }
 }
 </script>
@@ -32,8 +29,8 @@ export default {
   grid-template-columns: 5vw 1fr 20vw;
   grid-template-rows: 100px 1fr 100px;
   grid-template-areas: ". header ."
-                       ". main search"
-                       ". footer search";
+                       ". main main"
+                       ". footer .";
 }
 
 header {
