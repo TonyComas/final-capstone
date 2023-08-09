@@ -4,7 +4,7 @@
     <div class="single-game" v-if="game">
       <GameDetail :game="game" />
       <input 
-            class="delete-Button"
+            class="delete-button"
             type="button"
             value="Remove"
             @click="deleteGame(game.game_id)"
@@ -160,7 +160,7 @@ export default {
   background-color: #0056b3;
 }
 
-.deleteButton {
+.delete-button {
   font-size: 10px;
   height: 30px;
   border-radius: 30px;
@@ -197,13 +197,13 @@ export default {
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
-.deleteButton:hover,
-.deleteButton:focus {
+.delete-button:hover,
+.delete-button:focus {
   color: #fff;
   outline: 0;
 }
 
-.deleteButton:hover {
+.delete-button:hover {
     background-color: rgb(196, 99, 99);
     font-size: 11px;
   box-shadow: 0 0 20px 20px #e74c3c inset;
