@@ -1,27 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="body">
-    <div class="single-game" v-if="game">
-      <GameDetail :game="game" />
-      <input 
-            class="deleteButton"
-            type="button"
-            value="Remove"
-            @click="deleteGame(game.game_id)"
-          />
-      <button class="update-button" v-on:click="showForm = !showForm">
-        Update
-      </button>
-
-      <div class="game-info" v-if="!showForm">
-        <p>Game Name: {{ game.game_name }}</p>
-        <p>Description:{{ game.description }}</p>
-        <p>Game Release Date: {{ game.release_date }}</p>
-        <p>Developers: {{ game.developer_names }}</p>
-        <p>Publishers: {{ game.publisher_names }}</p>
-        <p>Genres: {{ game.genres }}</p>
-      </div>
-=======
 <div>
     <div class="singleGame" v-if="game">
         <GameDetail :game="game" />
@@ -44,7 +21,6 @@
                       <!-- submit/ -->
             
         </form>
->>>>>>> 563f03b7bb830783f194ffb351bafd56274df87c
 
       <form
         v-on:submit.prevent="updateGame()"
@@ -155,35 +131,4 @@ export default {
   margin-bottom: 15px;
 }
 
-<<<<<<< HEAD
-.game-info strong {
-  font-weight: bold;
-}
-
-.game-form {
-  margin-top: 20px;
-}
-
-.game-form input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 3px;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.game-form button {
-  font-size: 10px;
-  height: 20px;
-  border-radius: 30px;
-  border-width: 1px;
-  text-align: right;
-}
-
-.game-form button:hover {
-  background-color: #0056b3;
-}
-=======
-
->>>>>>> 563f03b7bb830783f194ffb351bafd56274df87c
 </style>
