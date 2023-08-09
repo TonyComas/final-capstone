@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="body">
     <div class="single-game" v-if="game">
       <GameDetail :game="game" />
@@ -20,6 +21,30 @@
         <p>Publishers: {{ game.publisher_names }}</p>
         <p>Genres: {{ game.genres }}</p>
       </div>
+=======
+<div>
+    <div class="singleGame" v-if="game">
+        <GameDetail :game="game" />
+        <p id="name"><span style = "font-weight: bold; font-size: 18px;">Game Name</span>: {{game.game_name}}</p>
+        <p id="description"><span style = "font-weight: bold; font-size: 18px;">Description</span>: {{game.description}}</p>
+        <p id="release_date"><span style = "font-weight: bold; font-size: 18px;">Release Date</span>: {{game.release_date}}</p>
+        <p id="developers"><span style = "font-weight: bold; font-size: 18px;">Developers</span>: {{game.developer_names}}</p>
+        <p id="publishers"><span style = "font-weight: bold; font-size: 18px;">Publishers</span>: {{game.publisher_names}}</p>
+        <p id="genres"><span style = "font-weight: bold; font-size: 18px;">Genres</span>: {{game.genres}}</p>
+
+        <button v-on:click="updateGame()">CLICK ME</button>
+        <form action="">
+            <input type="text" v-model="game.game_name">
+            <input type="text" v-model="game.description">
+            <input type="text" v-model="game.release_date">
+            <input type="text" v-model="game.developer_names">
+            <input type="text" v-model="game.publisher_names">
+            <input type="text" v-model="game.genres">
+            
+                      <!-- submit/ -->
+            
+        </form>
+>>>>>>> 563f03b7bb830783f194ffb351bafd56274df87c
 
       <form
         v-on:submit.prevent="updateGame()"
@@ -130,6 +155,7 @@ export default {
   margin-bottom: 15px;
 }
 
+<<<<<<< HEAD
 .game-info strong {
   font-weight: bold;
 }
@@ -157,4 +183,7 @@ export default {
 .game-form button:hover {
   background-color: #0056b3;
 }
+=======
+
+>>>>>>> 563f03b7bb830783f194ffb351bafd56274df87c
 </style>

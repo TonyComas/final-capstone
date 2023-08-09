@@ -1,13 +1,9 @@
 <template>
   <form v-on:submit.prevent>
-    <div id="addGame"> 
+    <div id="add_game"> 
       <div class="Game_Title">
         <label class="search" for="title">Game Name: </label>
         <input class="search" type="text" name="title" v-model="search.game_name" />
-      </div>
-      <div class="Description">
-        <label class="search" for="description">Game Description: </label>
-        <input class="search" type="text" name="description" v-model="search.description" />
       </div>
       <div class="Release_Date">
         <label class="search" for="release">Release Date: </label>
@@ -26,7 +22,7 @@
           <input class="search" type="text" name="genre" v-model="search.genres">
       </div>
       <div class="actions">
-          <button id="search" type="submit" v-if="game.game_name != ''" v-on:click="searchList">Add Game</button>
+          <button id="search" type="submit" v-on:click="searchList">Search</button>
       </div>
     </div>
   </form>
@@ -51,5 +47,4 @@ export default {
 </script>
 
 <style>
-
 </style>
