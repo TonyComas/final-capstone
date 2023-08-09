@@ -13,7 +13,7 @@ public interface GameDao {
 
     void deleteGame(int id);
 
-    boolean updateGame();
+    Game updateGame(Game game);
 
 
     Game getGameByID(int id);

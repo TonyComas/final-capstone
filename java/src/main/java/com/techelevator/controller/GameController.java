@@ -43,8 +43,8 @@ public class GameController {
     }
 
     @RequestMapping (path = "/{id}", method = RequestMethod.PUT)
-    public boolean updateGame(){
-        return false;
+    public Game updateGame(@RequestBody Game game){
+        return gameDao.updateGame(game);
     }
 
 

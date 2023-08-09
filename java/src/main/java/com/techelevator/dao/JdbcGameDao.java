@@ -75,9 +75,55 @@ public class JdbcGameDao implements GameDao{
     public Game addGame(Game game) {
 
         Game newGame = game;
-        int gameId = 0;
+        int gameId = game.getGame_id();
         String addGameSQL = "INSERT INTO video_games (game_name, description, release_date, game_logo) VALUES (?, ?, ?, ?) RETURNING game_id;";
         SqlRowSet results=jdbcTemplate.queryForRowSet(addGameSQL,newGame.getGame_name(),newGame.getDescription(),newGame.getRelease_date(), newGame.getGame_logo());
+        while(results.next()){
+            newGame.setGame_id(results.getInt("game_id"));
+            gameId = results.getInt("game_id");
+        }
+
+        // adding Publisher : Start by constructing the SQL string.
+        String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
+        // converting a provided string of comma space separated devs to a list of devs
+        String compositeDevs = newGame.getDeveloper_names();
+        List<String> devs = List.of(compositeDevs.split(", "));
+        // run the SQL string for each dev in the list.
+        for (String dev : devs){
+            jdbcTemplate.update(addGameDevs,gameId, getDevID(dev));
+        }
+
+
+        // adding Publisher : repeating all steps done for Dev
+        String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
+        //
+        String compositePubs = newGame.getPublisher_names();
+        List<String> pubs = List.of(compositePubs.split(", "));
+        //
+        for (String pub : pubs){
+            jdbcTemplate.update(addGamePublisher,gameId, getPubID(pub));
+        }
+
+        // adding Genres : repeating steps for devs and publishers.
+        String addGameGenre = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
+        //
+        String compositeGenres = newGame.getGenres();
+        List<String> genres = List.of(compositeGenres.split(", "));
+        //
+        for (String genre : genres){
+            jdbcTemplate.update(addGameGenre,gameId, getGenID(genre));
+        }
+
+
+        return newGame;
+    }
+
+    public Game reAddGame(Game game) {
+
+        Game newGame = game;
+        int gameId = game.getGame_id();
+        String addGameSQL = "INSERT INTO video_games (game_id,game_name, description, release_date, game_logo) VALUES (?, ?, ?, ?, ?) RETURNING game_id;";
+        SqlRowSet results=jdbcTemplate.queryForRowSet(addGameSQL,newGame.getGame_id(),newGame.getGame_name(),newGame.getDescription(),newGame.getRelease_date(), newGame.getGame_logo());
         while(results.next()){
             newGame.setGame_id(results.getInt("game_id"));
             gameId = results.getInt("game_id");
@@ -133,8 +179,10 @@ public class JdbcGameDao implements GameDao{
 
 
     @Override
-    public boolean updateGame() {
-        return false;
+    public Game updateGame(Game game) {
+        int gameId = game.getGame_id();
+        this.deleteGame(gameId);
+        return reAddGame(game);
     }
 
     @Override
