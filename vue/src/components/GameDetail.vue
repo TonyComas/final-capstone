@@ -75,7 +75,6 @@ div.individual {
     padding-bottom: 4px;
     margin-top: 30px;
     border-color: rgba(80, 80, 80, 0.459);
-
 }
 
 div.individual:hover {
