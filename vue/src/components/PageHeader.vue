@@ -76,10 +76,14 @@ body {
   display: inline-block;
   color: rgb(11, 6, 85);
   text-transform: uppercase;
-  animation: waviy 5s infinite;
-  animation-delay: calc(.1s * var(--i));
   
 }
+
+.waviy span:hover {
+  animation: waviy 5s infinite;
+  animation-delay: calc(.1s * var(--i));
+}
+
 @keyframes waviy {
   0%,40%,100% {
     transform: translateY(0)

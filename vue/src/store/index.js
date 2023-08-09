@@ -23,6 +23,9 @@ export default new Vuex.Store({
     user: currentUser || {},
     categoryFilter: 'All',
     games: [],
+    genres: [],
+    developers: [],
+    publishers: []
 
   },
   getters: {

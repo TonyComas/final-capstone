@@ -25,6 +25,8 @@ export default {
 
 body {
   background-image: linear-gradient(to bottom right, rgba(67, 245, 61, 0.404), rgba(233, 114, 233, 0.753));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
 }
 

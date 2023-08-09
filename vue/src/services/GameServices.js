@@ -17,7 +17,8 @@ export default {
     },
     updateGame(gameId, game) {
         return axios.put(`/games/${gameId}`,game);
-    }
+    },
+    
     
 
 }
