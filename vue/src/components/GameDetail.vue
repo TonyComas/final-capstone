@@ -19,17 +19,11 @@
       </router-link>
       
     </div>
-    <input 
-            class="deleteButton"
-            type="button"
-            value="Remove"
-            @click="deleteGame(game.game_id)"
-          />
+   
   </div>
 </template>
 
 <script>
-import GameServices from "../services/GameServices";
 export default {
   data() {
     return {
@@ -41,13 +35,7 @@ export default {
   computed: {},
   methods: {
     //This is where we will add games to list for users. Dope
-    deleteGame(gameId) {
-      GameServices.deleteGame(gameId).then((response) => {
-        if (response.status === 200) {
-          this.$store.commit("DELETE_GAME", gameId);
-        }
-      });
-    },
+   
   },
 };
 </script>
