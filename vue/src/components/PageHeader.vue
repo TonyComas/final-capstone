@@ -1,9 +1,9 @@
 <template>
   <header>
       <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;       
+      <router-link :to="{ name: 'games' }">Game List</router-link>&nbsp;|&nbsp;
        <router-link :to="{ name: 'AddGame' }" > Add a Game!</router-link>&nbsp;|&nbsp;
-       <router-link :to="{ name: 'games' }">Game List | </router-link>
        <!-- v-if="$store.state.token"  this goes ^ -->
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
