@@ -9,6 +9,7 @@ public interface GameDao {
 
     List<Game> getAllGames();
 
+    List<Game> getGames(Game game);
     Game addGame(Game game);
 
     void deleteGame(int id);

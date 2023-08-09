@@ -72,6 +72,19 @@ public class JdbcGameDao implements GameDao{
     }
 
     @Override
+    public List<Game> getGames(Game game) {
+        List<Game> listy = new ArrayList<>();
+
+        String sql = fromVideoGameSQL +" GROUP BY video_games.game_id;";
+
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+        while(result.next()){
+            listy.add(mapRowToGame(result));
+        }
+        return listy;
+    }
+
+    @Override
     public Game addGame(Game game) {
 
         Game newGame = game;
