@@ -36,16 +36,16 @@ public class SearchController {
         return searchDao.getAllGenres();
     }
 
-    @RequestMapping (path = "/devs" , method = RequestMethod.PUT)
+    @RequestMapping (path = "/devs" , method = RequestMethod.POST)
     public void addDev(@RequestBody String devName){
         searchDao.addDev(devName);
     }
 
-    @RequestMapping (path = "/pubs" , method = RequestMethod.PUT)
+    @RequestMapping (path = "/pubs" , method = RequestMethod.POST)
     public void addPub(@RequestBody String pubName){
         searchDao.addPub(pubName);
     }
-    @RequestMapping (path = "/genre" , method = RequestMethod.PUT)
+    @RequestMapping (path = "/genre" , method = RequestMethod.POST)
     public void addGenre(@RequestBody String genreName){
         searchDao.addGenre(genreName);
     }
