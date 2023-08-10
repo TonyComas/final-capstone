@@ -103,6 +103,13 @@ export default {
 };
 </script>
 <style>
+
+@import url('https://fonts.cdnfonts.com/css/gotham-6');
+
+.body {
+  font-family: 'Gotham', sans-serif;
+}
+
 .single-game {
   max-width: 600px;
   margin: 0 auto;
@@ -179,7 +186,6 @@ export default {
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Gotham';
   font-weight: 700;
   position: relative;
   z-index: 1;
@@ -204,6 +210,7 @@ export default {
   border-radius: 30px;
   border-width: 1px;
   text-align: right;
+  
 }
 
 .update-button:hover {
@@ -217,6 +224,7 @@ export default {
 
 .game-info strong {
   font-weight: bold;
+  
 }
 
 .game-form {
@@ -273,7 +281,6 @@ export default {
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Fantasy';
   font-weight: 700;
   position: relative;
   z-index: 1;
@@ -306,16 +313,15 @@ export default {
 	width: 150px;
 	height: 50px;
 	cursor: pointer;
-  font-family: 'Fantasy';
 	font-size: 20px;
 	font-weight: bold;
 	color: rgb(0, 0, 0);
 	background-color: transparent;
 	border: 1px solid rgb(0, 0, 0);
-	box-shadow: 5px 5px 0 rgb(2, 9, 109),
-		-5px -5px 0 rgb(2, 9, 109),
-		-5px 5px 0 rgb(2, 9, 109),
-		5px -5px 0 rgb(2, 9, 109);
+	box-shadow: 5px 5px 0 rgb(20, 20, 20),
+		-2px -2px 0 rgb(2, 9, 109),
+		-2px 2px 0 rgb(2, 9, 109),
+		2px -2px 0 rgb(2, 9, 109);
 	transition: 500ms ease-in-out;
 }
 

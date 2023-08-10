@@ -32,12 +32,15 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.cdnfonts.com/css/gotham-6');
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@500&display=swap');
+
 header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 120px;
 
   border-bottom: 2px darkblue solid;
 }
@@ -68,15 +71,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 10vh;
+  min-height: 8vh;
+  font-family: "Gotham", sans-serif;
 }
 .waviy {
   position: relative;
-  -webkit-box-reflect: below -1px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
-  font-size: 30px;
+  -webkit-box-reflect: below -5px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+  font-size: 44px;
+  margin-top: -8px;
+}
+.page-title.waviy {
+  font-family: 'Handjet', cursive;
 }
 .waviy span {
-  font-family: "Fantasy";
   position: relative;
   display: inline-block;
   color: rgb(11, 6, 85);
@@ -131,4 +138,5 @@ body {
 .nav-link:hover::before {
   width: 100%;
 }
+
 </style>
