@@ -36,5 +36,8 @@ export default {
     },
     getReviewById(reviewId) {
         return axios.get(`/reviews/${reviewId}`);
+    },
+    addReview(review){
+        return axios.post('/reviews/',review);
     }
 }

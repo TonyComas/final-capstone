@@ -3,24 +3,37 @@
     <div class="single-game" v-if="game">
       <GameDetail :game="game" />
 
-      <input 
-            class="delete-button"
-            type="button"
-            value="Remove"
-            @click="deleteGame(game.game_id)"
-          />
+      <input
+        class="delete-button"
+        type="button"
+        value="Remove"
+        @click="deleteGame(game.game_id)"
+      />
       <button class="update-button" v-on:click="showForm = !showForm">
         Update
       </button>
-        <div class="game_info" v-if="!showForm">
-        <p id="name"><span>Game Name</span>: {{game.game_name}}</p>
-        <p id="description"><span>Description</span>: {{game.description}}</p>
-        <p id="release_date"><span>Release Date</span>: {{game.release_date}}</p>
-        <p id="developers"><span>Developers</span>: {{game.developer_names}}</p>
-        <p id="publishers"><span>Publishers</span>: {{game.publisher_names}}</p>
-        <p id="genres"><span>Genres</span>: {{game.genres}}</p>
-        </div>
-
+      <router-link
+        v-bind:to="{
+          name: 'add-review',
+          params: { id: game.game_id },
+        }"
+      >
+        Add Review
+      </router-link>
+      <div class="game_info" v-if="!showForm">
+        <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
+        <p id="description"><span>Description</span>: {{ game.description }}</p>
+        <p id="release_date">
+          <span>Release Date</span>: {{ game.release_date }}
+        </p>
+        <p id="developers">
+          <span>Developers</span>: {{ game.developer_names }}
+        </p>
+        <p id="publishers">
+          <span>Publishers</span>: {{ game.publisher_names }}
+        </p>
+        <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
+      </div>
 
       <form
         v-on:submit.prevent="updateGame()"
@@ -49,7 +62,12 @@
         <button class="update-button">Update</button>
       </form>
       <div class="back-link">
-        <button class = "back-link-style" @click = "$router.push({ name: 'games' })">Back to Game Listing</button>
+        <button
+          class="back-link-style"
+          @click="$router.push({ name: 'games' })"
+        >
+          Back to Game Listing
+        </button>
       </div>
       <ReviewDisplayVue :reviews="game.reviews" />
     </div>
@@ -58,11 +76,11 @@
 <script>
 import GameDetail from "@/components/GameDetail.vue";
 import GameServices from "@/services/GameServices.js";
-import ReviewDisplayVue from '../components/ReviewDisplay.vue';
+import ReviewDisplayVue from "../components/ReviewDisplay.vue";
 export default {
   components: {
     GameDetail,
-    ReviewDisplayVue
+    ReviewDisplayVue,
   },
   data() {
     return {
@@ -76,13 +94,13 @@ export default {
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
     },
-     deleteGame(gameId) {
+    deleteGame(gameId) {
       GameServices.deleteGame(gameId).then((response) => {
         if (response.status === 200) {
           this.$store.commit("DELETE_GAME", gameId);
-          this.$router.push( {
-              name: 'games'
-          })
+          this.$router.push({
+            name: "games",
+          });
         }
       });
     },
@@ -101,26 +119,23 @@ export default {
       })
       .catch((err) => console.error(err));
 
-      if (this.$store.getters.reviews.length === 0) {
-        console.log("Fetching",this.gameId)
-      this.$store.dispatch("loadReviews",this.gameId);
-      }
-
+    
+      console.log("Fetching", this.gameId);
+      this.$store.dispatch("loadReviews", this.gameId);
+    
   },
-
 };
 </script>
 <style>
-
-@import url('https://fonts.cdnfonts.com/css/gotham-6');
+@import url("https://fonts.cdnfonts.com/css/gotham-6");
 
 .body {
-  font-family: 'Gotham', sans-serif;
+  font-family: "Gotham", sans-serif;
   color: green;
 }
 
 span {
-  color:rgb(11, 226, 11)
+  color: rgb(11, 226, 11);
 }
 
 .single-game {
@@ -158,14 +173,14 @@ span {
 }
 .game-form button {
   font-size: 10px;
-  
+
   height: 20px;
   border-radius: 30px;
   border-width: 1px;
   text-align: right;
 }
 .game-form button:hover {
-  background-color: #0056B3;
+  background-color: #0056b3;
 }
 
 .delete-button {
@@ -211,8 +226,8 @@ span {
 }
 
 .delete-button:hover {
-    background-color: rgb(196, 99, 99);
-    font-size: 11px;
+  background-color: rgb(196, 99, 99);
+  font-size: 11px;
   box-shadow: 0 0 20px 20px #e74c3c inset;
 }
 
@@ -222,7 +237,6 @@ span {
   border-radius: 30px;
   border-width: 1px;
   text-align: right;
-  
 }
 
 .update-button:hover {
@@ -277,47 +291,44 @@ span {
 }
 
 .update-button:hover {
-    background-color: rgb(99, 196, 120);
-    font-size: 11px;
+  background-color: rgb(99, 196, 120);
+  font-size: 11px;
   box-shadow: 0 0 20px 20px #4ae73c inset;
 }
 
 .back-link-style {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-		-webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .back-link-style {
-	width: 150px;
-	height: 50px;
-	cursor: pointer;
-	font-size: 20px;
-	font-weight: bold;
-	color: rgb(11, 226, 11);
-	background-color: transparent;
-	border: 1px solid rgb(16, 87, 2);
-	box-shadow: 1px 1px 0 rgb(16, 87, 2),
-		-1px -1px 0 rgb(16, 87, 2),
-		-1px 1px 0 rgb(16, 87, 2),
-		1px -1px 0 rgb(16, 87, 2);
-	transition: 500ms ease-in-out;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(11, 226, 11);
+  background-color: transparent;
+  border: 1px solid rgb(16, 87, 2);
+  box-shadow: 1px 1px 0 rgb(16, 87, 2), -1px -1px 0 rgb(16, 87, 2),
+    -1px 1px 0 rgb(16, 87, 2), 1px -1px 0 rgb(16, 87, 2);
+  transition: 500ms ease-in-out;
 }
 
 .back-link-style:hover {
-	box-shadow: 20px 5px 0 rgb(53, 255, 3), -20px -5px 0 rgb(53, 255, 3);
+  box-shadow: 20px 5px 0 rgb(53, 255, 3), -20px -5px 0 rgb(53, 255, 3);
 }
 
 .b:focus {
-	outline: none;
+  outline: none;
 }
 
 #description {
   color: green;
 }
-
 </style>
