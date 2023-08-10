@@ -108,7 +108,7 @@ body {
 }
 
 .nav-link {
-  background-image: linear-gradient(to right, #ffffff, rgb(11, 226, 11) 50%, white 50%);
+  background-image: linear-gradient(to right, #920ab4, rgb(11, 226, 11) 50%, white 50%);
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
