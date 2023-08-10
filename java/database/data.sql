@@ -85,6 +85,15 @@ INSERT INTO video_games (game_name, game_logo, description, release_date) VALUES
 ('Super Smash Bros. Ultimate', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Super_Smash_Bros._Ultimate_logo.svg/2560px-Super_Smash_Bros._Ultimate_logo.svg.png', 'Engage in iconic crossover fighting, pitting Nintendo characters against each other in thrilling multiplayer battles that celebrate gaming history.', '2018-12-07'),
 ('Rocket League', 'https://image.api.playstation.com/vulcan/ap/rnd/202305/2619/2271c8b1eda07957588a7b2078967ae12e72db12d9a5a60d.png?w=440&thumb=false', 'Experience high-speed, physics-based soccer with cars, engaging in exhilarating multiplayer action that combines sports and vehicular mayhem.', '2015-07-07');
 
+INSERT INTO reviews (game_id, user_id, rating, review_title, review_body) VALUES
+(1, 1, 5, 'Test Review Title!', 'Test Review Body!'),
+(2, 1, 3, 'Test Review Title 2!', 'Test Review Body 2!'),
+(3, 1, 4, 'Test Review Title 3!', 'Test Review Body 3!'),
+(4, 1, 2, 'Test Review Title 4!', 'Test Review Body 4!'),
+(5, 1, 1, 'Test Review Title 5!', 'Test Review Body 5!');
+
+
+
 INSERT INTO game_genre (game_id, genre_id) VALUES
 (1, 7),
 (1, 13),

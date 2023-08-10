@@ -28,17 +28,23 @@
         v-if="showForm"
         class="game-form"
       >
-        <label for="Game Name">Game Name</label>
         <input type="text" v-model="game.game_name" placeholder="Game Name" />
-        <label for="Description">Description</label>
-        <input type="text" v-model="game.description" placeholder="Description"/>
-        <label for="Release Date">Release Date</label>
-        <input type="date" v-model="game.release_date" placeholder="Release Date"/>
-        <label for="Developers">Developers</label>
-        <input type="text" v-model="game.developer_names" placeholder="Developers" />
-        <label for="Publishers">Publishers</label>
-        <input type="text" v-model="game.publisher_names" placeholder="Publishers"  />
-        <label for="Genres">Genres</label>
+        <input
+          type="text"
+          v-model="game.description"
+          placeholder="Description"
+        />
+        <input type="date" v-model="game.release_date" />
+        <input
+          type="text"
+          v-model="game.developer_names"
+          placeholder="Developers"
+        />
+        <input
+          type="text"
+          v-model="game.publisher_names"
+          placeholder="Publishers"
+        />
         <input type="text" v-model="game.genres" placeholder="Genres" />
         <button class="update-button">Update</button>
       </form>
@@ -98,11 +104,8 @@ export default {
 </script>
 <style>
 .single-game {
-  display: flex;
-  flex-direction: column;
   max-width: 600px;
   margin: 0 auto;
-  margin-left: -800px;
   padding: 20px;
   border-radius: 5px;
 }
@@ -119,6 +122,7 @@ export default {
 }
 .game-info p {
   margin-bottom: 15px;
+
 }
 .game-info strong {
   font-weight: bold;
@@ -175,7 +179,7 @@ export default {
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Fantasy';
+  font-family: 'Gotham';
   font-weight: 700;
   position: relative;
   z-index: 1;
