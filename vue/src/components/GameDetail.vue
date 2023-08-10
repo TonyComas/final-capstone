@@ -27,7 +27,8 @@
 export default {
   data() {
     return {
-      hover: false
+      hover: false,
+      
     }
   },
   name: "game-detail",
