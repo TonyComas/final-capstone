@@ -2,18 +2,18 @@
   <header class="header">
     <div id="nav" class="nav-elements">
       <router-link v-bind:to="{ name: 'home' }" class="nav-link"
-        >Home</router-link
-      >&nbsp;|&nbsp;
+        >>Home</router-link
+      >&nbsp;
       <router-link :to="{ name: 'AddGame' }" class="nav-link"
-        >Add a Game!</router-link
-      >&nbsp;|&nbsp;
+        >>Add a Game!</router-link
+      >&nbsp;
       <router-link :to="{ name: 'games' }" class="nav-link"
-        >Game List</router-link
-      >&nbsp;|&nbsp;
+        >>Game List</router-link
+      >&nbsp;
       <!-- v-if="$store.state.token"  this goes ^ -->
       <router-link v-bind:to="{ name: 'logout' }" class = "nav-link"
         v-if="$store.state.token != ''"
-        >Logout</router-link
+        >>Logout</router-link
       >
     </div>
     <h1 class="page-title waviy">
@@ -34,6 +34,8 @@ export default {
 <style>
 @import url('https://fonts.cdnfonts.com/css/gotham-6');
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 
 header {
   display: flex;
@@ -41,8 +43,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 120px;
-
-  border-bottom: 2px darkblue solid;
+  border-bottom: 2px rgb(11, 226, 11) solid;
 }
 
 #nav {
@@ -72,7 +73,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 8vh;
-  font-family: "Gotham", sans-serif;
+  font-family: 'Press Start 2P', cursive;
 }
 .waviy {
   position: relative;
@@ -86,12 +87,12 @@ body {
 .waviy span {
   position: relative;
   display: inline-block;
-  color: rgb(11, 6, 85);
+  color: rgb(11, 226, 11);
   text-transform: uppercase;
 }
 
 .waviy span:hover {
-  animation: waviy 5s infinite;
+  animation: waviy 3s infinite;
   animation-delay: calc(0.1s * var(--i));
 }
 
@@ -107,12 +108,13 @@ body {
 }
 
 .nav-link {
-  background-image: linear-gradient(to right, #000008, #54b3d6 50%, #000 50%);
+  background-image: linear-gradient(to right, #ffffff, rgb(11, 226, 11) 50%, white 50%);
   background-size: 200% 100%;
   background-position: -100%;
   display: inline-block;
   padding: 5px 0;
   position: relative;
+  font-weight: bolder;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease-in-out;
@@ -121,13 +123,13 @@ body {
 
 .nav-link:before {
   content: "";
-  background: #02126b;
+  background: rgb(11, 226, 11);
   display: block;
   position: absolute;
   bottom: -3px;
   left: 0;
   width: 0;
-  height: 3px;
+  height: 1px;
   transition: all 0.2s ease-in-out;
 }
 
@@ -139,4 +141,7 @@ body {
   width: 100%;
 }
 
+h1 {
+  font-size: 10px;
+}
 </style>

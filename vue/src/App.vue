@@ -24,9 +24,9 @@ export default {
 <style>
 
 body {
-  background: linear-gradient(-45deg, #000000, rgba(0, 0, 0, 0.808), silver, green);
+  background: linear-gradient(135deg, green, black, black, green), linear-gradient(-45deg, green, black, black, green);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 15s ease-in-out infinite;
 }
 
 @keyframes gradient {
