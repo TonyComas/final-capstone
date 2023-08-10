@@ -10,3 +10,13 @@ export default {
   name: "home"
 };
 </script>
+<style scoped>
+
+.home {
+  color: rgb(182, 7, 7);
+}
+
+h1 {
+  font-size: 16px;
+}
+</style>
