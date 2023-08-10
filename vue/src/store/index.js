@@ -25,7 +25,9 @@ export default new Vuex.Store({
     games: [],
     genres: [],
     developers: [],
-    publishers: []
+    publishers: [],
+    filter: 0,
+    reviews: []
 
   },
   getters: {
@@ -46,6 +48,9 @@ export default new Vuex.Store({
     },
     publishers(state) {
       return state.publishers
+    },
+    reviews(state) {
+      return state.reviews;
     }
   
   },
@@ -87,6 +92,12 @@ export default new Vuex.Store({
     UPDATE_GAME(state,gameObject){
       let gameIndex = state.games.findIndex(game => game.game_id === gameObject.game_id)
       state.games[gameIndex] = gameObject;
+    },
+    UPDATE_FILTER(state, filter) {
+      state.filter = filter;
+    },
+    SET_ALL_REVIEWS(state, reviews) {
+      state.reviews = reviews;
     } 
 
   },
@@ -118,6 +129,12 @@ export default new Vuex.Store({
          state.commit("SET_ALL_PUBLISHERS",arrayFromApi);
       }).catch( error => console.error(error));
       
+    },
+    loadReviews(state, game) {
+      GameServices.getReviewByGameId(game).then (response => {
+        const arrayFromApi = response.data;
+        state.commit("SET_ALL_REVIEWS",arrayFromApi);
+      }).catch( err => console.error(err));
     },
 
     updateGame(state, gameObject) {

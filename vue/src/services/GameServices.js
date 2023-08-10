@@ -27,6 +27,8 @@ export default {
     },
     getAllPublishers(){
         return axios.get('/search/pubs')
-    }
-
+    },
+    getReviewByGameId(gameId) {
+        return axios.get(`/reviews/game/${gameId}`);
+    },
 }
