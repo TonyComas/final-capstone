@@ -20,11 +20,11 @@ public class JdbcReviewDao implements ReviewDao{
 
 
     @Override
-    public List<Reviews> getAllReviewsForGameId(int game_id) {
+    public List<Reviews> getAllReviews() {
         List<Reviews> reviews = new ArrayList<>();
-        String sql = "SELECT (review_id, game_id, user_id, rating, review_title, review_body) " +
-                "FROM reviews WHERE game_id = ?";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, game_id);
+        String sql = "SELECT review_id, game_id, user_id, rating, review_title, review_body " +
+                "FROM reviews;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while(result.next()){
             reviews.add(mapRowToReview(result));
         }
@@ -34,8 +34,8 @@ public class JdbcReviewDao implements ReviewDao{
     @Override
     public Reviews getReviewFromReviewId(int review_id) {
         Reviews review = new Reviews();
-        String sql = "SELECT (review_id, game_id, user_id, rating, review_title, review_body) " +
-                "FROM reviews WHERE review_id = ?";
+        String sql = "SELECT review_id, game_id, user_id, rating, review_title, review_body " +
+                "FROM reviews WHERE review_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, review_id);
         while(result.next()){
             review = mapRowToReview(result);
@@ -48,7 +48,7 @@ public class JdbcReviewDao implements ReviewDao{
     public Reviews addReview(Reviews review) {
         Reviews newReview = new Reviews();
         String sql = "INSERT INTO reviews (game_id, user_id, rating, review_title, review_body) " +
-                "VALUES (? ? ? ? ? ?) RETURNING review_id";
+                "VALUES (?, ?, ?, ?, ?) RETURNING review_id;";
         int newReviewId = jdbcTemplate.queryForObject(sql, int.class, review.getGame_id(), review.getUser_id(), review.getRating(), review.getReview_title(), review.getReview_body());
         newReview = getReviewFromReviewId(newReviewId);
         return newReview;
@@ -56,7 +56,8 @@ public class JdbcReviewDao implements ReviewDao{
 
     @Override
     public void deleteReview(int review_id) {
-
+        String sql = "DELETE FROM reviews WHERE review_id = ?;";
+        jdbcTemplate.update(sql,review_id);
     }
 
     private Reviews mapRowToReview(SqlRowSet result){
