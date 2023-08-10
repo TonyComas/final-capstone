@@ -43,6 +43,7 @@ export default {
   props: ["fullGame"],
   data() {
     return {
+      genres: this.$store.getters.genres,
       game: {
         fullGame: this.fullGame,
         game_name: "",
@@ -66,6 +67,11 @@ export default {
                 }
             })
       }
+  },
+  created() {
+      this.$store.dispatch("loadGenres"),
+      this.$store.dispatch("loadDevelopers"),
+      this.$store.dispatch("loadPublishers")
   }
 };
 </script>
