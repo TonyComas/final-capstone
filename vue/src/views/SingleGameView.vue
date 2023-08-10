@@ -1,8 +1,11 @@
 <template>
   <div class="body">
     <div class="single-game" v-if="game">
-      <GameDetail :game="game" />
 
+      <img class="logo" v-bind:src="game.game_logo" alt="" />
+
+      <div class="button-container">
+        <div class="buttons">
       <input 
             class="delete-button"
             type="button"
@@ -12,6 +15,8 @@
       <button class="update-button" v-on:click="showForm = !showForm">
         Update
       </button>
+      </div>
+      </div>
         <div class="game_info" v-if="!showForm">
         <p id="name"><span>Game Name</span>: {{game.game_name}}</p>
         <p id="description"><span>Description</span>: {{game.description}}</p>
@@ -56,12 +61,12 @@
   </div>
 </template>
 <script>
-import GameDetail from "@/components/GameDetail.vue";
+
 import GameServices from "@/services/GameServices.js";
 import ReviewDisplayVue from '../components/ReviewDisplay.vue';
 export default {
   components: {
-    GameDetail,
+    
     ReviewDisplayVue
   },
   data() {
@@ -117,24 +122,53 @@ export default {
 .body {
   font-family: 'Gotham', sans-serif;
   color: green;
+  
+}
+
+.button-container {
+  display: flex;
+  flex-direction:column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding-top: 20px;
+}
+
+.buttons {
+  display: flex;
 }
 
 span {
-  color:rgb(11, 226, 11)
+  color:rgb(11, 226, 11);
+  max-width: 600px;
 }
 
 .single-game {
-  max-width: 600px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  max-width: 1920px;
+  min-width: 1850px;
   margin: 0 auto;
   padding: 20px;
   border-radius: 5px;
 }
+.game_info {
+  max-width: 400px;
+}
+
+img.logo {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 25px;
+  background-color: white;
+}
+
 .update-button {
   font-size: 10px;
   height: 20px;
   border-radius: 30px;
   border-width: 1px;
-  text-align: right;
+  text-align: left;
 }
 .update-button:hover {
   background-color: rgb(255, 255, 255);
@@ -146,6 +180,7 @@ span {
 .game-info strong {
   font-weight: bold;
 }
+
 .game-form {
   margin-top: 20px;
 }
@@ -306,6 +341,7 @@ span {
 		-1px 1px 0 rgb(16, 87, 2),
 		1px -1px 0 rgb(16, 87, 2);
 	transition: 500ms ease-in-out;
+  margin-top: 20px;
 }
 
 .back-link-style:hover {
