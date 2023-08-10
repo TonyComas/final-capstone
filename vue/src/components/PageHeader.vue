@@ -11,8 +11,7 @@
         >Game List</router-link
       >&nbsp;|&nbsp;
       <!-- v-if="$store.state.token"  this goes ^ -->
-      <router-link
-        v-bind:to="{ name: 'logout' }"
+      <router-link v-bind:to="{ name: 'logout' }" class = "nav-link"
         v-if="$store.state.token != ''"
         >Logout</router-link
       >
@@ -35,6 +34,7 @@ export default {
 <style>
 header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 100px;

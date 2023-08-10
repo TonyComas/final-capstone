@@ -1,8 +1,8 @@
 <template>
   <div class="body">
-
     <div class="single-game" v-if="game">
       <GameDetail :game="game" />
+
       <input 
             class="delete-button"
             type="button"
@@ -12,7 +12,6 @@
       <button class="update-button" v-on:click="showForm = !showForm">
         Update
       </button>
-
         <div class="game_info" v-if="!showForm">
         <p id="name"><span style = "font-weight: bold; font-size: 18px;">Game Name</span>: {{game.game_name}}</p>
         <p id="description"><span style = "font-weight: bold; font-size: 18px;">Description</span>: {{game.description}}</p>
@@ -21,8 +20,7 @@
         <p id="publishers"><span style = "font-weight: bold; font-size: 18px;">Publishers</span>: {{game.publisher_names}}</p>
         <p id="genres"><span style = "font-weight: bold; font-size: 18px;">Genres</span>: {{game.genres}}</p>
         </div>
-    
-        
+
 
       <form
         v-on:submit.prevent="updateGame()"
@@ -44,18 +42,15 @@
         <input type="text" v-model="game.genres" placeholder="Genres" />
         <button class="update-button">Update</button>
       </form>
-
       <div class="back-link">
-        <router-link :to="{ name: 'games' }">Back to Game Listing</router-link>
+        <button class = "back-link-style" @click = "$router.push({ name: 'games' })">Back to Game Listing</button>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import GameDetail from "@/components/GameDetail.vue";
 import GameServices from "@/services/GameServices.js";
-
 export default {
   components: {
     GameDetail,
@@ -101,7 +96,6 @@ export default {
   },
 };
 </script>
-
 <style>
 .single-game {
   max-width: 600px;
@@ -109,7 +103,6 @@ export default {
   padding: 20px;
   border-radius: 5px;
 }
-
 .update-button {
   font-size: 10px;
   height: 20px;
@@ -117,24 +110,19 @@ export default {
   border-width: 1px;
   text-align: right;
 }
-
 .update-button:hover {
   background-color: rgb(255, 255, 255);
   font-size: 11px;
 }
-
 .game-info p {
   margin-bottom: 15px;
 }
-
 .game-info strong {
   font-weight: bold;
 }
-
 .game-form {
   margin-top: 20px;
 }
-
 .game-form input {
   width: 100%;
   padding: 10px;
@@ -142,7 +130,6 @@ export default {
   font-size: 16px;
   margin-bottom: 10px;
 }
-
 .game-form button {
   font-size: 10px;
   height: 20px;
@@ -150,9 +137,8 @@ export default {
   border-width: 1px;
   text-align: right;
 }
-
 .game-form button:hover {
-  background-color: #0056b3;
+  background-color: #0056B3;
 }
 
 .delete-button {
@@ -297,4 +283,39 @@ export default {
     font-size: 11px;
   box-shadow: 0 0 20px 20px #4ae73c inset;
 }
+
+.back-link-style {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+		-webkit-tap-highlight-color: transparent;
+}
+
+.back-link-style {
+	width: 150px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(0, 0, 0);
+	background-color: transparent;
+	border: 1px solid rgb(0, 0, 0);
+	box-shadow: 5px 5px 0 rgb(2, 9, 109),
+		-5px -5px 0 rgb(2, 9, 109),
+		-5px 5px 0 rgb(2, 9, 109),
+		5px -5px 0 rgb(2, 9, 109);
+	transition: 500ms ease-in-out;
+}
+
+.back-link-style:hover {
+	box-shadow: 20px 5px 0 rgb(151, 232, 247), -20px -5px 0 rgb(151, 232, 247);
+}
+
+.b:focus {
+	outline: none;
+}
+
 </style>

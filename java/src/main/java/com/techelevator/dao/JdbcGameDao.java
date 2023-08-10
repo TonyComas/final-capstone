@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.Game;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.data.relational.core.sql.IsNull;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -86,48 +88,50 @@ public class JdbcGameDao implements GameDao{
 
     @Override
     public Game addGame(Game game) {
-
         Game newGame = game;
+        String compositeDevs = newGame.getDeveloper_names();
+        List<String> devs = List.of(compositeDevs.split(", "));
+        List<Integer> devIDs = new ArrayList<>();
+        for (String dev : devs){
+            devIDs.add(getDevID(dev));
+        }
+        String compositePubs = newGame.getPublisher_names();
+        List<String> pubs = List.of(compositePubs.split(", "));
+        List<Integer> pubIDs = new ArrayList<>();
+        for (String pub : pubs){
+            pubIDs.add(getPubID(pub));
+        }
+        String compositeGenres = newGame.getGenres();
+        List<String> genres = List.of(compositeGenres.split(", "));
+        List<Integer> genIDs = new ArrayList<>();
+        for (String gen : genres){
+            genIDs.add(getGenID(gen));
+        }
+
+        //
         int gameId = game.getGame_id();
         String addGameSQL = "INSERT INTO video_games (game_name, description, release_date, game_logo) VALUES (?, ?, ?, ?) RETURNING game_id;";
+        //
         SqlRowSet results=jdbcTemplate.queryForRowSet(addGameSQL,newGame.getGame_name(),newGame.getDescription(),newGame.getRelease_date(), newGame.getGame_logo());
         while(results.next()){
             newGame.setGame_id(results.getInt("game_id"));
             gameId = results.getInt("game_id");
         }
-
-        // adding Publisher : Start by constructing the SQL string.
+        // adding Publisher : Use the devIDs created above to add publisher
         String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
-        // converting a provided string of comma space separated devs to a list of devs
-        String compositeDevs = newGame.getDeveloper_names();
-        List<String> devs = List.of(compositeDevs.split(", "));
-        // run the SQL string for each dev in the list.
-        for (String dev : devs){
-            jdbcTemplate.update(addGameDevs,gameId, getDevID(dev));
+        for (int dev : devIDs){
+            jdbcTemplate.update(addGameDevs,gameId, dev);
         }
-
-
         // adding Publisher : repeating all steps done for Dev
         String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
-        //
-        String compositePubs = newGame.getPublisher_names();
-        List<String> pubs = List.of(compositePubs.split(", "));
-        //
         for (String pub : pubs){
             jdbcTemplate.update(addGamePublisher,gameId, getPubID(pub));
         }
-
         // adding Genres : repeating steps for devs and publishers.
         String addGameGenre = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
-        //
-        String compositeGenres = newGame.getGenres();
-        List<String> genres = List.of(compositeGenres.split(", "));
-        //
         for (String genre : genres){
             jdbcTemplate.update(addGameGenre,gameId, getGenID(genre));
         }
-
-
         return newGame;
     }
 
@@ -136,11 +140,13 @@ public class JdbcGameDao implements GameDao{
         Game newGame = game;
         int gameId = game.getGame_id();
         String addGameSQL = "INSERT INTO video_games (game_id,game_name, description, release_date, game_logo) VALUES (?, ?, ?, ?, ?) RETURNING game_id;";
+//
         SqlRowSet results=jdbcTemplate.queryForRowSet(addGameSQL,newGame.getGame_id(),newGame.getGame_name(),newGame.getDescription(),newGame.getRelease_date(), newGame.getGame_logo());
         while(results.next()){
             newGame.setGame_id(results.getInt("game_id"));
             gameId = results.getInt("game_id");
         }
+//
 
         // adding Publisher : Start by constructing the SQL string.
         String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
@@ -179,6 +185,7 @@ public class JdbcGameDao implements GameDao{
 
     @Override
     public void deleteGame(int id) {
+//        count statements on the jdbc templates, and add returned value to sums.  If returned sum is 0, then throw an error stating nothing to delete.
         String sql = "DELETE FROM game_publishers WHERE game_id = ?";
         jdbcTemplate.update(sql,id);
         sql = "DELETE FROM game_developers WHERE game_id = ?;";
@@ -233,6 +240,9 @@ public class JdbcGameDao implements GameDao{
         while (result.next()){
             devId= result.getInt("developer_id");
         }
+        if (devId==0){
+            throw new DaoException("No developer with that name");
+        }
         return devId;
     }
     private int getPubID(String pubName){
@@ -242,15 +252,23 @@ public class JdbcGameDao implements GameDao{
         while (result.next()){
             pubId= result.getInt("publisher_id");
         }
+        if (pubId==0){
+            throw new DaoException("No publisher with that name");
+        }
         return pubId;
     }
     private int getGenID(String GenName){
         String sql="SELECT genre_id FROM genre WHERE genre_name = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql,GenName);
-        int GenId = 0;
+        int genId = 0;
         while (result.next()){
-            GenId= result.getInt("genre_id");
+            genId= result.getInt("genre_id");
         }
-        return GenId;
+        if (genId==0){
+            throw new DaoException("No genre with that name");
+        }
+        return genId;
     }
+
+
 }
