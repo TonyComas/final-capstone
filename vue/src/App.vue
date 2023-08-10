@@ -44,6 +44,8 @@ body {
 
 
 #app{
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 5vw 1fr 5vw;
   grid-template-rows: 120px 1fr 100px;

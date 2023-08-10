@@ -33,28 +33,44 @@
         v-if="showForm"
         class="game-form"
       >
+        <label for="Game Name">Game Name</label>
         <input type="text" v-model="game.game_name" placeholder="Game Name" />
+        <label for="Description">Description</label>
+
         <input
           type="text"
           v-model="game.description"
           placeholder="Description"
         />
+        <label for="Release Date">Release Date</label>
+
         <input type="date" v-model="game.release_date" />
+                <label for="Developers">Developers</label>
+
         <input
           type="text"
           v-model="game.developer_names"
           placeholder="Developers"
         />
+        <label for="Publishers">Publishers</label>
+
         <input
           type="text"
           v-model="game.publisher_names"
           placeholder="Publishers"
         />
+        <label for="Genres">Genres</label>
+
         <input type="text" v-model="game.genres" placeholder="Genres" />
         <button class="update-button">Update</button>
       </form>
       <div class="back-link">
-        <button class = "back-link-style" @click = "$router.push({ name: 'games' })">Back to Game Listing</button>
+        <button
+          class="back-link-style"
+          @click="$router.push({ name: 'games' })"
+        >
+          Back to Game Listing
+        </button>
       </div>
       <ReviewDisplayVue :reviews="game.reviews" />
     </div>
@@ -63,7 +79,7 @@
 <script>
 
 import GameServices from "@/services/GameServices.js";
-import ReviewDisplayVue from '../components/ReviewDisplay.vue';
+import ReviewDisplayVue from "../components/ReviewDisplay.vue";
 export default {
   components: {
     
@@ -81,13 +97,13 @@ export default {
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
     },
-     deleteGame(gameId) {
+    deleteGame(gameId) {
       GameServices.deleteGame(gameId).then((response) => {
         if (response.status === 200) {
           this.$store.commit("DELETE_GAME", gameId);
-          this.$router.push( {
-              name: 'games'
-          })
+          this.$router.push({
+            name: "games",
+          });
         }
       });
     },
@@ -106,21 +122,16 @@ export default {
       })
       .catch((err) => console.error(err));
 
-      if (this.$store.getters.reviews.length === 0) {
-        console.log("Fetching",this.gameId)
-      this.$store.dispatch("loadReviews",this.gameId);
-      }
-
+    console.log("Fetching", this.gameId);
+    this.$store.dispatch("loadReviews", this.gameId);
   },
-
 };
 </script>
 <style>
-
-@import url('https://fonts.cdnfonts.com/css/gotham-6');
+@import url("https://fonts.cdnfonts.com/css/gotham-6");
 
 .body {
-  font-family: 'Gotham', sans-serif;
+  font-family: "Gotham", sans-serif;
   color: green;
   
 }
@@ -193,14 +204,14 @@ img.logo {
 }
 .game-form button {
   font-size: 10px;
-  
+
   height: 20px;
   border-radius: 30px;
   border-width: 1px;
   text-align: right;
 }
 .game-form button:hover {
-  background-color: #0056B3;
+  background-color: #0056b3;
 }
 
 .delete-button {
@@ -246,8 +257,8 @@ img.logo {
 }
 
 .delete-button:hover {
-    background-color: rgb(196, 99, 99);
-    font-size: 11px;
+  background-color: rgb(196, 99, 99);
+  font-size: 11px;
   box-shadow: 0 0 20px 20px #e74c3c inset;
 }
 
@@ -257,7 +268,6 @@ img.logo {
   border-radius: 30px;
   border-width: 1px;
   text-align: right;
-  
 }
 
 .update-button:hover {
@@ -312,19 +322,19 @@ img.logo {
 }
 
 .update-button:hover {
-    background-color: rgb(99, 196, 120);
-    font-size: 11px;
+  background-color: rgb(99, 196, 120);
+  font-size: 11px;
   box-shadow: 0 0 20px 20px #4ae73c inset;
 }
 
 .back-link-style {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-		-webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .back-link-style {
@@ -345,15 +355,14 @@ img.logo {
 }
 
 .back-link-style:hover {
-	box-shadow: 20px 5px 0 rgb(53, 255, 3), -20px -5px 0 rgb(53, 255, 3);
+  box-shadow: 20px 5px 0 rgb(53, 255, 3), -20px -5px 0 rgb(53, 255, 3);
 }
 
 .b:focus {
-	outline: none;
+  outline: none;
 }
 
 #description {
   color: green;
 }
-
 </style>

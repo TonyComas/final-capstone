@@ -4,7 +4,6 @@
     <div class="review" 
     v-for="review in this.$store.getters.reviews" 
     v-bind:key="review.id">
-    <h4>{{review.review_id}}</h4>
       <h4>{{ review.reviewer }}</h4>
       <div class="rating">
         <img
