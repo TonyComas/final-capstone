@@ -51,15 +51,18 @@
       <div class="back-link">
         <button class = "back-link-style" @click = "$router.push({ name: 'games' })">Back to Game Listing</button>
       </div>
+      <ReviewDisplayVue :reviews="game.reviews" />
     </div>
   </div>
 </template>
 <script>
 import GameDetail from "@/components/GameDetail.vue";
 import GameServices from "@/services/GameServices.js";
+import ReviewDisplayVue from '../components/ReviewDisplay.vue';
 export default {
   components: {
     GameDetail,
+    ReviewDisplayVue
   },
   data() {
     return {
@@ -70,8 +73,6 @@ export default {
   },
   methods: {
     updateGame() {
-      console.log("Called UpdateGame Method");
-      console.log(this.game);
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
     },
@@ -99,7 +100,14 @@ export default {
         this.game = response.data;
       })
       .catch((err) => console.error(err));
+
+      if (this.$store.getters.reviews.length === 0) {
+        console.log("Fetching",this.gameId)
+      this.$store.dispatch("loadReviews",this.gameId);
+      }
+
   },
+
 };
 </script>
 <style>
