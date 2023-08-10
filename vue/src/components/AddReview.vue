@@ -55,7 +55,7 @@ export default {
             this.$router.push( { 
               name: 'single-game-view',
               params: {
-                  gameId: this.review.game_id
+                  gameId: this.newReview.game_id
               }
             });
           }

@@ -119,18 +119,10 @@ export default {
       })
       .catch((err) => console.error(err));
 
-<<<<<<< HEAD
     
       console.log("Fetching", this.gameId);
       this.$store.dispatch("loadReviews", this.gameId);
     
-=======
-      
-        console.log("Fetching",this.gameId)
-      this.$store.dispatch("loadReviews",this.gameId);
-      
-
->>>>>>> cfa6e6ebd0fb7108fd0fbee22f13b6efc4a8eac3
   },
 };
 </script>
