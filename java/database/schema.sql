@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, video_games, game_genre, genre, publishers, developers, game_developers, game_publishers;
+DROP TABLE IF EXISTS users, video_games, game_genre, genre, publishers, developers, game_developers, game_publishers, reviews;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -33,6 +33,18 @@ CREATE TABLE video_games (
 	release_date date,
 	game_logo varchar(300),
 	CONSTRAINT PK_game PRIMARY KEY (game_id)
+);
+
+CREATE TABLE reviews (
+	review_id SERIAL,
+	game_id INT,
+	user_id INT,
+	rating INT,
+	review_title VARCHAR(50),
+	review_body VARCHAR(500),
+	CONSTRAINT PK_review PRIMARY KEY (review_id),
+	CONSTRAINT FK_review_game FOREIGN KEY (game_id) REFERENCES video_games (game_id),
+	CONSTRAINT FK_review_user FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE game_publishers (
