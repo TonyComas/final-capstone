@@ -63,9 +63,16 @@ div #games {
 
 
 div #listPage {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 200px;
   grid-template-areas: "games search";
+}
+
+div.searchbar{
+  padding-top: 20px;
+  color: rgb(11, 226, 11);
+  grid-area: search;
 }
 
 </style>
