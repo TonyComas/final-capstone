@@ -37,6 +37,15 @@ export default new Vuex.Store({
     },
     game(state,id) {
       return state.games.find(game => game.game_id === id);
+    },
+    genres(state) {
+      return state.genres;
+    },
+    developers(state) {
+      return state.developers;
+    },
+    publishers(state) {
+      return state.publishers
     }
   
   },
@@ -57,8 +66,17 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_ALL_GAMES(state,games) {
+    SET_ALL_GAMES(state, games) {
       state.games = games;
+    },
+    SET_ALL_GENRES(state, genres) {
+      state.genres = genres;
+    },
+    SET_ALL_DEVELOPERS(state, developers) {
+      state.developers = developers;
+    },
+    SET_ALL_PUBLISHERS(state, publishers) {
+      state.publishers = publishers;
     },
     DELETE_GAME(state,id) {
       state.games.splice(
@@ -80,6 +98,28 @@ export default new Vuex.Store({
       }).catch( error => console.error(error));
       
     },
+    loadGenres(state) {
+      GameServices.getAllGenres().then( response => {
+        const arrayFromApi = response.data;
+         state.commit("SET_ALL_GENRES",arrayFromApi);
+      }).catch( error => console.error(error));
+      
+    },
+    loadDevelopers(state) {
+      GameServices.getAllDevelopers().then( response => {
+        const arrayFromApi = response.data;
+         state.commit("SET_ALL_DEVELOPERS",arrayFromApi);
+      }).catch( error => console.error(error));
+      
+    },
+    loadPublishers(state) {
+      GameServices.getAllPublishers().then( response => {
+        const arrayFromApi = response.data;
+         state.commit("SET_ALL_PUBLISHERS",arrayFromApi);
+      }).catch( error => console.error(error));
+      
+    },
+
     updateGame(state, gameObject) {
       //Find the game object in state
      state.commit("UPDATE_GAME",gameObject);

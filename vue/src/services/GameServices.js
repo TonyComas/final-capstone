@@ -18,7 +18,15 @@ export default {
     updateGame(gameId, game) {
         return axios.put(`/games/${gameId}`,game);
     },
-    
-    
+
+    getAllGenres() {
+        return axios.get('/search/genre');
+    },
+    getAllDevelopers() {
+        return axios.get('/search/devs');
+    },
+    getAllPublishers(){
+        return axios.get('/search/pubs')
+    }
 
 }
