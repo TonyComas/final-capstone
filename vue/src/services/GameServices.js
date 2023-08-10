@@ -31,4 +31,10 @@ export default {
     getReviewByGameId(gameId) {
         return axios.get(`/reviews/game/${gameId}`);
     },
+    deleteReview(reviewId) {
+        return axios.delete(`/reviews/${reviewId}`);
+    },
+    getReviewById(reviewId) {
+        return axios.get(`/reviews/${reviewId}`);
+    }
 }

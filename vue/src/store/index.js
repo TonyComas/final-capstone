@@ -98,7 +98,17 @@ export default new Vuex.Store({
     },
     SET_ALL_REVIEWS(state, reviews) {
       state.reviews = reviews;
-    } 
+    },
+    DELETE_REVIEW(state, id) {
+      console.log("Reached Delete Review")
+      console.log(id)
+      state.reviews.splice(
+        state.reviews.findIndex(review => review.review_id === id),
+        1
+      )
+    },
+
+
 
   },
   actions: {

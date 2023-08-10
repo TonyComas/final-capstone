@@ -4,7 +4,7 @@
     <div class="review" 
     v-for="review in this.$store.getters.reviews" 
     v-bind:key="review.id">
-
+    <h4>{{review.review_id}}</h4>
       <h4>{{ review.reviewer }}</h4>
       <div class="rating">
         <img
@@ -15,15 +15,15 @@
           v-bind:key="n"
         />
       </div>
-      <h3>{{ review.title }}</h3>
-      <p>{{ review.review }}</p>
+      <h3>{{ review.review_title }}</h3>
+      <p>{{ review.review_body }}</p>
 
       <div>
         <router-link
           tag="button"
           :to="{
             name: 'confirm-delete',
-            params: { reviewId: review.id },
+            params: { reviewId: review.review_id },
           }"
         >
           Delete Review

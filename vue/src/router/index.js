@@ -8,6 +8,7 @@ import store from '../store/index'
 import Games from '../views/Games.vue'
 import SingleGameView from '../views/SingleGameView.vue'
 import AddGameView from '../views/AddGameView.vue'
+import DeleteReview from '../views/DeleteReview.vue'
 Vue.use(Router)
 
 /**
@@ -65,7 +66,11 @@ const router = new Router({
       name: 'AddGame',
       component: AddGameView
     },
-  
+    {
+      path: '/confirm/:reviewId',
+      name: 'confirm-delete',
+      component: DeleteReview
+    },
     
     {
     //KEEP THIS LAST
