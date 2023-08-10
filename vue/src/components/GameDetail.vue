@@ -50,14 +50,15 @@ img.logo {
   background-color: white;
 }
 h1.name {
-    font-size: 15px;
+    font-size: 12px;
     padding-left: 5px;
-    color: black;
+    color: rgb(11, 226, 11);
     text-decoration: none;
 }
 
 a {
     text-decoration: none;
+    color: rgb(226, 11, 215)
 }
 
 
@@ -88,8 +89,9 @@ div.individual:hover {
 
 
 .genres {
-  font-size: 12px;
+  font-size: 10px;
   padding-left: 5px;
-  color: black;
+  line-height: 1.2;
+  color: rgb(11, 226, 11)
 }
 </style>

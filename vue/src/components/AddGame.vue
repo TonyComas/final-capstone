@@ -95,7 +95,15 @@ button.addGame:hover {
 label.addGame {
   max-width: 200px;
   display: block;
+  color: rgb(11, 226, 11)
 }
+
+h1 {
+color: rgb(11, 226, 11);
+margin-bottom: 15px;
+margin-top: 15px;
+}
+
 
 input.addGame{
   width:200px;

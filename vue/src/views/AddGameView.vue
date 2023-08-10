@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>Add New Game</h1>
+      <h1>Add A New Game!</h1>
         <AddGameVue :fullGame="{}"/>
   </div>
 </template>

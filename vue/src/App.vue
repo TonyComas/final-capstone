@@ -24,16 +24,29 @@ export default {
 <style>
 
 body {
-  background-image: linear-gradient(to bottom right, rgba(67, 245, 61, 0.404), rgba(233, 114, 233, 0.753));
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
+  background: linear-gradient(135deg, green, black, black, green), linear-gradient(-45deg, green, black, black, green);
+  background-size: 400% 400%;
+  animation: gradient 15s ease-in-out infinite;
 }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
 
 #app{
   display: grid;
   grid-template-columns: 5vw 1fr 5vw;
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows: 120px 1fr 100px;
   grid-template-areas: ". header ."
                        ". main ."
                        ". footer .";

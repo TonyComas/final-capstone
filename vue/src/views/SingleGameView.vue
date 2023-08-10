@@ -13,12 +13,12 @@
         Update
       </button>
         <div class="game_info" v-if="!showForm">
-        <p id="name"><span style = "font-weight: bold; font-size: 18px;">Game Name</span>: {{game.game_name}}</p>
-        <p id="description"><span style = "font-weight: bold; font-size: 18px;">Description</span>: {{game.description}}</p>
-        <p id="release_date"><span style = "font-weight: bold; font-size: 18px;">Release Date</span>: {{game.release_date}}</p>
-        <p id="developers"><span style = "font-weight: bold; font-size: 18px;">Developers</span>: {{game.developer_names}}</p>
-        <p id="publishers"><span style = "font-weight: bold; font-size: 18px;">Publishers</span>: {{game.publisher_names}}</p>
-        <p id="genres"><span style = "font-weight: bold; font-size: 18px;">Genres</span>: {{game.genres}}</p>
+        <p id="name"><span>Game Name</span>: {{game.game_name}}</p>
+        <p id="description"><span>Description</span>: {{game.description}}</p>
+        <p id="release_date"><span>Release Date</span>: {{game.release_date}}</p>
+        <p id="developers"><span>Developers</span>: {{game.developer_names}}</p>
+        <p id="publishers"><span>Publishers</span>: {{game.publisher_names}}</p>
+        <p id="genres"><span>Genres</span>: {{game.genres}}</p>
         </div>
 
 
@@ -111,6 +111,18 @@ export default {
 };
 </script>
 <style>
+
+@import url('https://fonts.cdnfonts.com/css/gotham-6');
+
+.body {
+  font-family: 'Gotham', sans-serif;
+  color: green;
+}
+
+span {
+  color:rgb(11, 226, 11)
+}
+
 .single-game {
   max-width: 600px;
   margin: 0 auto;
@@ -130,7 +142,6 @@ export default {
 }
 .game-info p {
   margin-bottom: 15px;
-
 }
 .game-info strong {
   font-weight: bold;
@@ -187,7 +198,6 @@ export default {
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Gotham';
   font-weight: 700;
   position: relative;
   z-index: 1;
@@ -212,39 +222,12 @@ export default {
   border-radius: 30px;
   border-width: 1px;
   text-align: right;
+  
 }
 
 .update-button:hover {
   background-color: rgb(255, 255, 255);
   font-size: 11px;
-}
-
-.game-info p {
-  margin-bottom: 15px;
-}
-
-.game-info strong {
-  font-weight: bold;
-}
-
-.game-form {
-  margin-top: 20px;
-}
-
-.game-form input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 3px;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.game-form button {
-  font-size: 10px;
-  height: 20px;
-  border-radius: 30px;
-  border-width: 1px;
-  text-align: right;
 }
 
 .game-form button:hover {
@@ -281,7 +264,6 @@ export default {
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Fantasy';
   font-weight: 700;
   position: relative;
   z-index: 1;
@@ -314,25 +296,28 @@ export default {
 	width: 150px;
 	height: 50px;
 	cursor: pointer;
-  font-family: 'Fantasy';
 	font-size: 20px;
 	font-weight: bold;
-	color: rgb(0, 0, 0);
+	color: rgb(11, 226, 11);
 	background-color: transparent;
-	border: 1px solid rgb(0, 0, 0);
-	box-shadow: 5px 5px 0 rgb(2, 9, 109),
-		-5px -5px 0 rgb(2, 9, 109),
-		-5px 5px 0 rgb(2, 9, 109),
-		5px -5px 0 rgb(2, 9, 109);
+	border: 1px solid rgb(16, 87, 2);
+	box-shadow: 1px 1px 0 rgb(16, 87, 2),
+		-1px -1px 0 rgb(16, 87, 2),
+		-1px 1px 0 rgb(16, 87, 2),
+		1px -1px 0 rgb(16, 87, 2);
 	transition: 500ms ease-in-out;
 }
 
 .back-link-style:hover {
-	box-shadow: 20px 5px 0 rgb(151, 232, 247), -20px -5px 0 rgb(151, 232, 247);
+	box-shadow: 20px 5px 0 rgb(53, 255, 3), -20px -5px 0 rgb(53, 255, 3);
 }
 
 .b:focus {
 	outline: none;
+}
+
+#description {
+  color: green;
 }
 
 </style>

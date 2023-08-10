@@ -192,6 +192,8 @@ public class JdbcGameDao implements GameDao{
         jdbcTemplate.update(sql,id);
         sql = "DELETE FROM game_genre WHERE game_id = ?;";
         jdbcTemplate.update(sql,id);
+        sql = "DELETE FROM reviews WHERE game_id = ?";
+        jdbcTemplate.update(sql, id);
         sql = "DELETE FROM video_games WHERE game_id = ?;";
         jdbcTemplate.update(sql,id);
     }
