@@ -1,31 +1,43 @@
 <template>
   <div class="body">
     <div class="single-game" v-if="game">
-
       <img class="logo" v-bind:src="game.game_logo" alt="" />
 
       <div class="button-container">
         <div class="buttons">
-      <input 
+          <input
             class="delete-button"
             type="button"
             value="Remove"
             @click="deleteGame(game.game_id)"
           />
-      <button class="update-button" v-on:click="showForm = !showForm">
-        Update
-      </button>
-      </div>
-      </div>
-        <div class="game_info" v-if="!showForm">
-        <p id="name"><span>Game Name</span>: {{game.game_name}}</p>
-        <p id="description"><span>Description</span>: {{game.description}}</p>
-        <p id="release_date"><span>Release Date</span>: {{game.release_date}}</p>
-        <p id="developers"><span>Developers</span>: {{game.developer_names}}</p>
-        <p id="publishers"><span>Publishers</span>: {{game.publisher_names}}</p>
-        <p id="genres"><span>Genres</span>: {{game.genres}}</p>
+          <button class="update-button" v-on:click="showForm = !showForm">
+            Update
+          </button>
+          <router-link
+            v-bind:to="{
+              name: 'add-review',
+              params: { id: game.game_id },
+            }"
+          >
+            Add Review
+          </router-link>
         </div>
-
+      </div>
+      <div class="game_info" v-if="!showForm">
+        <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
+        <p id="description"><span>Description</span>: {{ game.description }}</p>
+        <p id="release_date">
+          <span>Release Date</span>: {{ game.release_date }}
+        </p>
+        <p id="developers">
+          <span>Developers</span>: {{ game.developer_names }}
+        </p>
+        <p id="publishers">
+          <span>Publishers</span>: {{ game.publisher_names }}
+        </p>
+        <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
+      </div>
 
       <form
         v-on:submit.prevent="updateGame()"
@@ -45,7 +57,7 @@
         <label for="Release Date">Release Date</label>
 
         <input type="date" v-model="game.release_date" />
-                <label for="Developers">Developers</label>
+        <label for="Developers">Developers</label>
 
         <input
           type="text"
@@ -64,6 +76,7 @@
         <input type="text" v-model="game.genres" placeholder="Genres" />
         <button class="update-button">Update</button>
       </form>
+
       <div class="back-link">
         <button
           class="back-link-style"
@@ -77,13 +90,11 @@
   </div>
 </template>
 <script>
-
 import GameServices from "@/services/GameServices.js";
 import ReviewDisplayVue from "../components/ReviewDisplay.vue";
 export default {
   components: {
-    
-    ReviewDisplayVue
+    ReviewDisplayVue,
   },
   data() {
     return {
@@ -133,12 +144,11 @@ export default {
 .body {
   font-family: "Gotham", sans-serif;
   color: green;
-  
 }
 
 .button-container {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: flex-start;
   margin-bottom: 10px;
   padding-top: 20px;
@@ -149,7 +159,7 @@ export default {
 }
 
 span {
-  color:rgb(11, 226, 11);
+  color: rgb(11, 226, 11);
   max-width: 600px;
 }
 
@@ -338,19 +348,17 @@ img.logo {
 }
 
 .back-link-style {
-	width: 150px;
-	height: 50px;
-	cursor: pointer;
-	font-size: 20px;
-	font-weight: bold;
-	color: rgb(11, 226, 11);
-	background-color: transparent;
-	border: 1px solid rgb(16, 87, 2);
-	box-shadow: 1px 1px 0 rgb(16, 87, 2),
-		-1px -1px 0 rgb(16, 87, 2),
-		-1px 1px 0 rgb(16, 87, 2),
-		1px -1px 0 rgb(16, 87, 2);
-	transition: 500ms ease-in-out;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(11, 226, 11);
+  background-color: transparent;
+  border: 1px solid rgb(16, 87, 2);
+  box-shadow: 1px 1px 0 rgb(16, 87, 2), -1px -1px 0 rgb(16, 87, 2),
+    -1px 1px 0 rgb(16, 87, 2), 1px -1px 0 rgb(16, 87, 2);
+  transition: 500ms ease-in-out;
   margin-top: 20px;
 }
 
