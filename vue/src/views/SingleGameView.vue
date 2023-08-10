@@ -101,10 +101,10 @@ export default {
       })
       .catch((err) => console.error(err));
 
-      if (this.$store.getters.reviews.length === 0) {
+      
         console.log("Fetching",this.gameId)
       this.$store.dispatch("loadReviews",this.gameId);
-      }
+      
 
   },
 

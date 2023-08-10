@@ -135,76 +135,85 @@ public class JdbcGameDao implements GameDao{
         return newGame;
     }
 
-    public Game reAddGame(Game game) {
-
-        Game newGame = game;
-        int gameId = game.getGame_id();
-        String addGameSQL = "INSERT INTO video_games (game_id,game_name, description, release_date, game_logo) VALUES (?, ?, ?, ?, ?) RETURNING game_id;";
-//
-        SqlRowSet results=jdbcTemplate.queryForRowSet(addGameSQL,newGame.getGame_id(),newGame.getGame_name(),newGame.getDescription(),newGame.getRelease_date(), newGame.getGame_logo());
-        while(results.next()){
-            newGame.setGame_id(results.getInt("game_id"));
-            gameId = results.getInt("game_id");
-        }
-//
-
-        // adding Publisher : Start by constructing the SQL string.
-        String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
-        // converting a provided string of comma space separated devs to a list of devs
-        String compositeDevs = newGame.getDeveloper_names();
-        List<String> devs = List.of(compositeDevs.split(", "));
-        // run the SQL string for each dev in the list.
-        for (String dev : devs){
-            jdbcTemplate.update(addGameDevs,gameId, getDevID(dev));
-        }
-
-
-        // adding Publisher : repeating all steps done for Dev
-        String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
-        //
-        String compositePubs = newGame.getPublisher_names();
-        List<String> pubs = List.of(compositePubs.split(", "));
-        //
-        for (String pub : pubs){
-            jdbcTemplate.update(addGamePublisher,gameId, getPubID(pub));
-        }
-
-        // adding Genres : repeating steps for devs and publishers.
-        String addGameGenre = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
-        //
-        String compositeGenres = newGame.getGenres();
-        List<String> genres = List.of(compositeGenres.split(", "));
-        //
-        for (String genre : genres){
-            jdbcTemplate.update(addGameGenre,gameId, getGenID(genre));
-        }
-
-
-        return newGame;
-    }
-
     @Override
     public void deleteGame(int id) {
 //        count statements on the jdbc templates, and add returned value to sums.  If returned sum is 0, then throw an error stating nothing to delete.
+        deletePubsForGameId(id);
+        deleteDevsForGameId(id);
+        deleteGenresForGameId(id);
+        deleteReviewsForGameId(id);
+        String sql = "DELETE FROM video_games WHERE game_id = ?;";
+        jdbcTemplate.update(sql,id);
+    }
+
+    private void deletePubsForGameId(int id){
         String sql = "DELETE FROM game_publishers WHERE game_id = ?";
         jdbcTemplate.update(sql,id);
-        sql = "DELETE FROM game_developers WHERE game_id = ?;";
+    }
+    private void deleteDevsForGameId(int id){
+        String sql = "DELETE FROM game_developers WHERE game_id = ?;";
         jdbcTemplate.update(sql,id);
-        sql = "DELETE FROM game_genre WHERE game_id = ?;";
+    }
+    private void deleteGenresForGameId(int id){
+        String sql = "DELETE FROM game_genre WHERE game_id = ?;";
         jdbcTemplate.update(sql,id);
-        sql = "DELETE FROM reviews WHERE game_id = ?";
+    }
+    private void deleteReviewsForGameId(int id){
+        String sql = "DELETE FROM reviews WHERE game_id = ?";
         jdbcTemplate.update(sql, id);
-        sql = "DELETE FROM video_games WHERE game_id = ?;";
-        jdbcTemplate.update(sql,id);
+    }
+
+    private void addPublishersForGame(Game game){
+        String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
+
+        String compositePubs = game.getPublisher_names();
+        List<String> pubs = List.of(compositePubs.split(", "));
+
+        for (String pub : pubs){
+            jdbcTemplate.update(addGamePublisher,game.getGame_id(), getPubID(pub));
+        }
+    }
+    private void addDevelopersForGame(Game game){
+        String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
+
+        String compositeDevs = game.getDeveloper_names();
+        List<String> devs = List.of(compositeDevs.split(", "));
+
+        for (String dev : devs){
+            jdbcTemplate.update(addGameDevs,game.getGame_id(), getDevID(dev));
+        }
+    }
+    private void addGenresForGame(Game game){
+        String addGameGenre = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
+
+        String compositeGenres = game.getGenres();
+        List<String> genres = List.of(compositeGenres.split(", "));
+
+        for (String genre : genres){
+            jdbcTemplate.update(addGameGenre,game.getGame_id(), getGenID(genre));
+        }
     }
 
 
 
     @Override
     public Game updateGame(Game game) {
+        Game updatedGame = new Game();
         int gameId = game.getGame_id();
-        this.deleteGame(gameId);
-        return reAddGame(game);
+        String sql = "UPDATE video_games SET game_name = ?, description = ?, release_date = ?, game_logo = ? WHERE game_id = ?;";
+        jdbcTemplate.update(sql, game.getGame_name(), game.getDescription(), game.getRelease_date(), game.getGame_logo(), gameId);
+
+        deleteDevsForGameId(gameId);
+        deletePubsForGameId(gameId);
+        deleteGenresForGameId(gameId);
+
+        addDevelopersForGame(game);
+        addPublishersForGame(game);
+        addGenresForGame(game);
+
+        updatedGame = getGameByID(game.getGame_id());
+
+        return updatedGame;
     }
 
     @Override
@@ -243,7 +252,7 @@ public class JdbcGameDao implements GameDao{
             devId= result.getInt("developer_id");
         }
         if (devId==0){
-            throw new DaoException("No developer with that name");
+            devId = addNewDeveloper(devName);
         }
         return devId;
     }
@@ -255,7 +264,7 @@ public class JdbcGameDao implements GameDao{
             pubId= result.getInt("publisher_id");
         }
         if (pubId==0){
-            throw new DaoException("No publisher with that name");
+            pubId = addNewPublisher(pubName);
         }
         return pubId;
     }
@@ -267,9 +276,22 @@ public class JdbcGameDao implements GameDao{
             genId= result.getInt("genre_id");
         }
         if (genId==0){
-            throw new DaoException("No genre with that name");
+            genId = addNewGenre(GenName);
         }
         return genId;
+    }
+
+    private int addNewDeveloper(String devName){
+        String sql = "INSERT INTO developers (developer_name) VALUES (?) RETURNING developer_id";
+        return jdbcTemplate.queryForObject(sql, int.class, devName);
+    }
+    private int addNewPublisher(String pubName){
+        String sql = "INSERT INTO publishers (publisher_name) VALUES (?) RETURNING publisher_id";
+        return jdbcTemplate.queryForObject(sql, int.class, pubName);
+    }
+    private int addNewGenre(String genreName){
+        String sql = "INSERT INTO genre (genre_name) VALUES (?) RETURNING genre_id";
+        return jdbcTemplate.queryForObject(sql, int.class, genreName);
     }
 
 
