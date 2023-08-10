@@ -51,11 +51,11 @@ export default {
     //   console.log("User Id is",this.$store.state.user.id)
 
         .then( response => {
-          if (response.status === 201) {
+          if (response.status === 200) {
             this.$router.push( { 
               name: 'single-game-view',
               params: {
-                  gameId: this.newReview.game_id
+                  gameId: this.newReview.game_id,
               }
             });
           }

@@ -41,23 +41,34 @@
         v-if="showForm"
         class="game-form"
       >
+        <label for="Game Name">Game Name</label>
         <input type="text" v-model="game.game_name" placeholder="Game Name" />
+        <label for="Description">Description</label>
+
         <input
           type="text"
           v-model="game.description"
           placeholder="Description"
         />
+        <label for="Release Date">Release Date</label>
+
         <input type="date" v-model="game.release_date" />
+                <label for="Developers">Developers</label>
+
         <input
           type="text"
           v-model="game.developer_names"
           placeholder="Developers"
         />
+        <label for="Publishers">Publishers</label>
+
         <input
           type="text"
           v-model="game.publisher_names"
           placeholder="Publishers"
         />
+        <label for="Genres">Genres</label>
+
         <input type="text" v-model="game.genres" placeholder="Genres" />
         <button class="update-button">Update</button>
       </form>
@@ -119,10 +130,8 @@ export default {
       })
       .catch((err) => console.error(err));
 
-    
-      console.log("Fetching", this.gameId);
-      this.$store.dispatch("loadReviews", this.gameId);
-    
+    console.log("Fetching", this.gameId);
+    this.$store.dispatch("loadReviews", this.gameId);
   },
 };
 </script>
