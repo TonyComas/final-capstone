@@ -104,8 +104,11 @@ export default {
 </script>
 <style>
 .single-game {
+  display: flex;
+  flex-direction: column;
   max-width: 600px;
   margin: 0 auto;
+  margin-left: -800px;
   padding: 20px;
   border-radius: 5px;
 }
@@ -138,6 +141,7 @@ export default {
 }
 .game-form button {
   font-size: 10px;
+  
   height: 20px;
   border-radius: 30px;
   border-width: 1px;
@@ -304,6 +308,7 @@ export default {
 	width: 150px;
 	height: 50px;
 	cursor: pointer;
+  font-family: 'Fantasy';
 	font-size: 20px;
 	font-weight: bold;
 	color: rgb(0, 0, 0);
