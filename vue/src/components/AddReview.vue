@@ -20,8 +20,8 @@
       <textarea id="review" v-model="newReview.review_body"></textarea>
     </div>
     <div class="actions">
-      <button v-on:click="returnToGamePage()" type="button" class="review-button">Cancel</button>
-      <button class="review-button">Submit</button>
+      <button v-on:click="returnToGamePage()" type="button" class="review-button cancel-button">Cancel</button>
+      <button class="review-button submit-button">Submit</button>
     </div>
   </form>
 </template>
@@ -125,7 +125,18 @@ textarea {
   text-transform: uppercase;
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
   display:inline-block;
-
+}
+.review-button:hover {
+  color: #fff;
+  outline: 0;
+}
+.cancel-button:hover{
+  background-color: rgb(107, 7, 7);
+  box-shadow: 0 0 20px 20px #e74c3c inset;
+}
+.submit-button:hover{
+  background-color: rgb(4, 78, 20);
+  box-shadow: 0 0 20px 20px #4ae73c inset;
 }
 .form-element textarea {
   height: 150px;
