@@ -178,7 +178,6 @@ span {
 .single-game {
   display: grid;
   grid-template-rows: auto 1fr;
-  max-width: 1920px;
   /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
