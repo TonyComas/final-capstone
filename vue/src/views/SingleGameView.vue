@@ -2,18 +2,23 @@
   <div class="body">
     <div class="single-game" v-if="game">
       <div class="game-column">
-        <div class="img-button-cluster">
+        <!-- <div class="img-button-cluster"> -->
           <img class="logo" v-bind:src="game.game_logo" alt="" />
 
           <div class="button-container">
             <div class="buttons">
               <input
+                v-if="$store.getters.isAdmin === true"
                 class="delete-button"
                 type="button"
                 value="Remove"
                 @click="deleteGame(game.game_id)"
               />
-              <button class="update-button" v-on:click="showForm = !showForm">
+              <button
+                class="update-button"
+                v-if="$store.getters.isAdmin === true"
+                v-on:click="showForm = !showForm"
+              >
                 Update
               </button>
               <router-link
@@ -26,7 +31,7 @@
               </router-link>
             </div>
           </div>
-        </div>
+        
         <div class="game_info" v-if="!showForm">
           <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
           <p id="description">
@@ -43,6 +48,7 @@
           </p>
           <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
         </div>
+        
 
         <form
           v-on:submit.prevent="updateGame()"
@@ -170,8 +176,8 @@ span {
   color: rgb(11, 226, 11);
   max-width: 600px;
 }
-.img-button-cluster{
-  float:left;
+.img-button-cluster {
+  float: left;
   margin-right: 10px;
 }
 
@@ -191,9 +197,7 @@ span {
   grid-area: review-column;
 }
 .game_info {
-  max-width: 600px;
-  /* margin-right: 5px; */
-  
+  max-width: 400px;
 }
 
 img.logo {
@@ -223,10 +227,15 @@ img.logo {
 }
 
 .game-form {
-  margin-top: 20px;
-}
-.game-form input {
+  margin-top: 10px;
+  max-width: 600px;
   width: 100%;
+  box-sizing: border-box;
+}
+.game-form label,
+.game-form input {
+  display: block;
+  width: 80%;
   padding: 10px;
   border-radius: 3px;
   font-size: 16px;
@@ -234,14 +243,41 @@ img.logo {
 }
 .game-form button {
   font-size: 10px;
-
-  height: 20px;
+  height: 30px;
   border-radius: 30px;
   border-width: 1px;
   text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #0aa546;
+  border-radius: 0.6em;
+  color: #0aa546;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .game-form button:hover {
-  background-color: #0056b3;
+  background-color: #00b309;
 }
 
 .delete-button {
@@ -268,7 +304,7 @@ img.logo {
   align-self: center;
   font-size: 0.8rem;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.2;
   margin: 5px;
   padding: 0.5em 1em;
   text-decoration: none;
@@ -301,12 +337,12 @@ img.logo {
 }
 
 .update-button:hover {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   font-size: 11px;
 }
 
 .game-form button:hover {
-  background-color: #0056b3;
+  background-color: rgb(0, 0, 0);
 }
 
 .update-button {
@@ -383,7 +419,7 @@ img.logo {
 }
 
 .back-link-style:hover {
-  box-shadow: 20px 5px 0 rgb(53, 255, 3), -20px -5px 0 rgb(53, 255, 3);
+  box-shadow: 13px 5px 0 rgb(53, 255, 3), -13px -5px 0 rgb(53, 255, 3);
 }
 
 .b:focus {

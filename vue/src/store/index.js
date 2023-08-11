@@ -52,10 +52,11 @@ export default new Vuex.Store({
     reviews(state) {
       return state.reviews;
     },
-    user(state, id) {
-      return state.user.find(user => user.user_id === id)
-    },
-    
+   
+    isAdmin(state) {
+      return state.user.authorities[0].name === "ROLE_ADMIN" 
+  
+    }
   
   },
   mutations: {
