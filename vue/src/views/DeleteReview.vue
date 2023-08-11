@@ -4,14 +4,20 @@
         <p>
           Are you sure you want to delete this review?
         </p>
-        <div class="buttons">
-            <button v-on:click.prevent="deleteConfirmed">Yes</button>
-            <button v-on:click.prevent="returnToGameView">Cancel</button>
-        </div>
+        &nbsp;
+        &nbsp;
         <div class="review-details">
             <p>Reviewer: {{ review.review_reviewer }}</p>
             <p>Title: {{ review.review_title }}</p>
             <p>{{review.review_body}}</p>
+        </div>
+        <div class="buttons">
+            <button v-on:click.prevent="deleteConfirmed"
+            class="confirm-button"
+            >Yes</button>
+            <button v-on:click.prevent="returnToGameView"
+            class="cancel-button"
+            >Cancel</button>
         </div>
   </div>
 </template>
@@ -63,41 +69,128 @@ export default {
 </script>
 
 <style>
+
+body{
+  color: rgb(11, 226, 11);
+}
+
 div#confirm {
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
 
+p {
+  margin-top: 20px;
+}
+
 div#confirm .review {
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-top: 20px;
 }
 
 div#confirm .review div.buttons {
   margin-bottom: 30px;
 }
 
-div#confirm .review div.buttons button {
-  margin: 20px;
-  width: 100px;
-  border-radius: 10px;
-  border: 1px solid black;
-  font-weight: 600;
-}
-
-div#confirm .review div.buttons button:first-child {
-  background-color: lightgreen;
-}
-
-div#confirm .review div.buttons button:last-child {
-  background-color: rgb(240, 94, 94);
-}
-
-div#confirm .review div.buttons button:hover {
+.confirm-button {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #0aa546;
+  border-radius: 0.6em;
+  color: #0aa546;
   cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
 }
+
+.confirm-button:hover,
+.confirm-button:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.confirm-button:hover {
+  background-color: rgb(4, 78, 20);
+  font-size: 12.8px;
+  box-shadow: 0 0 20px 20px #4ae73c inset;
+}
+
+.cancel-button {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.cancel-button:hover,
+.cancel-button:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.cancel-button:hover {
+  background-color: rgb(107, 7, 7);
+  font-size: 12.8px;
+  box-shadow: 0 0 20px 20px #e74c3c inset;
+}
+
 
 div#confirm .review-details {
   display: flex;
@@ -111,4 +204,10 @@ div#confirm .review-details p {
   padding: 5px;
   margin: 0;
 }
+
+.buttons {
+  margin-top: 20px;
+}
+
+
 </style>

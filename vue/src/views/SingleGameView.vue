@@ -26,6 +26,7 @@
                   name: 'add-review',
                   params: { id: game.game_id },
                 }"
+                class="add-review-button"
               >
                 Add Review
               </router-link>
@@ -168,6 +169,54 @@ export default {
   padding-top: 20px;
 }
 
+.add-review-button {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #d808b5;
+  border-radius: 0.6em;
+  color: #d808b5;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.add-review-button:hover,
+.add-review-button:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.add-review-button:hover {
+  background-color: #640453;
+  font-size: 12.8px;
+  box-shadow: 0 0 20px 20px #d808b5 inset;
+}
+
 .buttons {
   display: flex;
 }
@@ -274,10 +323,10 @@ img.logo {
   font-weight: 700;
   position: relative;
   z-index: 1;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
 }
 .game-form button:hover {
-  background-color: #00b309;
+  background-color: #027e09;
 }
 
 .delete-button {
@@ -313,7 +362,7 @@ img.logo {
   font-weight: 700;
   position: relative;
   z-index: 1;
-  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
 }
 
 .delete-button:hover,
@@ -323,8 +372,8 @@ img.logo {
 }
 
 .delete-button:hover {
-  background-color: rgb(196, 99, 99);
-  font-size: 11px;
+  background-color: rgb(107, 7, 7);
+  font-size: 12.8px;
   box-shadow: 0 0 20px 20px #e74c3c inset;
 }
 
@@ -338,7 +387,7 @@ img.logo {
 
 .update-button:hover {
   background-color: rgb(0, 0, 0);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .game-form button:hover {
@@ -388,8 +437,8 @@ img.logo {
 }
 
 .update-button:hover {
-  background-color: rgb(99, 196, 120);
-  font-size: 11px;
+  background-color: rgb(4, 78, 20);
+  font-size: 12.8px;
   box-shadow: 0 0 20px 20px #4ae73c inset;
 }
 
