@@ -54,7 +54,12 @@ export default new Vuex.Store({
     },
    
     isAdmin(state) {
-      return state.user.authorities[0].name === "ROLE_ADMIN" 
+      if(state.token != ''){
+        return state.user.authorities[0].name === "ROLE_ADMIN" 
+      } else{
+        return false;
+      }
+      
   
     }
   
