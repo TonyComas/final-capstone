@@ -1,6 +1,6 @@
 <template>
   
-      <div class="review">
+      <div class="delete-review">
         <p>
           Are you sure you want to delete this review?
         </p>
@@ -12,7 +12,8 @@
             <p>{{review.review_body}}</p>
         </div>
         <div class="buttons">
-            <button v-on:click.prevent="deleteConfirmed"
+            <button v-if="$store.getters.isAdmin === true || review.user_id === $store.state.user.id"
+            v-on:click.prevent="deleteConfirmed"
             class="confirm-button"
             >Yes</button>
             <button v-on:click.prevent="returnToGameView"
@@ -74,7 +75,7 @@ body{
   color: rgb(11, 226, 11);
 }
 
-.review {
+.delete-review {
   height: 80vh
 }
 
@@ -82,6 +83,10 @@ div#confirm {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+
+h3.review-title {
+    color: rgb(11, 226, 11);
 }
 
 p {

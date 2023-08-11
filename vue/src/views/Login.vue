@@ -16,7 +16,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      <button class="signin-button" type="submit">Sign in</button>
       <p>
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
@@ -73,6 +73,53 @@ label {
 
 #login {
   height: 70vh;
+}
+
+.signin-button {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #d808b5;
+  border-radius: 0.6em;
+  color: #d808b5;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.signin-button:hover,
+.signin-button:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.signin-button:hover {
+  background-color: #640453;
+  font-size: 12.8px;
+  box-shadow: 0 0 20px 20px #d808b5 inset;
 }
 
 </style>
