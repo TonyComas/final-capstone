@@ -132,6 +132,7 @@ div #games {
   display: flex;
   flex-wrap: wrap;
   grid-area: games;
+  
 }
 
 div #listPage {

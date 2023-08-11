@@ -60,6 +60,7 @@ header {
 }
 main {
   grid-area: main;
+  min-height: 70vh;
 }
 footer {
   grid-area: footer;
