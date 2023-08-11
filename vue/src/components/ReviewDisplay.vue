@@ -7,7 +7,7 @@
       <h4>{{ review.reviewer }}</h4>
       <span class="rating">
         <img
-          src="../assets/star.png"
+          src="../assets/giphy.gif"
           v-bind:title="review.rating + ' Star Review'"
           class="ratingStar"
           v-for="n in review.rating"
