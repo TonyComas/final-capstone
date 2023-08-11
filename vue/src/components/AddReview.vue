@@ -2,7 +2,7 @@
   <form v-on:submit.prevent="addNewReview">
   
     <div class="form-element">
-      <label for="title" class = "text-headers">Review Title:</label>
+      <label for="title">Review Title:</label>
       <input id="title" type="text" v-model="newReview.review_title" />
     </div>
     <div class="form-element">
@@ -16,12 +16,12 @@
       </select>
     </div>
     <div class="form-element">
-      <label for="review">Review: </label>
+      <label for="review">Review</label>
       <textarea id="review" v-model="newReview.review_body"></textarea>
     </div>
     <div class="actions">
-      <button v-on:click="returnToGamePage()" type="button" class = "review-button cancel-button">Cancel</button>
-      <button  class = "review-button submit-button">Submit</button>
+      <button v-on:click="returnToGamePage()" type="button">Cancel</button>
+      <button>Submit</button>
     </div>
   </form>
 </template>
@@ -66,6 +66,7 @@ export default {
       this.newReview = {};
     },
     returnToGamePage() {
+
       this.$router.push( {
         name: 'single-game-view',
         params: {
@@ -73,7 +74,6 @@ export default {
         }
      
       })
-          this.resetForm()  
     }
   },
   created() {
@@ -90,7 +90,6 @@ form {
 .form-element label {
   width: 100px;
   vertical-align: top;
-  color: rgb(11, 226, 11);
 }
 .form-element input,
 select,
@@ -126,13 +125,11 @@ textarea {
   text-transform: uppercase;
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
   display:inline-block;
+
 }
-
-
 .form-element textarea {
   height: 150px;
 }
-
 .actions button {
   margin-left: 10px;
 }
