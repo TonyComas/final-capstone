@@ -197,7 +197,7 @@ span {
   grid-area: review-column;
 }
 .game_info {
-  max-width: 400px;
+  max-width: 300px;
 }
 
 img.logo {
