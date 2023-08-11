@@ -74,6 +74,10 @@ body{
   color: rgb(11, 226, 11);
 }
 
+.review {
+  height: 80vh
+}
+
 div#confirm {
   display: flex;
   justify-content: center;

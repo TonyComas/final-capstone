@@ -71,4 +71,8 @@ label {
   color: rgb(11, 226, 11)
 }
 
+#login {
+  height: 70vh;
+}
+
 </style>
