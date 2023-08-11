@@ -86,7 +86,7 @@
           <label for="Genres">Genres</label>
 
           <input type="text" v-model="game.genres" placeholder="Genres" />
-          <button class="confirm-update-button">Update</button>
+          <button class="update-button">Update</button>
         </form>
 
         <div class="back-link">
@@ -289,7 +289,7 @@ img.logo {
   width: 80%;
   padding: 10px;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px;
   background: black;
   color: green;
@@ -298,9 +298,9 @@ img.logo {
   margin: 2px;
   padding: 5px;
 }
-.input-description {
+/* .input-description {
 
-}
+} */
 /* 
 .form-element input,
 select,
@@ -327,9 +327,9 @@ textarea {
   -moz-appearance: none;
   appearance: none;
   background-color: transparent;
-  border: 2px solid rgb(11, 226, 11);
+  border: 2px solid #0aa546;
   border-radius: 0.6em;
-  color: white;
+  color: #0aa546;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -349,18 +349,9 @@ textarea {
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
-  font-family: 'Press Start 2P', cursive;
 }
-.gamn-form button:hover,
-.game-form button:focus {
-  color: #fff;
-  outline: 0;
-}
-
 .game-form button:hover {
-  background-color: rgb(4, 78, 20);
-  font-size: 12.8px;
-  box-shadow: 0 0 20px 20px #4ae73c inset;
+  background-color: #027e09;
 }
 
 .delete-button {
@@ -439,9 +430,9 @@ textarea {
   -moz-appearance: none;
   appearance: none;
   background-color: transparent;
-  border: 2px solid cyan ;
+  border: 2px solid #0aa546;
   border-radius: 0.6em;
-  color: cyan;
+  color: #0aa546;
   cursor: pointer;
   display: -webkit-box;
   display: -webkit-flex;
@@ -471,9 +462,9 @@ textarea {
 }
 
 .update-button:hover {
-  background-color: rgba(0, 255, 255, 0.404);
+  background-color: rgb(4, 78, 20);
   font-size: 12.8px;
-  box-shadow: 0 0 20px 20px cyan inset;
+  box-shadow: 0 0 20px 20px #4ae73c inset;
 }
 
 .back-link-style {

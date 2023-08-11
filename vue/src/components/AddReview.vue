@@ -20,7 +20,7 @@
       <textarea id="review" v-model="newReview.review_body"></textarea>
     </div>
     <div class="actions">
-      <button v-on:click="returnToGamePage()" type="button" class="review-button cancel-button">Cancel</button>
+      <button v-on:click="returnToGamePage()" type="button" class="review-button cancel-button2">Cancel</button>
       <button class="review-button submit-button">Submit</button>
     </div>
   </form>
@@ -112,9 +112,9 @@ textarea {
   box-sizing: border-box;
   appearance: none;
   background-color: transparent;
-  border: 2px solid rgb(11, 226, 11);
+  
   border-radius: 0.2em;
-  color: rgb(11, 226, 11);
+  
   font-family: 'Press Start 2P', cursive;
   font-weight: 50;
   display: flex;
@@ -130,7 +130,15 @@ textarea {
   color: #fff;
   outline: 0;
 }
-.cancel-button:hover{
+.cancel-button2{
+border: 2px solid #e74c3c;
+color: #e74c3c;
+}
+.submit-button{
+border: 2px solid rgb(11, 226, 11);
+color: rgb(11, 226, 11);
+}
+.cancel-button2:hover{
   background-color: rgb(107, 7, 7);
   box-shadow: 0 0 20px 20px #e74c3c inset;
 }
