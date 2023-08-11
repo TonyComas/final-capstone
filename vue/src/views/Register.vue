@@ -79,7 +79,9 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+  color: rgb(11, 226, 11);
 }
+
 
 
 

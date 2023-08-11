@@ -4,10 +4,6 @@
       <router-link v-bind:to="{ name: 'home' }" class="nav-link"
         >>Home</router-link
       >&nbsp;
-      <router-link v-if="$store.getters.isAdmin === true"
-      :to="{ name: 'AddGame' }" class="nav-link"
-        >>Add a Game!</router-link
-      >&nbsp;
       <router-link :to="{ name: 'games' }" class="nav-link"
         >>Game List</router-link
       >&nbsp;
@@ -15,6 +11,10 @@
       <router-link v-bind:to="{ name: 'logout' }" class = "nav-link"
         v-if="$store.state.token != ''"
         >>Logout</router-link
+      >&nbsp;
+      <router-link v-if="$store.getters.isAdmin === true"
+      :to="{ name: 'AddGame' }" class="nav-link"
+        >>Add a Game!</router-link
       >
     </div>
     <h1 class="page-title waviy">
