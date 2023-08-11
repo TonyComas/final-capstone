@@ -2,7 +2,7 @@
   <form v-on:submit.prevent="addNewReview">
   
     <div class="form-element">
-      <label for="title">Review Title:</label>
+      <label for="title" class = "text-headers">Review Title:</label>
       <input id="title" type="text" v-model="newReview.review_title" />
     </div>
     <div class="form-element">
@@ -16,7 +16,7 @@
       </select>
     </div>
     <div class="form-element">
-      <label for="review">Review</label>
+      <label for="review">Review: </label>
       <textarea id="review" v-model="newReview.review_body"></textarea>
     </div>
     <div class="actions">
@@ -77,12 +77,21 @@ form {
 .form-element label {
   width: 100px;
   vertical-align: top;
+  color: rgb(11, 226, 11);
 }
 .form-element input,
 select,
 textarea {
   width: 400px;
-  font-size: 1.1rem;
+  font-size: 11pt;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
+
+  
 }
 .form-element textarea {
   height: 150px;
