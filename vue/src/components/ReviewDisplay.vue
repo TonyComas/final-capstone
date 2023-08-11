@@ -19,7 +19,7 @@
       <div >
         <p class="review-body">{{ review.review_body }}</p>
       </div>
-      <router-link
+      <router-link v-if="$store.getters.isAdmin === true"
           tag="button"
           :to="{
             name: 'confirm-delete',
