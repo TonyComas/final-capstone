@@ -144,6 +144,7 @@ textarea {
   /* z-index: 1; */
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
   display:inline-block;
+  font-family: 'Press Start 2P', cursive;
 }
 
 

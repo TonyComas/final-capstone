@@ -157,8 +157,10 @@ export default {
 @import url("https://fonts.cdnfonts.com/css/gotham-6");
 
 .body {
-  font-family: "Gotham", sans-serif;
+  font-family: 'Press Start 2P', cursive;
   color: green;
+  line-height: 1.2;
+  font-size: 14px;
 }
 
 .button-container {
@@ -194,12 +196,11 @@ export default {
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.2;
-  margin: 5px;
+  margin: 0px;
   padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
@@ -263,6 +264,7 @@ img.logo {
   border-radius: 30px;
   border-width: 1px;
   text-align: left;
+  font-family: 'Press Start 2P', cursive;
 }
 .update-button:hover {
   background-color: rgb(255, 255, 255);
@@ -315,12 +317,11 @@ img.logo {
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.2;
-  margin: 5px;
+  margin: 0px;
   padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
@@ -354,15 +355,15 @@ img.logo {
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.2;
-  margin: 5px;
+  margin: 0px;
   padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .delete-button:hover,
@@ -454,9 +455,9 @@ img.logo {
 
 .back-link-style {
   width: 150px;
-  height: 50px;
+  height: 60px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
   color: rgb(11, 226, 11);
   background-color: transparent;
@@ -465,6 +466,7 @@ img.logo {
     -1px 1px 0 rgb(16, 87, 2), 1px -1px 0 rgb(16, 87, 2);
   transition: 500ms ease-in-out;
   margin-top: 20px;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .back-link-style:hover {

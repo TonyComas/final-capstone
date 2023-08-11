@@ -129,6 +129,7 @@ div#confirm .review div.buttons {
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .confirm-button:hover,
@@ -177,6 +178,7 @@ div#confirm .review div.buttons {
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .cancel-button:hover,
