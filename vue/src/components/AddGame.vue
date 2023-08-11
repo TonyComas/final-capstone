@@ -67,11 +67,6 @@ export default {
                 }
             })
       }
-  },
-  created() {
-      this.$store.dispatch("loadGenres"),
-      this.$store.dispatch("loadDevelopers"),
-      this.$store.dispatch("loadPublishers")
   }
 };
 </script>
