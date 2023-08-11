@@ -95,13 +95,40 @@ form {
 select,
 textarea {
   width: 400px;
-  font-size: 1.1rem;
+  font-size: 11pt;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
+
+  
+}
+
+.review-button {
+  font-size: 10px;
+  text-align: right;
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid rgb(11, 226, 11);
+  border-radius: 0.2em;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  display: flex;
+  line-height: 1;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  display:inline-block;
+
 }
 .form-element textarea {
   height: 150px;
-}
-.actions {
-  float: right;
 }
 .actions button {
   margin-left: 10px;

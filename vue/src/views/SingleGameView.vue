@@ -35,7 +35,7 @@
         
         <div class="game_info" v-if="!showForm">
           <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
-          <p id="description">
+          <p id="description" class="input-description">
             <span>Description</span>: {{ game.description }}
           </p>
           <p id="release_date">
@@ -157,8 +157,10 @@ export default {
 @import url("https://fonts.cdnfonts.com/css/gotham-6");
 
 .body {
-  font-family: "Gotham", sans-serif;
+  font-family: 'Press Start 2P', cursive;
   color: green;
+  line-height: 1.2;
+  font-size: 14px;
 }
 
 .button-container {
@@ -194,12 +196,11 @@ export default {
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.2;
-  margin: 5px;
+  margin: 0px;
   padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
@@ -236,7 +237,7 @@ span {
   /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
-  grid-template: 25vw 65vw;
+  grid-template-columns: 500px 1fr;
   grid-template-areas: "game-column review-column";
 }
 .game-column {
@@ -245,9 +246,7 @@ span {
 .review-column {
   grid-area: review-column;
 }
-.game_info {
-  max-width: 300px;
-}
+
 
 img.logo {
   width: 300px;
@@ -263,6 +262,7 @@ img.logo {
   border-radius: 30px;
   border-width: 1px;
   text-align: left;
+  font-family: 'Press Start 2P', cursive;
 }
 .update-button:hover {
   background-color: rgb(255, 255, 255);
@@ -280,8 +280,10 @@ img.logo {
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;
+  color: rgb(11, 226, 11);
 }
-.game-form label,
+
+
 .game-form input {
   display: block;
   width: 80%;
@@ -289,7 +291,31 @@ img.logo {
   border-radius: 3px;
   font-size: 16px;
   margin-bottom: 10px;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
 }
+.input-description {
+
+}
+/* 
+.form-element input,
+select,
+textarea {
+  width: 400px;
+  font-size: 11pt;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
+
+  
+} */
 .game-form button {
   font-size: 10px;
   height: 30px;
@@ -315,12 +341,11 @@ img.logo {
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.2;
-  margin: 5px;
+  margin: 0px;
   padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
@@ -354,15 +379,15 @@ img.logo {
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.2;
-  margin: 5px;
+  margin: 0px;
   padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .delete-button:hover,
@@ -454,9 +479,9 @@ img.logo {
 
 .back-link-style {
   width: 150px;
-  height: 50px;
+  height: 60px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
   color: rgb(11, 226, 11);
   background-color: transparent;
@@ -465,6 +490,8 @@ img.logo {
     -1px 1px 0 rgb(16, 87, 2), 1px -1px 0 rgb(16, 87, 2);
   transition: 500ms ease-in-out;
   margin-top: 20px;
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.2;
 }
 
 .back-link-style:hover {

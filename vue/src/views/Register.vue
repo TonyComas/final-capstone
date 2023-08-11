@@ -17,7 +17,7 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
+      <button class="create-account" type="submit">Create Account</button>
       <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
@@ -81,8 +81,57 @@ label {
   margin-right: 0.5rem;
   color: rgb(11, 226, 11);
 }
+.text-center {
+  height: 70vh;
+}
 
+.create-account {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #d808b5;
+  border-radius: 0.6em;
+  color: #d808b5;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+  font-family: 'Press Start 2P', cursive;
+}
 
+.create-account:hover,
+.create-account:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.create-account:hover {
+  background-color: #640453;
+  font-size: 12.8px;
+  box-shadow: 0 0 20px 20px #d808b5 inset;
+}
 
 
 </style>
