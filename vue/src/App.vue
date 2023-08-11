@@ -25,7 +25,7 @@ export default {
 
 body {
   background: linear-gradient(135deg, green, black, black, green), linear-gradient(-45deg, green, black, black, green);
-  background-size: 300% 300%;
+  background-size: 200% 200%;
   animation: gradient 15s ease-in-out infinite;
 }
 
