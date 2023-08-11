@@ -16,12 +16,12 @@
       </select>
     </div>
     <div class="form-element">
-      <label for="review">Review</label>
+      <label for="review">Review: </label>
       <textarea id="review" v-model="newReview.review_body"></textarea>
     </div>
     <div class="actions">
-      <button v-on:click="returnToGamePage()" type="button">Cancel</button>
-      <button>Submit</button>
+      <button v-on:click="returnToGamePage()" type="button" class="review-button">Cancel</button>
+      <button class="review-button">Submit</button>
     </div>
   </form>
 </template>
