@@ -35,7 +35,7 @@
         
         <div class="game_info" v-if="!showForm">
           <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
-          <p id="description">
+          <p id="description" class="input-description">
             <span>Description</span>: {{ game.description }}
           </p>
           <p id="release_date">
@@ -237,7 +237,7 @@ span {
   /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
-  grid-template: 25vw 65vw;
+  grid-template-columns: 500px 1fr;
   grid-template-areas: "game-column review-column";
 }
 .game-column {
@@ -246,9 +246,7 @@ span {
 .review-column {
   grid-area: review-column;
 }
-.game_info {
-  max-width: 300px;
-}
+
 
 img.logo {
   width: 300px;
@@ -284,7 +282,8 @@ img.logo {
   box-sizing: border-box;
   color: rgb(11, 226, 11);
 }
-.game-form label,
+
+
 .game-form input {
   display: block;
   width: 80%;
@@ -292,7 +291,31 @@ img.logo {
   border-radius: 3px;
   font-size: 16px;
   margin-bottom: 10px;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
 }
+.input-description {
+
+}
+/* 
+.form-element input,
+select,
+textarea {
+  width: 400px;
+  font-size: 11pt;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
+
+  
+} */
 .game-form button {
   font-size: 10px;
   height: 30px;
