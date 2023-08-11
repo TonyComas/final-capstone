@@ -204,7 +204,7 @@ img.logo {
 }
 
 .game-form {
-  margin-top: 400px;
+  margin-top: 10px;
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;
