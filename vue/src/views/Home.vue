@@ -16,7 +16,6 @@ export default {
 
 .home {
   color: rgb(182, 7, 7);
-  height: 70vh;
 }
 
 h1 {

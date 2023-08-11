@@ -4,7 +4,7 @@
   <div class="search">
     <h1>Search database</h1>
     <div>
-      <input v-model="searchTerm" type="text" placeholder="Search ..." required>
+      <input v-model="searchTerm" class="search-bar" type="text" placeholder="Search ..." required>
     </div>
   </div>
 </div>
@@ -68,6 +68,10 @@ div #games {
   margin: 20px;
 }
 
+.search-bar {
+  font-family: 'Press Start 2P', cursive;
+}
+
 .search > h3 {
   font-weight: normal;
 }
@@ -128,6 +132,7 @@ div #games {
   display: flex;
   flex-wrap: wrap;
   grid-area: games;
+  
 }
 
 div #listPage {

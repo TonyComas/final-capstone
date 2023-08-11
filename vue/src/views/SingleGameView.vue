@@ -237,7 +237,7 @@ span {
   /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
-  grid-template: 25vw 65vw;
+  grid-template-columns: 500px 1fr;
   grid-template-areas: "game-column review-column";
 }
 .game-column {
@@ -246,9 +246,7 @@ span {
 .review-column {
   grid-area: review-column;
 }
-.game_info {
-  max-width: 300px;
-}
+
 
 img.logo {
   width: 300px;
