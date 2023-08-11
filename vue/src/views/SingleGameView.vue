@@ -194,6 +194,7 @@ span {
 .game_info {
   max-width: 600px;
   /* margin-right: 5px; */
+  
 }
 
 img.logo {
