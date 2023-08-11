@@ -3,31 +3,31 @@
     <div id="addGame">
       <div class="Game_Title">
         <label class="addGame" for="title">Game Name: </label>
-        <input class="addGame" type="text" name="title" v-model="game.game_name" required/>
+        <textarea class="addGame" type="text" name="title" v-model="game.game_name" required rows="1"/>
       </div>
       <div class="Description">
         <label class="addGame" for="description">Game Description: </label>
-        <input class="addGame" type="text" name="description" v-model="game.description" required/>
+        <textarea class="addGame" type="text" name="description" v-model="game.description" required rows="5"/>
       </div>
       <div class="Release_Date">
         <label class="addGame" for="release">Release Date: </label>
         <input class="addGame" type="date" name="release" v-model="game.release_date" required/>
       </div>
       <div class="Developer">
-          <label class="addGame" for="developer">Developer Name: </label>
-          <input class="addGame" type="text" name="developer" v-model="game.developer_names" required />
+          <label class="addGame" for="developer">Developer Names: </label>
+          <textarea class="addGame" type="text" name="developer" v-model="game.developer_names" required rows="2"/>
       </div>
       <div class="Publisher">
-          <label class="addGame" for="publisher">Publisher Name: </label>
-          <input class="addGame" type="text" name="publisher" v-model="game.publisher_names" required />
+          <label class="addGame" for="publisher">Publisher Names: </label>
+          <textarea class="addGame" type="text" name="publisher" v-model="game.publisher_names" required rows="2"/>
       </div>
       <div class="Game_Logo">
           <label class="addGame" for="logo">Input link for Image: </label>
-          <input class="addGame" type="url" name="logo" v-model="game.game_logo" required/>
+          <textarea class="addGame" type="url" name="logo" v-model="game.game_logo" required rows="5"/>
       </div>
       <div class="genre">
           <label class="addGame" for="genre">Game Genres: </label>
-          <input class="addGame" type="text" name="genre" v-model="game.genres" required>
+          <textarea class="addGame" type="text" name="genre" v-model="game.genres" required rows="2"/>
       </div>
       <div class="actions">
           <button id="addGame" type="submit" v-if="game.game_name != ''" v-on:click="saveGame()">Add Game</button>
@@ -98,6 +98,10 @@ label.addGame {
   color: rgb(11, 226, 11)
 }
 
+textarea {
+  width: 280px;
+}
+
 h1 {
 color: rgb(11, 226, 11);
 margin-bottom: 15px;
@@ -106,7 +110,7 @@ margin-top: 15px;
 
 
 input.addGame{
-  width:200px;
+  width:280px;
   border-radius: 4px;
   border-width: 1px;
 }

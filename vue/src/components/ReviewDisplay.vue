@@ -5,7 +5,7 @@
     v-for="review in this.$store.getters.reviews" 
     v-bind:key="review.id">
       <h4>{{ review.reviewer }}</h4>
-      <div class="rating">
+      <span class="rating">
         <img
           src="../assets/star.png"
           v-bind:title="review.rating + ' Star Review'"
@@ -13,12 +13,13 @@
           v-for="n in review.rating"
           v-bind:key="n"
         />
+      </span>
+      <h3 class="review-title" v-on:click="showForm = !showForm">- {{ review.review_title }}</h3>
+      
+      <div >
+        <p class="review-body">{{ review.review_body }}</p>
       </div>
-      <h3>{{ review.review_title }}</h3>
-      <p>{{ review.review_body }}</p>
-
-      <div>
-        <router-link
+      <router-link
           tag="button"
           :to="{
             name: 'confirm-delete',
@@ -27,7 +28,8 @@
         >
           Delete Review
         </router-link>
-      </div>
+      
+      
     </div>
   </div>
 </template>
@@ -36,9 +38,36 @@
 export default {
   name: "review-display",
 //   props: ["review"],
-  methods: {},
+  // data(){
+  //   showForm: false,
+  // },
+  methods: {
+    // toggleForm() {
+    //   this.showForm = !this.showForm;
+    // }
+  },
 };
 </script>
 
 <style>
+.review{
+  text-align: left;
+  min-width: 40vw;
+}
+.ratingStar {
+  width:35px;
+  display: inline;
+  float: left;
+  /* text-justify: center; */
+}
+.review-title{
+  display: inline;
+  /* text-justify: center; */
+  /* padding: 5px; */
+  font-size: 22px;
+  line-height: 35px;
+}
+/* .review-body {
+  
+} */
 </style>

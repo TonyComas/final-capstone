@@ -39,21 +39,6 @@ public class JdbcGameDao implements GameDao{
 
 
 
-
-/*
-
-"INSERT INTO video_games (game_name, description, release_date) " + "VALUES (?, ?, ?) RETURNING game_id;"
-//if game id NOT null
-"INSERT INTO game_developers (game_id, developer_id) " + "VALUES (?, ?);"
-//for loop
-"INSERT INTO game_publishers (game_id, publisher_id) " + "VALUES (?, ?);"
-//for loop
-"INSERT INTO game_genre (game_id, genre_id) " + "VALUES (?, ?);"
-//for loop
-
-*/
-
-
     private JdbcTemplate jdbcTemplate;
 
     public JdbcGameDao(DataSource dataSource) {
@@ -88,51 +73,18 @@ public class JdbcGameDao implements GameDao{
 
     @Override
     public Game addGame(Game game) {
-        Game newGame = game;
-        String compositeDevs = newGame.getDeveloper_names();
-        List<String> devs = List.of(compositeDevs.split(", "));
-        List<Integer> devIDs = new ArrayList<>();
-        for (String dev : devs){
-            devIDs.add(getDevID(dev));
-        }
-        String compositePubs = newGame.getPublisher_names();
-        List<String> pubs = List.of(compositePubs.split(", "));
-        List<Integer> pubIDs = new ArrayList<>();
-        for (String pub : pubs){
-            pubIDs.add(getPubID(pub));
-        }
-        String compositeGenres = newGame.getGenres();
-        List<String> genres = List.of(compositeGenres.split(", "));
-        List<Integer> genIDs = new ArrayList<>();
-        for (String gen : genres){
-            genIDs.add(getGenID(gen));
-        }
 
-        //
-        int gameId = game.getGame_id();
         String addGameSQL = "INSERT INTO video_games (game_name, description, release_date, game_logo) VALUES (?, ?, ?, ?) RETURNING game_id;";
         //
-        SqlRowSet results=jdbcTemplate.queryForRowSet(addGameSQL,newGame.getGame_name(),newGame.getDescription(),newGame.getRelease_date(), newGame.getGame_logo());
-        while(results.next()){
-            newGame.setGame_id(results.getInt("game_id"));
-            gameId = results.getInt("game_id");
-        }
-        // adding Publisher : Use the devIDs created above to add publisher
-        String addGameDevs = "INSERT INTO game_developers (game_id, developer_id) VALUES (?, ?);";
-        for (int dev : devIDs){
-            jdbcTemplate.update(addGameDevs,gameId, dev);
-        }
-        // adding Publisher : repeating all steps done for Dev
-        String addGamePublisher ="INSERT INTO game_publishers (game_id, publisher_id) VALUES (?, ?);";
-        for (String pub : pubs){
-            jdbcTemplate.update(addGamePublisher,gameId, getPubID(pub));
-        }
-        // adding Genres : repeating steps for devs and publishers.
-        String addGameGenre = "INSERT INTO game_genre (game_id, genre_id) VALUES (?, ?);";
-        for (String genre : genres){
-            jdbcTemplate.update(addGameGenre,gameId, getGenID(genre));
-        }
-        return newGame;
+        int gameId = jdbcTemplate.queryForObject(addGameSQL,int.class, game.getGame_name(),game.getDescription(),game.getRelease_date(), game.getGame_logo());
+
+        game.setGame_id(gameId);
+
+        addPublishersForGame(game);
+        addGenresForGame(game);
+        addDevelopersForGame(game);
+
+        return getGameByID(gameId);
     }
 
     @Override
