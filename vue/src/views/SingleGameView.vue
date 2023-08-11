@@ -294,7 +294,7 @@ img.logo {
   font-size: 16px;
   margin-bottom: 10px;
   background: black;
-  color: rgb(11, 226, 11);
+  color: green;
   font-family: 'Press Start 2P', cursive;
   font-weight: 50;
   margin: 2px;
