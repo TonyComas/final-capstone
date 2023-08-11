@@ -16,7 +16,7 @@
       </span>
       <h3 class="review-title" v-on:click="showForm = !showForm">- {{ review.review_title }}</h3>
       
-      <div >
+      <div>
         <p class="review-body">{{ review.review_body }}</p>
       </div>
       <router-link v-if="$store.getters.isAdmin === true"
@@ -59,18 +59,12 @@ export default {
   width:35px;
   display: inline;
   float: left;
-  /* text-justify: center; */
 }
 .review-title{
   display: inline;
-  /* text-justify: center; */
-  /* padding: 5px; */
   font-size: 22px;
   line-height: 35px;
 }
-/* .review-body {
-  
-} */
 
 .delete-review-button {
   font-size: 10px;

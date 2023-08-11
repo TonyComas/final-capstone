@@ -109,51 +109,30 @@ textarea {
 
 .review-button {
   font-size: 10px;
-  /* height: 30px; */
-  /* border-radius: 30px; */
-  /* border-width: 1px; */
   text-align: right;
   box-sizing: border-box;
-  /* -webkit-appearance: none;
-  -moz-appearance: none; */
   appearance: none;
   background-color: transparent;
-  /* border: 2px solid #e74c3c; */
   border: 2px solid rgb(11, 226, 11);
   border-radius: 0.2em;
-  /* color: #e74c3c; */
   color: rgb(11, 226, 11);
   font-family: 'Press Start 2P', cursive;
   font-weight: 50;
-  /* cursor: pointer; */
-  /* display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox; */
   display: flex;
-  /* -webkit-align-self: center;
-  -ms-flex-item-align: center; */
-  /* align-self: center; */
-  /* font-size: 0.8rem; */
   line-height: 1;
   margin: 5px;
   padding: 0.5em 1em;
-  /* text-decoration: none; */
   text-align: center;
   text-transform: uppercase;
-  /* position: relative; */
-  /* z-index: 1; */
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
   display:inline-block;
-  font-family: 'Press Start 2P', cursive;
 }
 
 
 .form-element textarea {
   height: 150px;
 }
-/* .actions {
-  float: right;
-} */
+
 .actions button {
   margin-left: 10px;
 }

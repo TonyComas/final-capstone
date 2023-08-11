@@ -282,6 +282,7 @@ img.logo {
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;
+  color: rgb(11, 226, 11);
 }
 .game-form label,
 .game-form input {
