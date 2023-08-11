@@ -106,6 +106,7 @@ label {
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .signin-button:hover,
