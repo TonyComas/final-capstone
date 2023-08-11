@@ -20,7 +20,7 @@
       <textarea id="review" v-model="newReview.review_body"></textarea>
     </div>
     <div class="actions">
-      <button v-on:click="resetForm" type="button">Cancel</button>
+      <button v-on:click="returnToGamePage()" type="button">Cancel</button>
       <button>Submit</button>
     </div>
   </form>
@@ -33,18 +33,18 @@ export default {
   data() {
     return {
       newReview: {
-        game_id: this.$store.getters.game,
+        game_id: 0,
         user_id: this.$store.state.user.id,
         review_title: "",
         rating: 0,
         review_body: "",
-      }
+      },
+      gameId: 0
     };
   },
   methods: {
     addNewReview() {
-      const gameId = this.$route.params.id;
-      this.newReview.game_id = gameId;
+      this.newReview.game_id = this.gameId;
      
       GameService.addReview(this.newReview)
     //   console.log("Game ID is",this.newReview.game_id)
@@ -64,8 +64,21 @@ export default {
     },
     resetForm() {
       this.newReview = {};
+    },
+    returnToGamePage() {
+      this.$router.push( {
+        name: 'single-game-view',
+        params: {
+          gameId: this.gameId
+        }
+     
+      })
+          this.resetForm()  
     }
-  }
+  },
+  created() {
+     this.gameId = this.$route.params.id;
+  } 
 };
 </script>
 

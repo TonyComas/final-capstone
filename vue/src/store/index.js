@@ -54,7 +54,8 @@ export default new Vuex.Store({
     },
     user(state, id) {
       return state.user.find(user => user.user_id === id)
-    }
+    },
+    
   
   },
   mutations: {

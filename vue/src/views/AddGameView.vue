@@ -47,4 +47,8 @@ h1 {
   }
 }
 
+h1 {
+  display:flex;
+  flex-wrap: wrap;
+}
 </style>
