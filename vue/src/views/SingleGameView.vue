@@ -1,99 +1,92 @@
 <template>
   <div class="body">
     <div class="single-game" v-if="game">
-      <div class="game-column">
-        <div class="img-button-cluster">
-          <img class="logo" v-bind:src="game.game_logo" alt="" />
+      <img class="logo" v-bind:src="game.game_logo" alt="" />
 
-          <div class="button-container">
-            <div class="buttons">
-              <input
-                class="delete-button"
-                type="button"
-                value="Remove"
-                @click="deleteGame(game.game_id)"
-              />
-              <button class="update-button" v-on:click="showForm = !showForm">
-                Update
-              </button>
-              <router-link
-                v-bind:to="{
-                  name: 'add-review',
-                  params: { id: game.game_id },
-                }"
-              >
-                Add Review
-              </router-link>
-            </div>
-          </div>
-        </div>
-        <div class="game_info" v-if="!showForm">
-          <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
-          <p id="description">
-            <span>Description</span>: {{ game.description }}
-          </p>
-          <p id="release_date">
-            <span>Release Date</span>: {{ game.release_date }}
-          </p>
-          <p id="developers">
-            <span>Developers</span>: {{ game.developer_names }}
-          </p>
-          <p id="publishers">
-            <span>Publishers</span>: {{ game.publisher_names }}
-          </p>
-          <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
-        </div>
-
-        <form
-          v-on:submit.prevent="updateGame()"
-          action=""
-          v-if="showForm"
-          class="game-form"
-        >
-          <label for="Game Name">Game Name</label>
-          <input type="text" v-model="game.game_name" placeholder="Game Name" />
-          <label for="Description">Description</label>
-
+      <div class="button-container">
+        <div class="buttons">
           <input
-            type="text"
-            v-model="game.description"
-            placeholder="Description"
+            v-if="$store.getters.isAdmin === true"
+            class="delete-button"
+            type="button"
+            value="Remove"
+            @click="deleteGame(game.game_id)"
           />
-          <label for="Release Date">Release Date</label>
-
-          <input type="date" v-model="game.release_date" />
-          <label for="Developers">Developers</label>
-
-          <input
-            type="text"
-            v-model="game.developer_names"
-            placeholder="Developers"
-          />
-          <label for="Publishers">Publishers</label>
-
-          <input
-            type="text"
-            v-model="game.publisher_names"
-            placeholder="Publishers"
-          />
-          <label for="Genres">Genres</label>
-
-          <input type="text" v-model="game.genres" placeholder="Genres" />
-          <button class="update-button">Update</button>
-        </form>
-
-        <div class="back-link">
-          <button
-            class="back-link-style"
-            @click="$router.push({ name: 'games' })"
-          >
-            Back to Game Listing
+          <button class="update-button" v-if="$store.getters.isAdmin === true" v-on:click="showForm = !showForm">
+            Update
           </button>
+          <router-link
+            v-bind:to="{
+              name: 'add-review',
+              params: { id: game.game_id },
+            }"
+          >
+            Add Review
+          </router-link>
         </div>
       </div>
-      <div class="review-column">
-        <ReviewDisplayVue :reviews="game.reviews" />
+      <div class="game_info" v-if="!showForm">
+        <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
+        <p id="description"><span>Description</span>: {{ game.description }}</p>
+        <p id="release_date">
+          <span>Release Date</span>: {{ game.release_date }}
+        </p>
+        <p id="developers">
+          <span>Developers</span>: {{ game.developer_names }}
+        </p>
+        <p id="publishers">
+          <span>Publishers</span>: {{ game.publisher_names }}
+        </p>
+        <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
       </div>
+
+      <form
+        v-on:submit.prevent="updateGame()"
+        action=""
+        v-if="showForm"
+        class="game-form"
+      >
+        <label for="Game Name">Game Name</label>
+        <input type="text" v-model="game.game_name" placeholder="Game Name" />
+        <label for="Description">Description</label>
+
+        <input
+          type="text"
+          v-model="game.description"
+          placeholder="Description"
+        />
+        <label for="Release Date">Release Date</label>
+
+        <input type="date" v-model="game.release_date" />
+        <label for="Developers">Developers</label>
+
+        <input
+          type="text"
+          v-model="game.developer_names"
+          placeholder="Developers"
+        />
+        <label for="Publishers">Publishers</label>
+
+        <input
+          type="text"
+          v-model="game.publisher_names"
+          placeholder="Publishers"
+        />
+        <label for="Genres">Genres</label>
+
+        <input type="text" v-model="game.genres" placeholder="Genres" />
+        <button class="update-button">Update</button>
+      </form>
+
+      <div class="back-link">
+        <button
+          class="back-link-style"
+          @click="$router.push({ name: 'games' })"
+        >
+          Back to Game Listing
+        </button>
+      </div>
+      <ReviewDisplayVue :reviews="game.reviews" />
     </div>
   </div>
 </template>
@@ -170,31 +163,18 @@ span {
   color: rgb(11, 226, 11);
   max-width: 600px;
 }
-.img-button-cluster{
-  float:left;
-  margin-right: 10px;
-}
 
 .single-game {
   display: grid;
   grid-template-rows: auto 1fr;
   max-width: 1920px;
-  /* margin: 0 auto; */
+  min-width: 1850px;
+  margin: 0 auto;
   padding: 20px;
   border-radius: 5px;
-  grid-template: 25vw 65vw;
-  grid-template-areas: "game-column review-column";
-}
-.game-column {
-  grid-area: game-column;
-}
-.review-column {
-  grid-area: review-column;
 }
 .game_info {
-  max-width: 600px;
-  /* margin-right: 5px; */
-  
+  max-width: 400px;
 }
 
 img.logo {
@@ -224,10 +204,15 @@ img.logo {
 }
 
 .game-form {
-  margin-top: 20px;
-}
-.game-form input {
+  margin-top: 400px;
+  max-width: 600px;
   width: 100%;
+  box-sizing: border-box;
+}
+.game-form label,
+.game-form input {
+  display: block;
+  width: 80%;
   padding: 10px;
   border-radius: 3px;
   font-size: 16px;
@@ -235,14 +220,41 @@ img.logo {
 }
 .game-form button {
   font-size: 10px;
-
-  height: 20px;
+  height: 30px;
   border-radius: 30px;
   border-width: 1px;
   text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #0aa546;
+  border-radius: 0.6em;
+  color: #0aa546;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .game-form button:hover {
-  background-color: #0056b3;
+  background-color: #00b309;
 }
 
 .delete-button {
@@ -269,7 +281,7 @@ img.logo {
   align-self: center;
   font-size: 0.8rem;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.2;
   margin: 5px;
   padding: 0.5em 1em;
   text-decoration: none;
@@ -302,12 +314,12 @@ img.logo {
 }
 
 .update-button:hover {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   font-size: 11px;
 }
 
 .game-form button:hover {
-  background-color: #0056b3;
+  background-color: rgb(0, 0, 0);
 }
 
 .update-button {
@@ -384,7 +396,7 @@ img.logo {
 }
 
 .back-link-style:hover {
-  box-shadow: 20px 5px 0 rgb(53, 255, 3), -20px -5px 0 rgb(53, 255, 3);
+  box-shadow: 13px 5px 0 rgb(53, 255, 3), -13px -5px 0 rgb(53, 255, 3);
 }
 
 .b:focus {
