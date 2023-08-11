@@ -81,6 +81,9 @@ label {
   margin-right: 0.5rem;
   color: rgb(11, 226, 11);
 }
+.text-center {
+  height: 70vh;
+}
 
 
 
