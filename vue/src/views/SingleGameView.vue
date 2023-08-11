@@ -467,6 +467,7 @@ img.logo {
   transition: 500ms ease-in-out;
   margin-top: 20px;
   font-family: 'Press Start 2P', cursive;
+  line-height: 1.2;
 }
 
 .back-link-style:hover {
