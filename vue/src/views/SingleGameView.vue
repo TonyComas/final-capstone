@@ -2,98 +2,103 @@
   <div class="body">
     <div class="single-game" v-if="game">
       <div class="game-column">
-      <img class="logo" v-bind:src="game.game_logo" alt="" />
+        <!-- <div class="img-button-cluster"> -->
+          <img class="logo" v-bind:src="game.game_logo" alt="" />
 
-      <div class="button-container">
-        <div class="buttons">
+          <div class="button-container">
+            <div class="buttons">
+              <input
+                v-if="$store.getters.isAdmin === true"
+                class="delete-button"
+                type="button"
+                value="Remove"
+                @click="deleteGame(game.game_id)"
+              />
+              <button
+                class="update-button"
+                v-if="$store.getters.isAdmin === true"
+                v-on:click="showForm = !showForm"
+              >
+                Update
+              </button>
+              <router-link
+                v-bind:to="{
+                  name: 'add-review',
+                  params: { id: game.game_id },
+                }"
+              >
+                Add Review
+              </router-link>
+            </div>
+          </div>
+        
+        <div class="game_info" v-if="!showForm">
+          <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
+          <p id="description">
+            <span>Description</span>: {{ game.description }}
+          </p>
+          <p id="release_date">
+            <span>Release Date</span>: {{ game.release_date }}
+          </p>
+          <p id="developers">
+            <span>Developers</span>: {{ game.developer_names }}
+          </p>
+          <p id="publishers">
+            <span>Publishers</span>: {{ game.publisher_names }}
+          </p>
+          <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
+        </div>
+        
+
+        <form
+          v-on:submit.prevent="updateGame()"
+          action=""
+          v-if="showForm"
+          class="game-form"
+        >
+          <label for="Game Name">Game Name</label>
+          <input type="text" v-model="game.game_name" placeholder="Game Name" />
+          <label for="Description">Description</label>
+
           <input
-            v-if="$store.getters.isAdmin === true"
-            class="delete-button"
-            type="button"
-            value="Remove"
-            @click="deleteGame(game.game_id)"
+            type="text"
+            v-model="game.description"
+            placeholder="Description"
           />
+          <label for="Release Date">Release Date</label>
+
+          <input type="date" v-model="game.release_date" />
+          <label for="Developers">Developers</label>
+
+          <input
+            type="text"
+            v-model="game.developer_names"
+            placeholder="Developers"
+          />
+          <label for="Publishers">Publishers</label>
+
+          <input
+            type="text"
+            v-model="game.publisher_names"
+            placeholder="Publishers"
+          />
+          <label for="Genres">Genres</label>
+
+          <input type="text" v-model="game.genres" placeholder="Genres" />
+          <button class="update-button">Update</button>
+        </form>
+
+        <div class="back-link">
           <button
-            class="update-button"
-            v-if="$store.getters.isAdmin === true"
-            v-on:click="showForm = !showForm"
+            class="back-link-style"
+            @click="$router.push({ name: 'games' })"
           >
-            Update
+            Back to Game Listing
           </button>
-          <router-link
-            v-bind:to="{
-              name: 'add-review',
-              params: { id: game.game_id },
-            }"
-          >
-            Add Review
-          </router-link>
         </div>
       </div>
-      <div class="game_info" v-if="!showForm">
-        <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
-        <p id="description"><span>Description</span>: {{ game.description }}</p>
-        <p id="release_date">
-          <span>Release Date</span>: {{ game.release_date }}
-        </p>
-        <p id="developers">
-          <span>Developers</span>: {{ game.developer_names }}
-        </p>
-        <p id="publishers">
-          <span>Publishers</span>: {{ game.publisher_names }}
-        </p>
-        <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
-      </div>
-
-      <form
-        v-on:submit.prevent="updateGame()"
-        action=""
-        v-if="showForm"
-        class="game-form"
-      >
-        <label for="Game Name">Game Name</label>
-        <input type="text" v-model="game.game_name" placeholder="Game Name" />
-        <label for="Description">Description</label>
-
-        <input
-          type="text"
-          v-model="game.description"
-          placeholder="Description"
-        />
-        <label for="Release Date">Release Date</label>
-
-        <input type="date" v-model="game.release_date" />
-        <label for="Developers">Developers</label>
-
-        <input
-          type="text"
-          v-model="game.developer_names"
-          placeholder="Developers"
-        />
-        <label for="Publishers">Publishers</label>
-
-        <input
-          type="text"
-          v-model="game.publisher_names"
-          placeholder="Publishers"
-        />
-        <label for="Genres">Genres</label>
-
-        <input type="text" v-model="game.genres" placeholder="Genres" />
-        <button class="update-button">Update</button>
-      </form>
-
-      <div class="back-link">
-        <button
-          class="back-link-style"
-          @click="$router.push({ name: 'games' })"
-        >
-          Back to Game Listing
-        </button>
-      </div>
-      </div>
       <div class="review-column">
-      <ReviewDisplayVue :reviews="game.reviews" />
+        <ReviewDisplayVue :reviews="game.reviews" />
       </div>
     </div>
   </div>
@@ -170,6 +175,10 @@ export default {
 span {
   color: rgb(11, 226, 11);
   max-width: 600px;
+}
+.img-button-cluster {
+  float: left;
+  margin-right: 10px;
 }
 
 .single-game {
