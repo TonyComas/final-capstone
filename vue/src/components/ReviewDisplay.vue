@@ -16,9 +16,8 @@
       </span>
       <h3 class="review-title" v-on:click="showForm = !showForm">- {{ review.review_title }}</h3>
       
-      <div v-if="!showForm">
+      <div >
         <p class="review-body">{{ review.review_body }}</p>
-      
       </div>
       <router-link
           tag="button"
@@ -68,7 +67,7 @@ export default {
   font-size: 22px;
   line-height: 35px;
 }
-.review-body {
+/* .review-body {
   
-}
+} */
 </style>
