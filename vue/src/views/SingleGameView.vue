@@ -1,6 +1,7 @@
 <template>
   <div class="body">
     <div class="single-game" v-if="game">
+      <div class="game-column">
       <img class="logo" v-bind:src="game.game_logo" alt="" />
 
       <div class="button-container">
@@ -12,7 +13,11 @@
             value="Remove"
             @click="deleteGame(game.game_id)"
           />
-          <button class="update-button" v-if="$store.getters.isAdmin === true" v-on:click="showForm = !showForm">
+          <button
+            class="update-button"
+            v-if="$store.getters.isAdmin === true"
+            v-on:click="showForm = !showForm"
+          >
             Update
           </button>
           <router-link
@@ -86,7 +91,10 @@
           Back to Game Listing
         </button>
       </div>
+      </div>
+      <div class="review-column">
       <ReviewDisplayVue :reviews="game.reviews" />
+      </div>
     </div>
   </div>
 </template>
@@ -167,11 +175,17 @@ span {
 .single-game {
   display: grid;
   grid-template-rows: auto 1fr;
-  max-width: 1920px;
-  min-width: 1850px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
+  grid-template: 25vw 65vw;
+  grid-template-areas: "game-column review-column";
+}
+.game-column {
+  grid-area: game-column;
+}
+.review-column {
+  grid-area: review-column;
 }
 .game_info {
   max-width: 400px;
@@ -204,7 +218,7 @@ img.logo {
 }
 
 .game-form {
-  margin-top: 400px;
+  margin-top: 10px;
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;
