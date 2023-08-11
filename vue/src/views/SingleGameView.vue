@@ -35,7 +35,7 @@
         
         <div class="game_info" v-if="!showForm">
           <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
-          <p id="description">
+          <p id="description" class="input-description">
             <span>Description</span>: {{ game.description }}
           </p>
           <p id="release_date">
@@ -283,7 +283,8 @@ img.logo {
   width: 100%;
   box-sizing: border-box;
 }
-.game-form label,
+
+
 .game-form input {
   display: block;
   width: 80%;
@@ -291,7 +292,31 @@ img.logo {
   border-radius: 3px;
   font-size: 16px;
   margin-bottom: 10px;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
 }
+.input-description {
+
+}
+/* 
+.form-element input,
+select,
+textarea {
+  width: 400px;
+  font-size: 11pt;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
+
+  
+} */
 .game-form button {
   font-size: 10px;
   height: 30px;
