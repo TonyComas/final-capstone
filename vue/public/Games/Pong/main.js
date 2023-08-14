@@ -11,6 +11,7 @@ const BALL_BASE_Y_VELOCITY = 1;
 const BALL_SPEED_CHANGE_PER_HIT = .25;
 const BALL_Y_VELOCITY_CHANGE_PER_HIT = 1.3;
 const PADDLE_SPEED = 4;
+let GAME_OVER = true;
 
 //key movement
 window.addEventListener("keydown", keyDown);
@@ -28,6 +29,15 @@ function keyDown(e){
         playerTwo.movingUp = true;
     } else if(key == "ArrowDown"){
         playerTwo.movingDown = true;
+    }
+
+    if(key == "Enter"){
+        if(GAME_OVER == true){
+            GAME_OVER = false;
+            scoreTwo = 0;
+            scoreOne = 0;
+        }
+        
     }
 }
 
@@ -108,16 +118,35 @@ const ball = new Element({
     yVelocity: BALL_BASE_Y_VELOCITY 
 });
 
+function startGameScreen(){
+    context.font = "18px Arial";
+    context.fillStyle = "white";
+    context.fillText("Press Enter To Start!", canvas.width / 2 - 90, canvas.height/2 - 100)
+}
+
+function playerOneWon(){
+    context.font = "18px Arial";
+    context.fillStyle = "white";
+    context.fillText("Player One Won!", canvas.width / 2 - 120, canvas.height/2 - 100)
+    
+}
+function playerTwoWon(){
+    context.font = "18px Arial";
+    context.fillStyle = "white";
+    context.fillText("Player Two Won!", canvas.width / 2 - 120, canvas.height/2 - 100)
+    
+}
+
 function displayScoreOne(){
     context.font = "18px Arial";
     context.fillStyle = "white";
-    context.fillText(scoreOne, canvas.width/2 - 60, 30);
+    context.fillText(scoreOne, canvas.width/2 - 80, 30);
 }
 
 function displayScoreTwo(){
     context.font = "18px Arial";
     context.fillStyle = "white";
-    context.fillText(scoreTwo, canvas.width/2 + 60, 30);
+    context.fillText(scoreTwo, canvas.width/2 + 75, 30);
 }
 
 function drawElement(element){
@@ -168,6 +197,10 @@ function ballWallCollision(){
         
     else if(ball.x + ball.xVelocity + ball.width < 0){
         scoreTwo += 1;
+        if(scoreTwo == 5){
+            playerTwoWon();
+            GAME_OVER = true;
+        }
         ball.xVelocity = BALL_BASE_SPEED;
         ball.x = canvas.width / 2 + ball.xVelocity;
         ball.yVelocity = BALL_BASE_Y_VELOCITY;
@@ -175,6 +208,10 @@ function ballWallCollision(){
     }
     else if(ball.x + ball.xVelocity > canvas.width) {
         scoreOne += 1;
+        if(scoreOne == 5){
+            playerOneWon();
+            GAME_OVER = true;
+        }
         ball.xVelocity = BALL_BASE_SPEED * -1;
         ball.x = canvas.width / 2 + ball.xVelocity;
         ball.yVelocity = BALL_BASE_Y_VELOCITY;
@@ -193,8 +230,12 @@ function drawElements(){
     displayScoreTwo();
 }
 function loop(){
-    movePlayers();
-    ballBounce();
+    if(GAME_OVER){
+        startGameScreen();
+    } else{
+        movePlayers();
+        ballBounce();    
+    }
     window.requestAnimationFrame(loop);
 }
 loop();

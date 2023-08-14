@@ -10,6 +10,7 @@ import SingleGameView from '../views/SingleGameView.vue'
 import AddGameView from '../views/AddGameView.vue'
 import DeleteReview from '../views/DeleteReview.vue'
 import AddReviewView from '../views/AddReviewView.vue'
+import PlayGamesView from '../views/PlayGamesView.vue'
 Vue.use(Router)
 
 /**
@@ -77,7 +78,11 @@ const router = new Router({
       name: 'add-review',
       component: AddReviewView
     },
-    
+    {
+      path: '/play',
+      name: 'play-games',
+      component: PlayGamesView
+    },
     {
     //KEEP THIS LAST
     path: '/games/:gameId',

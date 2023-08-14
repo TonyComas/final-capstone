@@ -7,7 +7,10 @@
       <router-link :to="{ name: 'games' }" class="nav-link"
         >>Game List</router-link
       >&nbsp;
-      
+      <router-link :to="{ name: 'play-games' }" class="nav-link"
+        >>Play Games</router-link
+      >&nbsp;
+
       <router-link v-bind:to="{ name: 'logout' }" class = "nav-link"
         v-if="$store.state.token != ''"
         >>Logout</router-link
