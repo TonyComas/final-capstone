@@ -2,6 +2,7 @@
   <div class="home">
     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
+    <img src="../assets/mariogaming.gif">
   </div>
 </template>
 
@@ -11,8 +12,6 @@ export default {
 };
 </script>
 <style scoped>
-
-
 
 .home {
   color: rgb(182, 7, 7);

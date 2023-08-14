@@ -197,7 +197,7 @@ export default {
   font-weight: 400;
   line-height: 1.2;
   margin: 0px;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.8em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -298,24 +298,7 @@ img.logo {
   margin: 2px;
   padding: 5px;
 }
-/* .input-description {
 
-} */
-/* 
-.form-element input,
-select,
-textarea {
-  width: 400px;
-  font-size: 11pt;
-  background: black;
-  color: rgb(11, 226, 11);
-  font-family: 'Press Start 2P', cursive;
-  font-weight: 50;
-  margin: 2px;
-  padding: 5px;
-
-  
-} */
 .game-form button {
   font-size: 10px;
   height: 30px;
@@ -359,7 +342,7 @@ textarea {
   height: 30px;
   border-radius: 30px;
   border-width: 1px;
-  text-align: right;
+  text-align: left;
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -380,7 +363,7 @@ textarea {
   font-weight: 400;
   line-height: 1.2;
   margin: 0px;
-  padding: 0.5em 1em;
+  padding-top: 0.6em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -445,7 +428,7 @@ textarea {
   font-weight: 400;
   line-height: 1.2;
   margin: 5px;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.8em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
