@@ -49,7 +49,7 @@ body {
   height: 100%;
   display: grid;
   grid-template-columns: 5vw 1fr 5vw;
-  grid-template-rows: 120px 1fr 100px;
+  grid-template-rows: 120px 1fr 30px;
   grid-template-areas: ". header ."
                        ". main ."
                        ". footer .";

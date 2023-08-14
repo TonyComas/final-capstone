@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <iframe id="gameFrame" :src="htmlPath" frameborder="0"></iframe>
+    <div id="pongDiv">
+        <iframe id="pongGameFrame" :src="htmlPath" frameborder="0"></iframe>
     </div>
 </template>
 
@@ -17,5 +17,14 @@ export default {
 </script>
 
 <style>
-
+iframe#pongGameFrame{
+    margin-top: 20px;
+    width: 680px;
+    height: 430px;
+    border-width: 5px;
+    border-color: green;
+}
+div#pongDiv {
+    text-align: center;
+}
 </style>
