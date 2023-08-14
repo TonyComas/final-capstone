@@ -1,5 +1,6 @@
 <template>
   <form v-on:submit.prevent>
+    <div class="add-form">
     <div id="addGame">
       <div class="Game_Title">
         <label class="addGame" for="title">Game Name: </label>
@@ -32,6 +33,7 @@
       <div class="actions">
           <button id="addGame" type="submit" v-if="game.game_name != ''" v-on:click="saveGame()">Add Game</button>
       </div>
+    </div>
     </div>
   </form>
 </template>
@@ -75,6 +77,21 @@ export default {
 
 div {
   padding-bottom: 10px;
+}
+
+.add-form textarea, input {
+  display: block;
+  width: 25%;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background: black;
+  color: green;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
 }
 
 button.addGame {

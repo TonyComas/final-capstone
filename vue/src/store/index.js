@@ -24,7 +24,8 @@ export default new Vuex.Store({
     categoryFilter: 'All',
     games: [],
     filter: 0,
-    reviews: []
+    reviews: [],
+    lists: []
 
   },
   getters: {
@@ -47,9 +48,11 @@ export default new Vuex.Store({
       } else{
         return false;
       }
-      
-  
+    },
+    getUserLists(state) {
+      return state.lists
     }
+
   
   },
   mutations: {
@@ -114,6 +117,12 @@ export default new Vuex.Store({
         state.commit("SET_ALL_REVIEWS",arrayFromApi);
       }).catch( err => console.error(err));
     },
+    /*loadLists(state, list){
+      GameServices.getListsByLists(list).then (response => {
+        const arrayFromApi = response.data;
+        state.commit("SET_ALL_REVIEWS",arrayFromApi);
+      }).catch( err => console.error(err));
+    }, */
 
     updateGame(state, gameObject) {
       //Find the game object in state

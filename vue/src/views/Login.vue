@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <form @submit.prevent="login">
+    <form @submit.prevent="login" autocomplete="off">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -10,11 +10,11 @@
       </div>
       <div class="form-input-group">
         <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <input type="text" class="signin" id="username" v-model="user.username" required autofocus />
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
+        <input type="password" class="signin" id="password" v-model="user.password" required />
       </div>
       <button class="signin-button" type="submit">Sign in</button>
       <p>
@@ -65,6 +65,25 @@ export default {
   margin-bottom: 1rem;
 }
 
+.signin {
+  display: block;
+  width: 25%;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background: rgb(0, 0, 0);
+  color: green;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgb(0, 0, 0) inset;
+  color: green;
+}
 
 label {
   margin-right: 0.5rem;

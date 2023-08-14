@@ -1,6 +1,6 @@
 <template>
     <div>
-        <vue-iframe id="gameFrame" :src="htmlPath"></vue-iframe>
+        <iframe id="gameFrame" :src="htmlPath" frameborder="0"></iframe>
     </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
     data(){
         return {
-            htmlPath: "/public/Games/Asteroids/Asteroids.html"
+            htmlPath: "@/games/Asteroids/Asteroids.html"
 
         };
     }
