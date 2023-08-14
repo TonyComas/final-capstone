@@ -13,7 +13,6 @@
       <router-link :to="{ name: 'games' }" class="nav-link"
         >>Game List</router-link
       >&nbsp;
- 
       <router-link v-bind:to="{ name: 'logout' }" class = "nav-link"
         v-if="$store.state.token != ''"
         >>Logout</router-link
