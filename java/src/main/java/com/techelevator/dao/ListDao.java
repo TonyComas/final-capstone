@@ -13,6 +13,6 @@ public interface ListDao {
 
     Lists getListForListId(int list_id);
 
-    boolean addGameToList(int game_id);
+    boolean addGameToList(int game_id, int list_id);
 
 }

@@ -181,6 +181,22 @@ public class JdbcGameDao implements GameDao{
         return game;
     }
 
+    @Override
+    public List<Game> getAllGamesByListId(int list_id) {
+        List<Integer> listOfGameIds = new ArrayList<>();
+        String sql = "SELECT game_id FROM  games_list WHERE list_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, list_id);
+        while (result.next()){
+            int newId = result.getInt("game_id");
+            listOfGameIds.add(newId);
+        }
+        List<Game> gameList = new ArrayList<>();
+        for(int id : listOfGameIds){
+            gameList.add(getGameByID(id));
+        }
+        return gameList;
+    }
+
     private Game mapRowToGame(SqlRowSet results){
         Game game = new Game();
         game.setGame_id(results.getInt("game_id"));
