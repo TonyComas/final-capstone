@@ -47,5 +47,10 @@ public class GameController {
         return gameDao.updateGame(game);
     }
 
+    @RequestMapping(path = "/list/{list_id}", method = RequestMethod.GET)
+    public List<Game> gamesFromList(@PathVariable("list_id") int list_id){
+        return gameDao.getAllGamesByListId(list_id);
+    }
+
 
 }

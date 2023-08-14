@@ -18,5 +18,6 @@ public interface GameDao {
 
     Game getGameByID(int id);
 
+    List<Game> getAllGamesByListId(int list_id);
 
 }
