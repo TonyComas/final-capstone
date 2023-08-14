@@ -17,6 +17,11 @@ export default {
   color: rgb(182, 7, 7);
 }
 
+img {
+  width: 70vw;
+  height: 67vh;
+}
+
 h1 {
   font-size: 16px;
 }
