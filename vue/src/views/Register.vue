@@ -1,13 +1,13 @@
 <template>
   <div id="register" class="text-center">
-    <form @submit.prevent="register">
+    <form @submit.prevent="register" autocomplete="off">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
       <div class="form-input-group">
         <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <input type="text" id="username" v-model="user.username" required autofocus/>
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
@@ -82,6 +82,10 @@ label {
   color: rgb(11, 226, 11);
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgb(0, 0, 0) inset;
+  color: green;
+}
 
 .create-account {
   font-size: 10px;

@@ -1,13 +1,19 @@
 <template>
   <header class="header">
     <div id="nav" class="nav-elements">
+      <div class="image_container">
+      <img src="../assets/8bit-mario-runing.gif" class="mario" />
+      </div>
+      <div class="second_image_container">
+        <img src="../assets/luigi-talk.gif" class="luigi" />
+        </div>
       <router-link v-bind:to="{ name: 'home' }" class="nav-link"
         >>Home</router-link
       >&nbsp;
       <router-link :to="{ name: 'games' }" class="nav-link"
         >>Game List</router-link
       >&nbsp;
-      
+ 
       <router-link v-bind:to="{ name: 'logout' }" class = "nav-link"
         v-if="$store.state.token != ''"
         >>Logout</router-link
@@ -37,7 +43,6 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-
 header {
   display: flex;
   flex-direction: column;
@@ -45,12 +50,42 @@ header {
   align-items: center;
   height: 120px;
   border-bottom: 2px rgb(11, 226, 11) solid;
+  position: relative;
 }
 
-#nav {
+.image_container {
+  left: 200px;
+  padding-right: 100px;
+  position: absolute;
+  margin-top: 100px;
+}
+
+.image_container img {
+  width: 80px;
+  height: auto;
+}
+
+.second_image_container {
+  right: 200px;
+  padding-left: 100px;
+  position: absolute;
+  margin-top: 100px;
+}
+
+.second_image_container img {
+  width: 80px;
+  height: auto;
+}
+
+.nav-elements {
   display: flex;
   align-items: center;
   flex-grow: 1;
+  max-height: 35px;
+}
+
+.nav-link {
+  margin: 0 5px;
 }
 
 .waviy {
