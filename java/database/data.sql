@@ -61,6 +61,17 @@ INSERT INTO publishers (publisher_name) VALUES
 ('Square Enix'),
 ('Psyonix');
 
+INSERT INTO lists (list_name, user_id) VALUES
+('Currently Playing', 1),
+('Want To Play', 1),
+('Finished Games', 1),
+('Favorite Games', 1),
+('Game Library', 1),
+('Currently Playing', 2),
+('Want To Play', 2),
+('Finished Games', 2),
+('Favorite Games', 2),
+('Game Library', 2);
 
 INSERT INTO video_games (game_name, game_logo, description, release_date) VALUES
 ('Destiny', 'https://i.ibb.co/VpfCYPT/destiny-logo-1n7t45dciywzuwck-fotor-202308081266.png', 'Sci-fi shooter, explore the universe, join Guardians in epic battles, loot, and co-op play.', '2014-09-09'),
@@ -92,7 +103,9 @@ INSERT INTO reviews (game_id, user_id, rating, review_title, review_body) VALUES
 (4, 1, 2, 'Test Review Title 4!', 'Test Review Body 4!'),
 (5, 1, 1, 'Test Review Title 5!', 'Test Review Body 5!');
 
-
+INSERT INTO average_rating (review_id, user_id, thumb_up_down) VALUES
+(1, 1, true),
+(2, 2, false);
 
 INSERT INTO game_genre (game_id, genre_id) VALUES
 (1, 7),

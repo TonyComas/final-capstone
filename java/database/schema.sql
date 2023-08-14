@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, video_games, game_genre, genre, publishers, developers, game_developers, game_publishers, reviews;
+DROP TABLE IF EXISTS users, video_games, game_genre, genre, publishers, developers, game_developers, game_publishers, reviews, lists, games_list, average_rating;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -35,6 +35,14 @@ CREATE TABLE video_games (
 	CONSTRAINT PK_game PRIMARY KEY (game_id)
 );
 
+CREATE TABLE lists (
+	list_id SERIAL,
+	list_name varchar(50),
+	user_id INT,
+	CONSTRAINT PK_lists PRIMARY KEY (list_id),
+	CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
 CREATE TABLE reviews (
 	review_id SERIAL,
 	game_id INT,
@@ -45,6 +53,23 @@ CREATE TABLE reviews (
 	CONSTRAINT PK_review PRIMARY KEY (review_id),
 	CONSTRAINT FK_review_game FOREIGN KEY (game_id) REFERENCES video_games (game_id),
 	CONSTRAINT FK_review_user FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+CREATE TABLE average_rating (
+	review_id INT,
+	user_id INT,
+	thumb_up_down BOOLEAN, 
+	CONSTRAINT PK_average_rating PRIMARY KEY (review_id, user_id),
+	CONSTRAINT FK_review FOREIGN KEY (review_id) REFERENCES reviews (review_id),
+	CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+CREATE TABLE games_list (
+	game_id INT,
+	list_id INT,
+	CONSTRAINT PK_games_list PRIMARY KEY (game_id, list_id),
+	CONSTRAINT FK_game FOREIGN KEY (game_id) REFERENCES video_games (game_id),
+	CONSTRAINT FK_list FOREIGN KEY (list_id) REFERENCES lists (list_id)
 );
 
 CREATE TABLE game_publishers (
