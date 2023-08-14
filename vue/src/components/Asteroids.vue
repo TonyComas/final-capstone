@@ -8,7 +8,7 @@
 export default {
     data(){
         return {
-            htmlPath: "@/games/Asteroids/Asteroids.html"
+            htmlPath: "/Games/Asteroids/Asteroids.html"
 
         };
     }
