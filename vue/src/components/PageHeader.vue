@@ -65,11 +65,11 @@ header {
   left: 200px;
   padding-right: 100px;
   position: absolute;
-  margin-top: 100px;
+  margin-top: 140px;
 }
 
 .image_container img {
-  width: 80px;
+  width: 70px;
   height: auto;
 }
 
@@ -77,11 +77,11 @@ header {
   right: 200px;
   padding-left: 100px;
   position: absolute;
-  margin-top: 100px;
+  margin-top: 140px;
 }
 
 .second_image_container img {
-  width: 80px;
+  width: 75px;
   height: auto;
 }
 

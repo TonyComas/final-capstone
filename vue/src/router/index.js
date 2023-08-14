@@ -12,6 +12,8 @@ import DeleteReview from '../views/DeleteReview.vue'
 import AddReviewView from '../views/AddReviewView.vue'
 import PlayGamesView from '../views/PlayGamesView.vue'
 import UserLists from '../views/UserLists.vue'
+import PongView from '../views/PongView.vue'
+import AsteroidsView from '../views/AsteroidsView.vue'
 Vue.use(Router)
 
 /**
@@ -91,6 +93,16 @@ const router = new Router({
       path: '/play',
       name: 'play-games',
       component: PlayGamesView
+    },
+    {
+      path: '/pong',
+      name: 'pong',
+      component: PongView
+    },
+    {
+      path: '/asteroids',
+      name: 'asteroids',
+      component: AsteroidsView
     },
     {
     //KEEP THIS LAST

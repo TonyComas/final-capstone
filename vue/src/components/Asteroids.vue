@@ -17,5 +17,11 @@ export default {
 </script>
 
 <style>
-
+iframe#gameFrame{
+    margin-top: 50px;
+    width: 790px;
+    height: 600px;
+    border-width: 5px;
+    border-color: green;
+}
 </style>
