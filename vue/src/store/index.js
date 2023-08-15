@@ -10,8 +10,9 @@ Vue.use(Vuex)
  * the page is refreshed. When that happens you need to check for the token in local storage and if it
  * exists you should set the header so that it will be attached to each request
  */
-const currentToken = localStorage.getItem('token')
+const currentToken = localStorage.getItem('token');
 const currentUser = JSON.parse(localStorage.getItem('user'));
+// const currentApiToken = localStorage.getItem('apiToken');
 
 if(currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
@@ -28,10 +29,11 @@ export default new Vuex.Store({
     lists: []
 
   },
+  // apiState: {
+  //   clientID: "ei2k1k0lgxbdbafivhk6au5omsq5w2",
+  //   Token: currentApiToken || '',
+  // },
   getters: {
-    categories(state) {
-      return state.categories;
-    },
     games(state) {
       return state.games;
     },
@@ -64,6 +66,10 @@ export default new Vuex.Store({
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     },
+    // SET_API_TOKEN(apiState,token){
+    //   apiState.token=token;
+    //   localStorage.setItem('apiToken',token)
+    // },
     SET_USER(state, user) {
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
@@ -87,6 +93,10 @@ export default new Vuex.Store({
     UPDATE_GAME(state,gameObject){
       let gameIndex = state.games.findIndex(game => game.game_id === gameObject.game_id)
       state.games[gameIndex] = gameObject;
+    },
+    UPDATE_REVIEW(state, reviewObject) {
+      let reviewIndex = state.reviews.findIndex(review => review.review_id === reviewObject.review_id)
+      state.reviews[reviewIndex] = reviewObject
     },
     UPDATE_FILTER(state, filter) {
       state.filter = filter;
@@ -139,6 +149,9 @@ export default new Vuex.Store({
       // Call API to update server
       GameServices.updateGame(gameObject.game_id, gameObject)
         .catch(err => console.error(err));
+    },
+    updateReview(state, reviewObject) {
+      state.commit("UPDATE_REVIEW",reviewObject);
     }
     
   },

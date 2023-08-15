@@ -41,5 +41,8 @@ export default {
     },
     updateReview(reviewId){
         return axios.put(`/reviews/${reviewId}`);
+    },
+    getListsByLists(userId) {
+        return axios.get(`/lists/user/${userId}`);
     }
 }
