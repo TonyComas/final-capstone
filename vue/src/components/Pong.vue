@@ -46,7 +46,7 @@ div#pongDiv {
   position: relative;
   height: 640px;
   width: 800px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  background: linear-gradient(#0bffe7, #ffeb3b, #02c412, #ff00e0);
   animation: rotate 6.5s linear infinite;
   z-index: 0;
   top: 10px;
@@ -56,7 +56,7 @@ div#pongDiv {
   position: absolute;
   height: 640px;
   width: 800px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  background: linear-gradient(#14ffe9, #ffeb3b, #02c412, #ff00e0);
   z-index: 0;
 }
 

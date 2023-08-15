@@ -51,7 +51,7 @@ iframe#gameFrame{
   position: relative;
   height: 640px;
   width: 800px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  background: linear-gradient(#0bffe7, #ffeb3b, #02c412, #ff00e0);
   animation: rotate 6.5s linear infinite;
   z-index: 0;
   top: 10px;
@@ -61,7 +61,7 @@ iframe#gameFrame{
   position: absolute;
   height: 640px;
   width: 800px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  background: linear-gradient(#0bffe7, #ffeb3b, #02c412, #ff00e0);
   z-index: 0;
 }
 
@@ -77,7 +77,7 @@ span:nth-child(4) {
   height: 620px;
   width: 780px;
   position: absolute;
-  background: black;
+  background: rgb(0, 0, 0);
   top: 10px;
   left: 10px;
   z-index: 2;
