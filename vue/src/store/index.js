@@ -41,6 +41,9 @@ export default new Vuex.Store({
     reviews(state) {
       return state.reviews;
     },
+    lists(state){
+      return state.lists
+    },
    
     isAdmin(state) {
       if(state.token != ''){
@@ -99,6 +102,9 @@ export default new Vuex.Store({
         1
       )
     },
+    SET_ALL_LISTS(state,lists){
+      state.lists = lists;
+    }
 
 
 
@@ -117,12 +123,12 @@ export default new Vuex.Store({
         state.commit("SET_ALL_REVIEWS",arrayFromApi);
       }).catch( err => console.error(err));
     },
-    /*loadLists(state, list){
-      GameServices.getListsByLists(list).then (response => {
+    loadLists(state, user){
+      GameServices.getListsByLists(user).then (response => {
         const arrayFromApi = response.data;
-        state.commit("SET_ALL_REVIEWS",arrayFromApi);
+        state.commit("SET_ALL_LISTS",arrayFromApi);
       }).catch( err => console.error(err));
-    }, */
+    }, 
 
     updateGame(state, gameObject) {
       //Find the game object in state

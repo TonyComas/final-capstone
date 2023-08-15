@@ -44,7 +44,7 @@ const router = new Router({
       }
     },
     {
-      path: '/lists',
+      path: '/lists/user/:userId',
       name: 'UserLists',
       component: UserLists,
       meta: {
