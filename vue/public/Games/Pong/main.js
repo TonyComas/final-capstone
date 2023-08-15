@@ -25,9 +25,9 @@ function keyDown(e){
         playerOne.movingDown = true;
     }
 
-    if(key == "ArrowUp"){
+    if(key == "o"){
         playerTwo.movingUp = true;
-    } else if(key == "ArrowDown"){
+    } else if(key == "l"){
         playerTwo.movingDown = true;
     }
 
@@ -49,9 +49,9 @@ function keyUp(e){
         playerOne.movingDown = false;
     }
 
-    if(key == "ArrowUp"){
+    if(key == "o"){
         playerTwo.movingUp = false;
-    } else if(key == "ArrowDown"){
+    } else if(key == "l"){
         playerTwo.movingDown = false;
     }
 }
@@ -122,6 +122,7 @@ function startGameScreen(){
     context.font = "18px Arial";
     context.fillStyle = "white";
     context.fillText("Press Enter To Start!", canvas.width / 2 - 90, canvas.height/2 - 100)
+    context.fillText("Player One W / S     :     Player Two O / L", canvas.width / 2 - 170, canvas.height/2 - 70)
 }
 
 function playerOneWon(){

@@ -38,7 +38,7 @@ iframe#pongGameFrame{
 div#pongDiv {
     text-align: center;
 }
-/* 
+
 :root {
   --line-width: 8px;
   --line-color: #d808b5;
@@ -112,6 +112,6 @@ div#pongDiv {
 
 .box__line--right {
   right: calc(-1 * var(--line-width));
-} */
+}
 
 </style>
