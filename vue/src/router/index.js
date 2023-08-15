@@ -10,6 +10,10 @@ import SingleGameView from '../views/SingleGameView.vue'
 import AddGameView from '../views/AddGameView.vue'
 import DeleteReview from '../views/DeleteReview.vue'
 import AddReviewView from '../views/AddReviewView.vue'
+import PlayGamesView from '../views/PlayGamesView.vue'
+import UserLists from '../views/UserLists.vue'
+import PongView from '../views/PongView.vue'
+import AsteroidsView from '../views/AsteroidsView.vue'
 Vue.use(Router)
 
 /**
@@ -37,6 +41,14 @@ const router = new Router({
       path: "/login",
       name: "login",
       component: Login,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/lists',
+      name: 'UserLists',
+      component: UserLists,
       meta: {
         requiresAuth: false
       }
@@ -77,7 +89,21 @@ const router = new Router({
       name: 'add-review',
       component: AddReviewView
     },
-    
+    {
+      path: '/play',
+      name: 'play-games',
+      component: PlayGamesView
+    },
+    {
+      path: '/pong',
+      name: 'pong',
+      component: PongView
+    },
+    {
+      path: '/asteroids',
+      name: 'asteroids',
+      component: AsteroidsView
+    },
     {
     //KEEP THIS LAST
     path: '/games/:gameId',

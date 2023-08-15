@@ -13,7 +13,15 @@
       <router-link :to="{ name: 'games' }" class="nav-link"
         >>Game List</router-link
       >&nbsp;
- 
+      <router-link :to="{ name: 'play-games' }" class="nav-link"
+        >>Play Games</router-link
+      >&nbsp;
+
+      <router-link v-bind:to="{ name: 'UserLists' }" class = "nav-link"
+        v-if="$store.state.token != ''"
+        >>View Profile</router-link
+      >&nbsp;
+
       <router-link v-bind:to="{ name: 'logout' }" class = "nav-link"
         v-if="$store.state.token != ''"
         >>Logout</router-link
@@ -57,11 +65,11 @@ header {
   left: 200px;
   padding-right: 100px;
   position: absolute;
-  margin-top: 100px;
+  margin-top: 140px;
 }
 
 .image_container img {
-  width: 80px;
+  width: 70px;
   height: auto;
 }
 
@@ -69,11 +77,11 @@ header {
   right: 200px;
   padding-left: 100px;
   position: absolute;
-  margin-top: 100px;
+  margin-top: 140px;
 }
 
 .second_image_container img {
-  width: 80px;
+  width: 75px;
   height: auto;
 }
 
