@@ -34,9 +34,34 @@
           <form action="">
 
           </form>
+
+          <form
+        v-on:submit.prevent="updateReview()"
+        action=""
+        v-if="showReviewForm"
+        class="review-form"
+      >
+        <label for="Review Body">Review Body</label>
+        <textarea type="text" v-model="review.review_body" placeholder="Review" cols="5" />
+
+        <label for="Review Rating">Rating</label>
+        <select id="rating" v-model.number="review.rating">
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
+        
+        <button class="update-form-button">Update Review</button>
+        </form>
+        <button
+                class="update-review"
+                v-on:click="showReviewForm = !showReviewForm"
+                >Update
+                
+                </button>
         </div>
-      
-      
     </div>
   </div>
 </template>
@@ -44,18 +69,20 @@
 <script>
 export default {
   name: "review-display",
-//   props: ["review"],
-  // data(){
-  //   showForm: false,
-  // },
+data() {
+    return {
+      reviewId: 0,
+      review: null,
+      showReviewForm: false,
+    };
+},
   methods: {
-    // toggleForm() {
-    //   this.showForm = !this.showForm;
-    // }
-
     updateReview() {
       this.$store.dispatch("updateReview", this.review);
       this.toggleReviewForm();
+    },
+    toggleReviewForm() {
+      this.showReviewForm = !this.showReviewForm;
     },
   },
 };
