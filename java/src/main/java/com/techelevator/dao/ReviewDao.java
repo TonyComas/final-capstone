@@ -15,4 +15,6 @@ public interface ReviewDao {
 
     void deleteReview(int review_id);
 
+    Reviews updateReview(Reviews review);
+
 }
