@@ -2,8 +2,8 @@
     <div id="pongDiv">
         <div class="pong-center-container">
     <div class="pong-game-container">
-        <div class="outer-circle">
-            <div class="inner-circle">
+        <div class="pong-outer-circle">
+            <div class="pong-inner-circle">
         <iframe id="pongGameFrame" :src="htmlPath" frameborder="0"></iframe>
         </div>
         </div>
@@ -27,9 +27,9 @@ export default {
 
 <style>
 iframe#pongGameFrame{
-    margin-top: 30px;
-    width: 790px;
-    height: 600px;
+    margin-top: 10px;
+    width: 670px;
+    height: 420px;
     z-index: 1;
 }
 div#pongDiv {
@@ -44,9 +44,9 @@ div#pongDiv {
 
 .pong-outer-circle {
   position: relative;
-  height: 640px;
-  width: 800px;
-  background: linear-gradient(#0bffe7, #ffeb3b, #02c412, #ff00e0);
+  height: 450px;
+  width: 690px;
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
   animation: rotate 6.5s linear infinite;
   z-index: 0;
   top: 10px;
@@ -54,9 +54,9 @@ div#pongDiv {
 
 .pong-outer-circle span {
   position: absolute;
-  height: 640px;
-  width: 800px;
-  background: linear-gradient(#14ffe9, #ffeb3b, #02c412, #ff00e0);
+  height: 450px;
+  width: 690px;
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
   z-index: 0;
 }
 
@@ -69,8 +69,8 @@ span:nth-child(4) {
 }
 
 .pong-inner-circle {
-  height: 620px;
-  width: 780px;
+  height: 430px;
+  width: 670px;
   position: absolute;
   background: black;
   top: 10px;

@@ -237,8 +237,8 @@ span {
   /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
-  grid-template-columns: 500px 1fr;
-  grid-template-areas: "game-column review-column";
+  grid-template-columns: 500px 100px 1fr;
+  grid-template-areas: "game-column . review-column";
 }
 .game-column {
   grid-area: game-column;
