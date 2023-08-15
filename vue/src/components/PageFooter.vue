@@ -44,7 +44,7 @@ export default {
 
 <style>
         .footer {
-            padding: 20px;
+            padding: 10px;
             text-align: center;
         }
 

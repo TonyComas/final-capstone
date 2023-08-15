@@ -72,6 +72,17 @@ public class JdbcReviewDao implements ReviewDao{
         jdbcTemplate.update(sql,review_id);
     }
 
+    @Override
+    public Reviews updateReview(Reviews review) {
+        Reviews updatedReview = new Reviews();
+        String sql = "UPDATE reviews SET rating = ?, review_title = ?, review_body = ? WHERE review_id = ?;";
+        jdbcTemplate.update(sql, review.getRating(), review.getReview_title(), review.getReview_body(), review.getReview_id());
+        updatedReview = getReviewFromReviewId(review.getReview_id());
+
+        return updatedReview;
+    }
+
+
     private Reviews mapRowToReview(SqlRowSet result){
         Reviews review = new Reviews();
         review.setReview_id(result.getInt("review_id"));

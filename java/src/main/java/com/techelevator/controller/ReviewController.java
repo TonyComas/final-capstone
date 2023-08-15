@@ -41,6 +41,11 @@ public class ReviewController {
         reviewDao.deleteReview(review_id);
     }
 
+    @RequestMapping (path="/{review_id}", method = RequestMethod.PUT)
+    public Reviews updateReview(@RequestBody Reviews review){
+        return reviewDao.updateReview(review);
+    }
+
 
 
 }

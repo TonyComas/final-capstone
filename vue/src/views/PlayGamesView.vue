@@ -1,20 +1,20 @@
 <template>
   <div>
         <h1>Play A Game</h1>
-        <Asteroids />
+        <div id="pong">
+            <router-link :to="{ name: 'pong' }" class="nav-link">Pong</router-link>
+            <router-link :to="{ name: 'asteroids' }" class="nav-link">Asteroids</router-link>
+        </div>
+        
   </div>
 </template>
 
 <script>
-import Asteroids from '@/components/Asteroids.vue'
 
 export default {
-    components: {
-        Asteroids
-    }
+    
 }
 </script>
 
 <style>
-
 </style>
