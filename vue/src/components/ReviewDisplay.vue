@@ -29,6 +29,12 @@
         >
           Delete Review
         </router-link>
+
+        <div class="update-review">
+          <form action="">
+
+          </form>
+        </div>
       
       
     </div>
@@ -43,9 +49,9 @@ export default {
   //   showForm: false,
   // },
   methods: {
-    // toggleForm() {
-    //   this.showForm = !this.showForm;
-    // }
+    toggleForm() {
+      this.showForm = !this.showForm;
+    }
   },
 };
 </script>

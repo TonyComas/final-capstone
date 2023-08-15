@@ -39,5 +39,8 @@ export default {
     },
     addReview(review){
         return axios.post('/reviews/',review);
+    },
+    getListsByLists(userId) {
+        return axios.get(`/lists/user/${userId}`);
     }
 }

@@ -3,36 +3,36 @@
     <div class="single-game" v-if="game">
       <div class="game-column">
         <!-- <div class="img-button-cluster"> -->
-          <img class="logo" v-bind:src="game.game_logo" alt="" />
+        <img class="logo" v-bind:src="game.game_logo" alt="" />
 
-          <div class="button-container">
-            <div class="buttons">
-              <input
-                v-if="$store.getters.isAdmin === true"
-                class="delete-button"
-                type="button"
-                value="Remove"
-                @click="deleteGame(game.game_id)"
-              />
-              <button
-                class="update-button"
-                v-if="$store.getters.isAdmin === true"
-                v-on:click="showForm = !showForm"
-              >
-                Update
-              </button>
-              <router-link
-                v-bind:to="{
-                  name: 'add-review',
-                  params: { id: game.game_id },
-                }"
-                class="add-review-button"
-              >
-                Add Review
-              </router-link>
-            </div>
+        <div class="button-container">
+          <div class="buttons">
+            <input
+              v-if="$store.getters.isAdmin === true"
+              class="delete-button"
+              type="button"
+              value="Remove"
+              @click="deleteGame(game.game_id)"
+            />
+            <button
+              class="update-button"
+              v-if="$store.getters.isAdmin === true"
+              v-on:click="showForm = !showForm"
+            >
+              Update
+            </button>
+            <router-link
+              v-bind:to="{
+                name: 'add-review',
+                params: { id: game.game_id },
+              }"
+              class="add-review-button"
+            >
+              Add Review
+            </router-link>
           </div>
-        
+        </div>
+
         <div class="game_info" v-if="!showForm">
           <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
           <p id="description" class="input-description">
@@ -49,7 +49,6 @@
           </p>
           <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
         </div>
-        
 
         <form
           v-on:submit.prevent="updateGame()"
@@ -59,32 +58,32 @@
         >
           <label for="Game Name">Game Name</label>
           <input type="text" v-model="game.game_name" placeholder="Game Name" />
+         
           <label for="Description">Description</label>
-
           <input
             type="text"
             v-model="game.description"
             placeholder="Description"
           />
+         
           <label for="Release Date">Release Date</label>
-
           <input type="date" v-model="game.release_date" />
+         
           <label for="Developers">Developers</label>
-
           <input
             type="text"
             v-model="game.developer_names"
             placeholder="Developers"
           />
+         
           <label for="Publishers">Publishers</label>
-
           <input
             type="text"
             v-model="game.publisher_names"
             placeholder="Publishers"
           />
+        
           <label for="Genres">Genres</label>
-
           <input type="text" v-model="game.genres" placeholder="Genres" />
           <button class="update-button">Update</button>
         </form>
@@ -157,7 +156,7 @@ export default {
 @import url("https://fonts.cdnfonts.com/css/gotham-6");
 
 .body {
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   color: green;
   line-height: 1.2;
   font-size: 14px;
@@ -197,7 +196,7 @@ export default {
   font-weight: 400;
   line-height: 1.2;
   margin: 0px;
-  padding: 0.5em 0.8em;
+  padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -247,7 +246,6 @@ span {
   grid-area: review-column;
 }
 
-
 img.logo {
   width: 300px;
   height: 300px;
@@ -262,7 +260,7 @@ img.logo {
   border-radius: 30px;
   border-width: 1px;
   text-align: left;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
 }
 .update-button:hover {
   background-color: rgb(255, 255, 255);
@@ -283,7 +281,6 @@ img.logo {
   color: rgb(11, 226, 11);
 }
 
-
 .game-form input {
   display: block;
   width: 80%;
@@ -293,12 +290,29 @@ img.logo {
   margin-bottom: 10px;
   background: black;
   color: green;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-weight: 50;
   margin: 2px;
   padding: 5px;
 }
+/* .input-description {
 
+} */
+/* 
+.form-element input,
+select,
+textarea {
+  width: 400px;
+  font-size: 11pt;
+  background: black;
+  color: rgb(11, 226, 11);
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 50;
+  margin: 2px;
+  padding: 5px;
+
+  
+} */
 .game-form button {
   font-size: 10px;
   height: 30px;
@@ -342,7 +356,7 @@ img.logo {
   height: 30px;
   border-radius: 30px;
   border-width: 1px;
-  text-align: left;
+  text-align: right;
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -363,14 +377,14 @@ img.logo {
   font-weight: 400;
   line-height: 1.2;
   margin: 0px;
-  padding-top: 0.6em;
+  padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
 }
 
 .delete-button:hover,
@@ -428,7 +442,7 @@ img.logo {
   font-weight: 400;
   line-height: 1.2;
   margin: 5px;
-  padding: 0.5em 0.8em;
+  padding: 0.5em 1em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -473,7 +487,7 @@ img.logo {
     -1px 1px 0 rgb(16, 87, 2), 1px -1px 0 rgb(16, 87, 2);
   transition: 500ms ease-in-out;
   margin-top: 20px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   line-height: 1.2;
 }
 
