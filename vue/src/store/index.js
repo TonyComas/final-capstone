@@ -29,9 +29,6 @@ export default new Vuex.Store({
 
   },
   getters: {
-    categories(state) {
-      return state.categories;
-    },
     games(state) {
       return state.games;
     },
@@ -88,6 +85,10 @@ export default new Vuex.Store({
       let gameIndex = state.games.findIndex(game => game.game_id === gameObject.game_id)
       state.games[gameIndex] = gameObject;
     },
+    UPDATE_REVIEW(state, reviewObject) {
+      let reviewIndex = state.reviews.findIndex(review => review.review_id === reviewObject.review_id)
+      state.reviews[reviewIndex] = reviewObject
+    },
     UPDATE_FILTER(state, filter) {
       state.filter = filter;
     },
@@ -139,6 +140,9 @@ export default new Vuex.Store({
       // Call API to update server
       GameServices.updateGame(gameObject.game_id, gameObject)
         .catch(err => console.error(err));
+    },
+    updateReview(state, reviewObject) {
+      state.commit("UPDATE_REVIEW",reviewObject);
     }
     
   },
