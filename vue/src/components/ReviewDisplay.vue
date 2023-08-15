@@ -46,6 +46,11 @@ export default {
     // toggleForm() {
     //   this.showForm = !this.showForm;
     // }
+
+    updateReview() {
+      this.$store.dispatch("updateReview", this.review);
+      this.toggleReviewForm();
+    },
   },
 };
 </script>

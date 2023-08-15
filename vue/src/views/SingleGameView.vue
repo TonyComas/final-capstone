@@ -30,6 +30,12 @@
               >
                 Add Review
               </router-link>
+              <button
+                class="update-review"
+                v-on:click="showReviewForm = !showReviewForm"
+                >Update
+                
+                </button>
             </div>
           </div>
         
@@ -50,6 +56,20 @@
           <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
         </div>
         
+      <form
+        v-on:submit.prevent="updateReview()"
+        action=""
+        v-if="showReviewForm"
+        class="review-form"
+      >
+        <label for="Review Body">Review Body</label>
+        <textarea type="text" v-model="review.review_body" placeholder="Review" cols="5" />
+
+        <label for="Review Rating">Rating</label>
+        <input type ="number" v-model="review.ratingStar" placeholder="Rating" />
+        <button class="update-form-button">Update Review</button>
+        </form>
+
 
         <form
           v-on:submit.prevent="updateGame()"
@@ -116,12 +136,17 @@ export default {
       gameId: 0,
       game: null,
       showForm: false,
+      showReviewForm: false,
     };
   },
   methods: {
     updateGame() {
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
+    },
+    updateReview() {
+      this.$store.dispatch("updateReview", this.review);
+      this.toggleReviewForm();
     },
     deleteGame(gameId) {
       GameServices.deleteGame(gameId).then((response) => {
@@ -135,6 +160,9 @@ export default {
     },
     toggleForm() {
       this.showForm = !this.showForm;
+    },
+    toggleReviewForm() {
+      this.showReviewForm = !this.showReviewForm;
     },
   },
   created() {
