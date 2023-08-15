@@ -1,9 +1,11 @@
 <template>
   <div>
-
-    <div class="review" 
-    v-for="review in this.$store.getters.reviews" 
-    v-bind:key="review.id">
+    <div
+      class="review"
+      v-for="review in this.$store.getters.reviews"
+      v-bind:key="review.id"
+    >
+    <div v-if="!showReviewForm">
       <h4>{{ review.reviewer }}</h4>
       <span class="rating">
         <img
@@ -14,91 +16,68 @@
           v-bind:key="n"
         />
       </span>
-      <h3 class="review-title" v-on:click="showForm = !showForm">- {{ review.review_title }}</h3>
-      
+      <h3 class="review-title" v-on:click="showForm = !showForm">
+        - {{ review.review_title }}
+      </h3>
+
       <div>
         <p class="review-body">{{ review.review_body }}</p>
       </div>
-      <router-link v-if="$store.getters.isAdmin === true || review.user_id === $store.state.user.id"
-          tag="button"
-          :to="{
-            name: 'confirm-delete',
-            params: { reviewId: review.review_id },
-          }"
-          class="delete-review-button"
-        >
-          Delete Review
-        </router-link>
-
-        <div class="update-review">
-          <form action="">
-
-          </form>
-
-          <form
-        v-on:submit.prevent="updateReview()"
-        action=""
-        v-if="showReviewForm"
-        class="review-form"
+    </div>
+      <router-link
+        v-if="
+          $store.getters.isAdmin === true ||
+          review.user_id === $store.state.user.id
+        "
+        tag="button"
+        :to="{
+          name: 'confirm-delete',
+          params: { reviewId: review.review_id },
+        }"
+        class="delete-review-button"
       >
-        <label for="Review Body">Review Body</label>
-        <textarea type="text" v-model="review.review_body" placeholder="Review" cols="5" />
+        Delete Review
+      </router-link>
+      
+      
+      <button class="update-review" v-on:click="showReviewForm = !showReviewForm">Update</button>
 
-        <label for="Review Rating">Rating</label>
-        <select id="rating" v-model.number="review.rating">
-        <option value="1">1 Star</option>
-        <option value="2">2 Stars</option>
-        <option value="3">3 Stars</option>
-        <option value="4">4 Stars</option>
-        <option value="5">5 Stars</option>
-      </select>
-        
-        <button class="update-form-button">Update Review</button>
-        </form>
-        <button
-                class="update-review"
-                v-on:click="showReviewForm = !showReviewForm"
-                >Update
-                
-                </button>
-        </div>
+    <UpdateReviewVue v-if="showReviewForm" v-bind:updateCurrentReview="review" v-on:submit="updateReview()" />
+     
     </div>
   </div>
 </template>
 
 <script>
+import UpdateReviewVue from './UpdateReview.vue';
 export default {
   name: "review-display",
-data() {
+  components: {
+    UpdateReviewVue
+  },
+  data() {
     return {
       reviewId: 0,
-      review: null,
       showReviewForm: false,
     };
-},
+  },
   methods: {
-    updateReview() {
-      this.$store.dispatch("updateReview", this.review);
-      this.toggleReviewForm();
-    },
-    toggleReviewForm() {
-      this.showReviewForm = !this.showReviewForm;
-    },
+    
   },
 };
 </script>
 
 <style>
-.review{
+.review {
   text-align: left;
   min-width: 40vw;
 }
 .ratingStar {
-  width:35px;
+  width: 35px;
   display: inline;
   float: left;
 }
-.review-title{
+.review-title {
   display: inline;
   font-size: 22px;
   line-height: 35px;
@@ -138,7 +117,7 @@ data() {
   position: relative;
   z-index: 1;
   transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
 }
 
 .delete-review-button:hover,
@@ -152,5 +131,4 @@ data() {
   font-size: 12.8px;
   box-shadow: 0 0 20px 20px #e74c3c inset;
 }
-
 </style>

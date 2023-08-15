@@ -2,7 +2,7 @@
   <div class="user_lists">
       <h1>Your Lists</h1>
      
-      <ShowListsOfGamesVue v-for="list in list" :key="list.list_id" />
+      <ShowListsOfGamesVue :list="list" v-for="list in filteredLists" :key="list.list_id" />
     
       </div>
 </template>
@@ -24,9 +24,13 @@ export default {
         };
     },
     computed: {
-        list(){
-            console.log("This gets the user lists",this.$store.getters.getUserLists)
-            return this.$store.getters.getUserLists
+        filteredLists(){
+            const userList = this.$store.getters.getUserLists
+            let filteredLists = [];
+            userList.forEach(list => {
+                filteredLists.push(list);
+            })
+            return filteredLists;
         }
     },
     methods: {

@@ -7,7 +7,7 @@
           },
       }">
         <div>
-            <h1 class="name">{{lists.list_name}}</h1>
+            <h1 class="name">{{list.list_name}}</h1>
 
         </div>
       </router-link>
@@ -19,11 +19,11 @@
 <script>
 export default {
     name: "list-of-lists",
+    props: ["list"],
     data() {
         return {
-
         }
-    }
+    },
 
 }
 </script>

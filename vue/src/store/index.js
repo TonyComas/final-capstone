@@ -149,9 +149,6 @@ export default new Vuex.Store({
       // Call API to update server
       GameServices.updateGame(gameObject.game_id, gameObject)
         .catch(err => console.error(err));
-    },
-    updateReview(state, reviewObject) {
-      state.commit("UPDATE_REVIEW",reviewObject);
     }
     
   },
