@@ -1,17 +1,18 @@
 const canvas = document.getElementById("pongGame");
 const context = canvas.getContext("2d");
-canvas.width=760;
-canvas.height=580;
+canvas.width=650;
+canvas.height=400;
 
 let scoreOne = 0;
 let scoreTwo = 0;
+let gameOver = true;
 
 const BALL_BASE_SPEED = 3;
 const BALL_BASE_Y_VELOCITY = 1;
 const BALL_SPEED_CHANGE_PER_HIT = .25;
 const BALL_Y_VELOCITY_CHANGE_PER_HIT = 1.3;
 const PADDLE_SPEED = 4;
-let GAME_OVER = true;
+
 
 //key movement
 window.addEventListener("keydown", keyDown);
@@ -32,8 +33,8 @@ function keyDown(e){
     }
 
     if(key == "Enter"){
-        if(GAME_OVER == true){
-            GAME_OVER = false;
+        if(gameOver == true){
+            gameOver = false;
             scoreTwo = 0;
             scoreOne = 0;
         }
@@ -200,7 +201,7 @@ function ballWallCollision(){
         scoreTwo += 1;
         if(scoreTwo == 5){
             playerTwoWon();
-            GAME_OVER = true;
+            gameOver = true;
         }
         ball.xVelocity = BALL_BASE_SPEED;
         ball.x = canvas.width / 2 + ball.xVelocity;
@@ -211,7 +212,7 @@ function ballWallCollision(){
         scoreOne += 1;
         if(scoreOne == 5){
             playerOneWon();
-            GAME_OVER = true;
+            gameOver = true;
         }
         ball.xVelocity = BALL_BASE_SPEED * -1;
         ball.x = canvas.width / 2 + ball.xVelocity;
@@ -231,7 +232,7 @@ function drawElements(){
     displayScoreTwo();
 }
 function loop(){
-    if(GAME_OVER){
+    if(gameOver){
         startGameScreen();
     } else{
         movePlayers();
