@@ -1,7 +1,7 @@
 const canvas = document.getElementById("pongGame");
 const context = canvas.getContext("2d");
-canvas.width=650;
-canvas.height=400;
+canvas.width=760;
+canvas.height=580;
 
 let scoreOne = 0;
 let scoreTwo = 0;

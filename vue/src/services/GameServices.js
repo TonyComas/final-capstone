@@ -18,7 +18,6 @@ export default {
     updateGame(gameId, game) {
         return axios.put(`/games/${gameId}`,game);
     },
-
     getAllGenres() {
         return axios.get('/search/genre');
     },
@@ -39,5 +38,11 @@ export default {
     },
     addReview(review){
         return axios.post('/reviews/',review);
+    },
+    updateReview(reviewId){
+        return axios.put(`/reviews/${reviewId}`);
+    },
+    getListsByLists(userId) {
+        return axios.get(`/lists/user/${userId}`);
     }
 }

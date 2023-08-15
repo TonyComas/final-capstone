@@ -17,7 +17,7 @@
         >>Play Games</router-link
       >&nbsp;
 
-      <router-link v-bind:to="{ name: 'UserLists' }" class = "nav-link"
+      <router-link v-bind:to="{ name: 'UserLists', params: {userId: $store.state.user.id}}" class = "nav-link"
         v-if="$store.state.token != ''"
         >>View Profile</router-link
       >&nbsp;
