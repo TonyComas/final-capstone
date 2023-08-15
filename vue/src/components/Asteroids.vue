@@ -65,10 +65,6 @@ iframe#gameFrame{
   z-index: 0;
 }
 
-span:nth-child(2) {
-  filter: blur(10px);
-}
-
 span:nth-child(3) {
   filter: blur(25px);
 }

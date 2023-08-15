@@ -3,33 +3,34 @@
     <div class="single-game" v-if="game">
       <div class="game-column">
         <!-- <div class="img-button-cluster"> -->
-        <img class="logo" v-bind:src="game.game_logo" alt="" />
+          <img class="logo" v-bind:src="game.game_logo" alt="" />
 
-        <div class="button-container">
-          <div class="buttons">
-            <input
-              v-if="$store.getters.isAdmin === true"
-              class="delete-button"
-              type="button"
-              value="Remove"
-              @click="deleteGame(game.game_id)"
-            />
-            <button
-              class="update-button"
-              v-if="$store.getters.isAdmin === true"
-              v-on:click="showForm = !showForm"
-            >
-              Update
-            </button>
-            <router-link
-              v-bind:to="{
-                name: 'add-review',
-                params: { id: game.game_id },
-              }"
-              class="add-review-button"
-            >
-              Add Review
-            </router-link>
+          <div class="button-container">
+            <div class="buttons">
+              <input
+                v-if="$store.getters.isAdmin === true"
+                class="delete-button"
+                type="button"
+                value="Remove"
+                @click="deleteGame(game.game_id)"
+              />
+              <button
+                class="update-button"
+                v-if="$store.getters.isAdmin === true"
+                v-on:click="showForm = !showForm"
+              >
+                Update
+              </button>
+              <router-link
+                v-bind:to="{
+                  name: 'add-review',
+                  params: { id: game.game_id },
+                }"
+                class="add-review-button"
+              >
+                Add Review
+              </router-link>
+            </div>
           </div>
         </div>
 
@@ -49,7 +50,6 @@
           </p>
           <p id="genres"><span>Genres</span>: {{ game.genres }}</p>
         </div>
-
         <form
           v-on:submit.prevent="updateGame()"
           action=""
@@ -101,7 +101,6 @@
         <ReviewDisplayVue :reviews="game.reviews" />
       </div>
     </div>
-  </div>
 </template>
 <script>
 import GameServices from "@/services/GameServices.js";
@@ -122,6 +121,7 @@ export default {
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
     },
+    
     deleteGame(gameId) {
       GameServices.deleteGame(gameId).then((response) => {
         if (response.status === 200) {
