@@ -52,7 +52,7 @@ iframe#gameFrame{
   height: 640px;
   width: 800px;
   background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
-  animation: rotate 6.5s linear infinite;
+  animation: rotate 5s linear infinite;
   z-index: 0;
   top: 10px;
 }
@@ -64,6 +64,8 @@ iframe#gameFrame{
   background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
   z-index: 0;
 }
+
+
 
 span:nth-child(3) {
   filter: blur(25px);

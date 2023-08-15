@@ -32,7 +32,7 @@
               </router-link>
             </div>
           </div>
-        </div>
+        
 
         <div class="game_info" v-if="!showForm">
           <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
@@ -100,6 +100,7 @@
       <div class="review-column">
         <ReviewDisplayVue :reviews="game.reviews" />
       </div>
+    </div>
     </div>
 </template>
 <script>
@@ -196,7 +197,7 @@ export default {
   font-weight: 400;
   line-height: 1.2;
   margin: 0px;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.8em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -236,8 +237,8 @@ span {
   /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
-  grid-template-columns: 500px 1fr;
-  grid-template-areas: "game-column review-column";
+  grid-template-columns: 500px 100px 1fr;
+  grid-template-areas: "game-column . review-column";
 }
 .game-column {
   grid-area: game-column;
@@ -295,24 +296,7 @@ img.logo {
   margin: 2px;
   padding: 5px;
 }
-/* .input-description {
 
-} */
-/* 
-.form-element input,
-select,
-textarea {
-  width: 400px;
-  font-size: 11pt;
-  background: black;
-  color: rgb(11, 226, 11);
-  font-family: 'Press Start 2P', cursive;
-  font-weight: 50;
-  margin: 2px;
-  padding: 5px;
-
-  
-} */
 .game-form button {
   font-size: 10px;
   height: 30px;
@@ -377,7 +361,7 @@ textarea {
   font-weight: 400;
   line-height: 1.2;
   margin: 0px;
-  padding: 0.5em 1em;
+  padding-top: 0.6em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
