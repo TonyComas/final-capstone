@@ -46,6 +46,12 @@ public class ReviewController {
         return reviewDao.updateReview(review);
     }
 
+    @RequestMapping (path = "/user/{user_id}", method = RequestMethod.GET)
+    public List<Reviews> getReviewFromUserID(@PathVariable("user_id")int user_id) {
+        return reviewDao.getReviewFromUserID(user_id);
+    }
+
+
 
 
 }

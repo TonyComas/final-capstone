@@ -1,13 +1,11 @@
 <template>
     <div id="pongDiv">
-        <div class="center-container">
-    <div class="game-container">
-        <div class="box">
-  <div class="box__line box__line--top"></div>
-  <div class="box__line box__line--right"></div>
-  <div class="box__line box__line--bottom"></div>
-  <div class="box__line box__line--left"></div>
+        <div class="pong-center-container">
+    <div class="pong-game-container">
+        <div class="pong-outer-circle">
+            <div class="pong-inner-circle">
         <iframe id="pongGameFrame" :src="htmlPath" frameborder="0"></iframe>
+        </div>
         </div>
         </div>
         </div>
@@ -29,89 +27,64 @@ export default {
 
 <style>
 iframe#pongGameFrame{
-    margin-top: 20px;
-    width: 680px;
-    height: 430px;
-    border-width: 5px;
-    border-color: green;
+    margin-top: 10px;
+    width: 670px;
+    height: 420px;
+    z-index: 1;
 }
 div#pongDiv {
     text-align: center;
 }
-/* 
-:root {
-  --line-width: 8px;
-  --line-color: #d808b5;
-}
 
-.center-container {
+.pong-center-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.box__line {
+.pong-outer-circle {
+  position: relative;
+  height: 450px;
+  width: 690px;
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  animation: rotate 6.5s linear infinite;
+  z-index: 0;
+  top: 10px;
+}
+
+.pong-outer-circle span {
   position: absolute;
-  background: var(--line-color);
+  height: 450px;
+  width: 690px;
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  z-index: 0;
 }
 
-.box__line--top,
-.box__line--bottom {
-  height: var(--line-width);
-  width: 50%;
+span:nth-child(3) {
+  filter: blur(25px);
 }
 
-.box__line--top::before,
-.box__line--top::after,
-.box__line--bottom::before,
-.box__line--bottom::after {
-  content: "";
+span:nth-child(4) {
+  filter: blur(150px);
+}
+
+.pong-inner-circle {
+  height: 430px;
+  width: 670px;
   position: absolute;
-  width: var(--line-width);
-  height: var(--line-width);
-  background: var(--line-color);
+  background: black;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
 }
 
-.box__line--top {
-  top: calc(-1 * var(--line-width));
+@keyframes rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
-
-.box__line--top::before {
-  left: 0;
-  bottom: calc(-1 * var(--line-width));
-}
-
-.box__line--top::after {
-  right: 0;
-  bottom: calc(-1 * var(--line-width));
-}
-
-.box__line--bottom {
-  bottom: calc(-1 * var(--line-width));
-}
-
-.box__line--bottom::before {
-  left: 0;
-  top: calc(-1 * var(--line-width));
-}
-
-.box__line--bottom::after {
-  right: 0;
-  top: calc(-1 * var(--line-width));
-}
-
-.box__line--left,
-.box__line--right {
-  width: var(--line-width);
-  height: 100%;
-}
-
-.box__line--left {
-  left: calc(-1 * var(--line-width));
-}
-
-.box__line--right {
-  right: calc(-1 * var(--line-width));
-} */
 
 </style>

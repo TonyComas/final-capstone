@@ -5,13 +5,14 @@ canvas.height=400;
 
 let scoreOne = 0;
 let scoreTwo = 0;
+let gameOver = true;
 
 const BALL_BASE_SPEED = 3;
 const BALL_BASE_Y_VELOCITY = 1;
 const BALL_SPEED_CHANGE_PER_HIT = .25;
 const BALL_Y_VELOCITY_CHANGE_PER_HIT = 1.3;
 const PADDLE_SPEED = 4;
-let GAME_OVER = true;
+
 
 //key movement
 window.addEventListener("keydown", keyDown);
@@ -25,15 +26,15 @@ function keyDown(e){
         playerOne.movingDown = true;
     }
 
-    if(key == "ArrowUp"){
+    if(key == "o"){
         playerTwo.movingUp = true;
-    } else if(key == "ArrowDown"){
+    } else if(key == "l"){
         playerTwo.movingDown = true;
     }
 
     if(key == "Enter"){
-        if(GAME_OVER == true){
-            GAME_OVER = false;
+        if(gameOver == true){
+            gameOver = false;
             scoreTwo = 0;
             scoreOne = 0;
         }
@@ -49,9 +50,9 @@ function keyUp(e){
         playerOne.movingDown = false;
     }
 
-    if(key == "ArrowUp"){
+    if(key == "o"){
         playerTwo.movingUp = false;
-    } else if(key == "ArrowDown"){
+    } else if(key == "l"){
         playerTwo.movingDown = false;
     }
 }
@@ -122,6 +123,7 @@ function startGameScreen(){
     context.font = "18px Arial";
     context.fillStyle = "white";
     context.fillText("Press Enter To Start!", canvas.width / 2 - 90, canvas.height/2 - 100)
+    context.fillText("Player One W / S     :     Player Two O / L", canvas.width / 2 - 170, canvas.height/2 - 70)
 }
 
 function playerOneWon(){
@@ -199,7 +201,7 @@ function ballWallCollision(){
         scoreTwo += 1;
         if(scoreTwo == 5){
             playerTwoWon();
-            GAME_OVER = true;
+            gameOver = true;
         }
         ball.xVelocity = BALL_BASE_SPEED;
         ball.x = canvas.width / 2 + ball.xVelocity;
@@ -210,7 +212,7 @@ function ballWallCollision(){
         scoreOne += 1;
         if(scoreOne == 5){
             playerOneWon();
-            GAME_OVER = true;
+            gameOver = true;
         }
         ball.xVelocity = BALL_BASE_SPEED * -1;
         ball.x = canvas.width / 2 + ball.xVelocity;
@@ -230,7 +232,7 @@ function drawElements(){
     displayScoreTwo();
 }
 function loop(){
-    if(GAME_OVER){
+    if(gameOver){
         startGameScreen();
     } else{
         movePlayers();

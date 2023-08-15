@@ -17,4 +17,6 @@ public interface ReviewDao {
 
     Reviews updateReview(Reviews review);
 
+    List<Reviews> getReviewFromUserID(int userID);
+
 }
