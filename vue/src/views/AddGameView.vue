@@ -17,6 +17,8 @@ export default {
 <style>
 h1 {
   font-size: 24px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .add-game {
@@ -37,7 +39,8 @@ h1 {
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;
   display: inline-block;
-      font-size: 20px;
+  font-size: 20px;
+  
 }
 
 @keyframes textclip {

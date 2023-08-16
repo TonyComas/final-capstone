@@ -54,6 +54,8 @@ h1.name {
     padding-left: 5px;
     color: rgb(11, 226, 11);
     text-decoration: none;
+    margin-top: 5px;
+    margin-bottom: 0px;
 }
 
 a {

@@ -125,6 +125,11 @@
             @click="addGameToLists(list)"
             >Add to lists
           </button>
+          <div class="popup" ref="popup">
+            <div class="popup-content" v-if="ifPopup">
+            Success!
+            </div>
+            </div>
       </div>
       <div class="review-column">
         <ReviewDisplayVue :reviews="game.reviews" />
@@ -144,7 +149,11 @@ export default {
       gameId: 0,
       game: null,
       showForm: false,
+
       allReviews: this.$store.getters.reviews,
+
+      ifPopup: false,
+
       list: [{
         checked: false,
         list_name: "Currently Playing",
@@ -184,7 +193,17 @@ export default {
           GameServices.addGameToLists(currentList);
         }
       });
+      this.ifPopup = true;
+      this.showPopup();
     },
+    showPopup() {
+      if (this.ifPopup) {
+      setTimeout(() => {
+        this.ifPopup = false; 
+      }, 1500); 
+    }
+    },
+  
     updateGame() {
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
@@ -228,6 +247,11 @@ export default {
   color: green;
   line-height: 1.2;
   font-size: 14px;
+}
+
+.popup {
+  margin-left: 40px;
+  margin-top: 10px;
 }
 
 .add-to-lists {
