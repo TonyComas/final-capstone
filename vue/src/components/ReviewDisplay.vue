@@ -40,7 +40,6 @@
       </router-link>
       
       
-      <button class="update-review" v-on:click="showReviewForm = !showReviewForm">Update</button>
 
     <UpdateReviewVue v-if="showReviewForm" v-bind:updateCurrentReview="review" v-on:submit="updateReview()" />
      
