@@ -46,9 +46,6 @@ export default new Vuex.Store({
     getUserReviews(state,id) {
       return state.reviews.find(reviews => reviews.user_id === id);
     },
-    lists(state){
-      return state.lists
-    },
    
     isAdmin(state) {
       if(state.token != ''){
@@ -140,6 +137,7 @@ export default new Vuex.Store({
     loadLists(state, user){
       GameServices.getListsByLists(user).then (response => {
         const arrayFromApi = response.data;
+        console.log("Loading lists from store")
         state.commit("SET_ALL_LISTS",arrayFromApi);
       }).catch( err => console.error(err));
     }, 
@@ -147,7 +145,7 @@ export default new Vuex.Store({
     loadUserReviews(state,user) {
       GameServices.getReviewByUserId(user).then (response => {
         const arrayFromApi = response.data;
-        state.commit("SET_ALL_LISTS",arrayFromApi);
+        state.commit("SET_ALL_REVIEWS",arrayFromApi);
       }).catch( err => console.error(err));
     },
 

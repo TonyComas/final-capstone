@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="user_lists">
+    <div class="user_lists" v-if="filteredLists.length > 0">
       <h1>Your Lists</h1>
 
-      <ShowListsOfGamesVue
+      <ShowListsOfGamesVue 
         :list="list"
         v-for="list in filteredLists"
         :key="list.list_id"
@@ -54,7 +54,7 @@ export default {
         const userReviews = this.$store.getters.reviews;
         let filteredReviews = [];
         userReviews.forEach( review => {
-        if (review.userId === this.$store.getters.user.id) {
+        if (review.userId === this.$store.state.user.id) {
             filteredReviews.push(review);
         }
         })
