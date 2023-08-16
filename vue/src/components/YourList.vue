@@ -83,7 +83,35 @@ div #games2 {
   grid-area: games;
 }
 
-.alsoTitle {
+.alsoTitle h1 {
+  background-image: linear-gradient(to right, #920ab4, rgb(11, 226, 11) 50%, rgb(11, 226, 11));
+  background-size: 200% 100%;
+  background-position: -100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 1.2s ease-in-out;
+  text-decoration: none; /* Remove default underline */
+}
+
+.alsoTitle h1:before {
+  content: "";
+  background: rgb(11, 226, 11);
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: all 0.6s ease-in-out;
+}
+
+.alsoTitle h1:hover {
+  background-position: 0;
+}
+
+.alsoTitle h1:hover::before {
+  width: 100%;
+}
+
+.alsoTitle h1 {
   grid-area: title;
   
 }

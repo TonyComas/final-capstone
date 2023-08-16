@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="user_lists" v-if="filteredLists.length > 0">
-      <h1>Your Lists</h1>
+      <h1>Your List</h1>
 
       <ShowListsOfGamesVue 
         :list="list"
