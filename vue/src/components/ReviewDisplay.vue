@@ -38,6 +38,9 @@
       >
         Delete Review
       </router-link>
+      
+      
+
     <UpdateReviewVue v-if="showReviewForm" v-bind:updateCurrentReview="review" v-on:submit="updateReview()" />
      
     </div>
