@@ -4,7 +4,8 @@
       <div class="game-column">
         <!-- <div class="img-button-cluster"> -->
           <img class="logo" v-bind:src="game.game_logo" alt="" />
-
+          <div>
+        </div>
           <div class="button-container">
             <div class="buttons">
               <input
@@ -97,6 +98,29 @@
           </button>
         </div>
       </div>
+      <div class="list-column">
+    <h1>Your Lists</h1>
+  <label class="listy">
+    <input type="checkbox">
+    <div class="list-names">Currently Playing</div>
+  </label>
+  <label class="listy">
+    <input type="checkbox">
+    <div class="list-names">Want to Play</div>
+  </label>
+  <label class="listy">
+    <input type="checkbox">
+    <div class="list-names">Finished Games</div>
+  </label>
+  <label class="listy">
+    <input type="checkbox">
+    <div class="list-names">Favorite Games</div>
+  </label>
+  <label class="listy">
+    <input type="checkbox">
+    <div class="list-names">Game Library</div>
+      </label>
+      </div>
       <div class="review-column">
         <ReviewDisplayVue :reviews="game.reviews" />
       </div>
@@ -161,6 +185,103 @@ export default {
   color: green;
   line-height: 1.2;
   font-size: 14px;
+}
+
+:root {
+  --color-one: #52117d;
+  --color-two: #a944ec;
+  --color-three: #ffc800;
+  --color-accent: #19ff70;
+  --color-text: #fffed7;
+
+  /* Typography */
+  --font-family: "Inter", sans-serif;
+  --font-family-headings: "Inter", sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+.listy {
+  display: inline-flex;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  align-items: center;
+  line-height: 1;
+  border-radius: 5px;
+  
+  padding: 5px 7px 5px 7px;
+  user-select: none;
+}
+
+@media (min-width: 992px) {
+  .listy {
+    font-size: 1.25rem;
+  }
+}
+
+.listy .list-names {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.listy input[type="checkbox"] {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.listy input[type="checkbox"]:checked + .list-names::after {
+  background-color: var(--color-accent);
+}
+
+.listy input[type="checkbox"]:checked + .list-names {
+  color: var(--color-accent);
+}
+
+.listy input[type="checkbox"]:focus + .list-names::before {
+  border-color: var(--color-accent);
+}
+
+.listy input[type="checkbox"]:disabled {
+  opacity: 0.85;
+}
+
+.listy input[type="checkbox"]:disabled + .list-names {
+  color: #9a9a88;
+}
+
+.listy .list-names::before {
+  content: "";
+  display: inline-block;
+  border-radius: 3px;
+  background-color: #414051;
+  margin-right: 8px;
+  height: 16px;
+  width: 16px;
+  border: 1px solid transparent;
+}
+
+.listy input[type="checkbox"] {
+}
+
+.listy .list-names::after {
+  content: "";
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-radius: 3px;
+  background-color: transparent;
+  left: 3px;
+  position: absolute;
 }
 
 .button-container {
@@ -237,16 +358,20 @@ span {
   /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
-  grid-template-columns: 500px 100px 1fr;
-  grid-template-areas: "game-column . review-column";
+  grid-template-columns: 500px 500px 1fr;
+  grid-template-areas: "game-column list-column review-column";
 }
 .game-column {
   grid-area: game-column;
 }
+
+.list-column {
+  grid-area: list-column;
+}
+
 .review-column {
   grid-area: review-column;
 }
-
 img.logo {
   width: 300px;
   height: 300px;
