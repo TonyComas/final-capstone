@@ -113,6 +113,7 @@ div #games2 {
 
 .alsoTitle h1 {
   grid-area: title;
+  cursor: default;
   
 }
 

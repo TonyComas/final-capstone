@@ -94,6 +94,7 @@ public class JdbcGameDao implements GameDao{
         deleteDevsForGameId(id);
         deleteGenresForGameId(id);
         deleteReviewsForGameId(id);
+        deleteGamesFromLists(id);
         String sql = "DELETE FROM video_games WHERE game_id = ?;";
         jdbcTemplate.update(sql,id);
     }
@@ -113,6 +114,10 @@ public class JdbcGameDao implements GameDao{
     private void deleteReviewsForGameId(int id){
         String sql = "DELETE FROM reviews WHERE game_id = ?";
         jdbcTemplate.update(sql, id);
+    }
+    private void deleteGamesFromLists(int game_id){
+        String sql = "DELETE FROM games_list WHERE game_id = ?;";
+        jdbcTemplate.update(sql, game_id);
     }
 
     private void addPublishersForGame(Game game){

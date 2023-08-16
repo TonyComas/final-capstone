@@ -163,12 +163,6 @@ textarea {
   width: 280px;
 }
 
-h1 {
-color: rgb(11, 226, 11);
-margin-bottom: 15px;
-margin-top: 15px;
-}
-
 
 input.addGame{
   width:280px;
