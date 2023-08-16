@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.ListDao;
 import com.techelevator.model.Game;
 import com.techelevator.model.GameList;
+import com.techelevator.model.GameToList;
 import com.techelevator.model.Lists;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,9 +38,10 @@ public class ListController {
         return listDao.getListForListId(list_id);
     }
 
-    @RequestMapping(path = "/{list_id}/{game_id}", method = RequestMethod.POST)
-    public boolean addGameToList(@PathVariable("list_id")int list_id, @PathVariable("game_id")int game_id){
-        return listDao.addGameToList(game_id,list_id);
+    @RequestMapping(path = "/game", method = RequestMethod.POST)
+    public boolean addGameToList(@RequestBody GameToList gameToList){
+        int list_id = listDao.getListIdFromListNameAndUserId(gameToList.getUser_id(), gameToList.getList_name());
+        return listDao.addGameToList(gameToList.getGame_id(), list_id);
     }
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<GameList> getListOfListOfGames(Principal principal) {
