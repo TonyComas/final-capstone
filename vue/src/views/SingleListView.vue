@@ -1,9 +1,15 @@
 <template>
-  <h1>This is your list of games</h1>
+  <div class="games">
+      <YourList />
+  </div>
 </template>
 
 <script>
+import YourList from '../components/YourList.vue'
 export default {
+    components: {
+         YourList
+    }
 
 }
 </script>

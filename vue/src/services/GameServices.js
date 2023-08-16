@@ -50,5 +50,8 @@ export default {
     },
     addGameToLists(list){
         return axios.post('/lists/game', list);
+    },
+    getListOfGames(listId) {
+        return axios.get(`/games/list/${listId}`);
     }
 }
