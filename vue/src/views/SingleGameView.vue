@@ -4,7 +4,8 @@
       <div class="game-column">
         <!-- <div class="img-button-cluster"> -->
           <img class="logo" v-bind:src="game.game_logo" alt="" />
-
+          <div>
+        </div>
           <div class="button-container">
             <div class="buttons">
               <input
@@ -97,6 +98,34 @@
           </button>
         </div>
       </div>
+      <div class="list-column">
+    <h1>Your Lists</h1>
+  <label class="listy">
+    <input type="checkbox" v-model="list[0].checked">
+    <div class="list-names">Currently Playing</div>
+  </label>
+  <label class="listy">
+    <input type="checkbox" v-model="list[1].checked">
+    <div class="list-names">Want to Play</div>
+  </label>
+  <label class="listy">
+    <input type="checkbox" v-model="list[2].checked">
+    <div class="list-names">Finished Games</div>
+  </label>
+  <label class="listy">
+    <input type="checkbox" v-model="list[3].checked">
+    <div class="list-names">Favorite Games</div>
+  </label>
+  <label class="listy">
+    <input type="checkbox" v-model="list[4].checked">
+    <div class="list-names">Game Library</div>
+      </label>
+      <button
+            class="add-to-lists"
+            @click="addGameToLists(list)"
+            >Add to lists
+          </button>
+      </div>
       <div class="review-column">
         <ReviewDisplayVue :reviews="game.reviews" />
       </div>
@@ -115,9 +144,46 @@ export default {
       gameId: 0,
       game: null,
       showForm: false,
+      list: [{
+        checked: false,
+        list_name: "Currently Playing",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      },
+      {
+        checked: false,
+        list_name: "Want To Play",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      },
+      {
+        checked: false,
+        list_name: "Finished Games",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      },
+      {
+        checked: false,
+        list_name: "Favorite Games",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      },
+      {
+        checked: false,
+        list_name: "Game Library",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      }]
     };
   },
   methods: {
+    addGameToLists(list){
+      list.forEach(currentList => {
+        if(currentList.checked){
+          GameServices.addGameToLists(currentList);
+        }
+      });
+    },
     updateGame() {
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
@@ -161,6 +227,152 @@ export default {
   color: green;
   line-height: 1.2;
   font-size: 14px;
+}
+
+.add-to-lists {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #0aa546;
+  border-radius: 0.6em;
+  color: #0aa546;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  font-family: 'Press Start 2P', cursive;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.add-to-lists:hover,
+.add-to-lists:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.add-to-lists:hover {
+  background-color: rgb(4, 78, 20);
+  font-size: 12.8px;
+  box-shadow: 0 0 20px 20px #4ae73c inset;
+}
+
+:root {
+  --color-one: #52117d;
+  --color-two: #a944ec;
+  --color-three: #ffc800;
+  --color-accent: #19ff70;
+  --color-text: #fffed7;
+
+  /* Typography */
+  --font-family: "Inter", sans-serif;
+  --font-family-headings: "Inter", sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+.listy {
+  display: inline-flex;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  align-items: center;
+  line-height: 1;
+  border-radius: 5px;
+  
+  padding: 5px 7px 5px 7px;
+  user-select: none;
+}
+
+@media (min-width: 992px) {
+  .listy {
+    font-size: 1.25rem;
+  }
+}
+
+.listy .list-names {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.listy input[type="checkbox"] {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.listy input[type="checkbox"]:checked + .list-names::after {
+  background-color: var(--color-accent);
+}
+
+.listy input[type="checkbox"]:checked + .list-names {
+  color: var(--color-accent);
+}
+
+.listy input[type="checkbox"]:focus + .list-names::before {
+  border-color: var(--color-accent);
+}
+
+.listy input[type="checkbox"]:disabled {
+  opacity: 0.85;
+}
+
+.listy input[type="checkbox"]:disabled + .list-names {
+  color: #9a9a88;
+}
+
+.listy .list-names::before {
+  content: "";
+  display: inline-block;
+  border-radius: 3px;
+  background-color: #414051;
+  margin-right: 8px;
+  height: 16px;
+  width: 16px;
+  border: 1px solid transparent;
+}
+
+.listy input[type="checkbox"] {
+}
+
+.listy .list-names::after {
+  content: "";
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-radius: 3px;
+  background-color: transparent;
+  left: 3px;
+  position: absolute;
 }
 
 .button-container {
@@ -237,16 +449,20 @@ span {
   /* margin: 0 auto; */
   padding: 20px;
   border-radius: 5px;
-  grid-template-columns: 500px 100px 1fr;
-  grid-template-areas: "game-column . review-column";
+  grid-template-columns: 500px 500px 1fr;
+  grid-template-areas: "game-column list-column review-column";
 }
 .game-column {
   grid-area: game-column;
 }
+
+.list-column {
+  grid-area: list-column;
+}
+
 .review-column {
   grid-area: review-column;
 }
-
 img.logo {
   width: 300px;
   height: 300px;

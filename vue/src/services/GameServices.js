@@ -47,5 +47,8 @@ export default {
     },
     getReviewByUserId(userId){
         return axios.get(`/reviews/user/${userId}`);
+    },
+    addGameToLists(list){
+        return axios.post('/lists/game', list);
     }
 }

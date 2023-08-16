@@ -64,6 +64,17 @@ public class JdbcListDao implements ListDao{
         }
     }
 
+    @Override
+    public int getListIdFromListNameAndUserId(int user_id, String list_name){
+        String sql = "SELECT list_id FROM lists WHERE list_name = ? AND user_id = ?;";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, list_name, user_id);
+        int list_id = 0;
+        while(result.next()){
+            list_id = result.getInt("list_id");
+        }
+        return list_id;
+    }
+
 
 
     private Lists mapRowToList(SqlRowSet result){
