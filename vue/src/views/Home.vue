@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
     <img src="../assets/mariogaming.gif">
   </div>
 </template>
@@ -14,12 +12,12 @@ export default {
 <style scoped>
 
 .home {
+  text-align: center;
   color: rgb(182, 7, 7);
 }
 
 img {
-  width: 70vw;
-  height: 67vh;
+  height: 80vh;
 }
 
 h1 {
