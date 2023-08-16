@@ -123,7 +123,7 @@
       <button
             class="add-to-lists"
             @click="addGameToLists(list)"
-            >Add
+            >Add to lists
           </button>
       </div>
       <div class="review-column">
@@ -227,6 +227,55 @@ export default {
   color: green;
   line-height: 1.2;
   font-size: 14px;
+}
+
+.add-to-lists {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #0aa546;
+  border-radius: 0.6em;
+  color: #0aa546;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  font-family: 'Press Start 2P', cursive;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.add-to-lists:hover,
+.add-to-lists:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.add-to-lists:hover {
+  background-color: rgb(4, 78, 20);
+  font-size: 12.8px;
+  box-shadow: 0 0 20px 20px #4ae73c inset;
 }
 
 :root {
