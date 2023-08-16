@@ -148,6 +148,12 @@ export default new Vuex.Store({
         state.commit("SET_ALL_REVIEWS",arrayFromApi);
       }).catch( err => console.error(err));
     },
+    loadGamesInList(state,list) {
+      GameServices.getListOfGames(list).then (response => {
+        const arrayFromApi = response.data;
+        state.commit("SET_ALL_GAMES", arrayFromApi);
+      }).catch( err => console.error(err));
+    },
 
     updateGame(state, gameObject) {
       //Find the game object in state

@@ -3,6 +3,7 @@
       <router-link :to="{
           name: 'user-list',
           params:{
+              name: list.list_name,
               id: list.list_id
           },
       }">
