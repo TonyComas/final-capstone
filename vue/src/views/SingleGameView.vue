@@ -290,9 +290,6 @@ export default {
   --font-family-headings: "Inter", sans-serif;
 }
 
-html {
-  height: 100%;
-}
 
 .listy {
   display: inline-flex;
