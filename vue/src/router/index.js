@@ -14,6 +14,7 @@ import PlayGamesView from '../views/PlayGamesView.vue'
 import UserLists from '../views/UserLists.vue'
 import PongView from '../views/PongView.vue'
 import AsteroidsView from '../views/AsteroidsView.vue'
+import SingleListView from '../views/SingleListView.vue'
 Vue.use(Router)
 
 /**
@@ -103,6 +104,11 @@ const router = new Router({
       path: '/asteroids',
       name: 'asteroids',
       component: AsteroidsView
+    },
+    {
+      path: '/list/:id',
+      name: 'user-list',
+      component: SingleListView
     },
     {
     //KEEP THIS LAST

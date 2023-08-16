@@ -1,9 +1,9 @@
 <template>
   <div class="list">
       <router-link :to="{
-          name: '',
+          name: 'user-list',
           params:{
-
+              id: list.list_id
           },
       }">
         <div>

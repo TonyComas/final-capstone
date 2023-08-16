@@ -1,47 +1,73 @@
 <template>
-  <div class="user_lists">
+  <div>
+    <div class="user_lists">
       <h1>Your Lists</h1>
-     
-      <ShowListsOfGamesVue :list="list" v-for="list in filteredLists" :key="list.list_id" />
-    
-      </div>
+
+      <ShowListsOfGamesVue
+        :list="list"
+        v-for="list in filteredLists"
+        :key="list.list_id"
+      />
+    </div>
+    <div class="user_reviews">
+        <h1>Your Reviews</h1>
+        
+        <UserReviewsVue 
+        :userReviews="review"
+        v-for="review in filteredReviews"
+        :key="review.review_id"
+        />
+
+    </div>
+  </div>
 </template>
 
 <script>
-import ShowListsOfGamesVue from '../components/ShowListsOfGames.vue';
+import ShowListsOfGamesVue from "../components/ShowListsOfGames.vue";
+import UserReviewsVue from '../components/UserReviews.vue';
 
 export default {
-    components: {
-        ShowListsOfGamesVue,
+  components: {
+    ShowListsOfGamesVue,
+    UserReviewsVue
 
+  },
+  name: "user_lists",
+  data() {
+    return {
+      userId: 0,
+      lists: [],
+      listId: 0,
+      reviews: []
+    };
+  },
+  computed: {
+    filteredLists() {
+      const userList = this.$store.getters.getUserLists;
+      let filteredLists = [];
+      userList.forEach((list) => {
+        filteredLists.push(list);
+      });
+      return filteredLists;
     },
-    name: "user_lists",
-    data() {
-        return {
-            userId: 0,
-            lists: [],
-            listId: 0,
-        };
-    },
-    computed: {
-        filteredLists(){
-            const userList = this.$store.getters.getUserLists
-            let filteredLists = [];
-            userList.forEach(list => {
-                filteredLists.push(list);
-            })
-            return filteredLists;
+    filteredReviews() {
+        const userReviews = this.$store.getters.reviews;
+        let filteredReviews = [];
+        userReviews.forEach( review => {
+        if (review.userId === this.$store.getters.user.id) {
+            filteredReviews.push(review);
         }
-    },
-    methods: {
-      
-    },
-    created() {
-        this.$store.dispatch("loadLists",this.$store.state.user.id);
-    },
+        })
+        return filteredReviews;
+    }
+  },
+  methods: {},
+  created() {
+    this.$store.dispatch("loadLists", this.$store.state.user.id);
+    this.$store.dispatch("loadUserReviews",this.$store.state.user.id);
+  },
 };
 </script>
 
 <style scoped>
-
 </style>
