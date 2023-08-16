@@ -32,7 +32,7 @@
       >
     </div>
     <h1 class="page-title waviy">
-      <span>Welcome to our video game database!</span>
+      <span>Welcome to 8-BIT ARCADE!</span>
     </h1>
     <body></body>
     <div class="spacer"></div>
