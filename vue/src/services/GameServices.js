@@ -44,5 +44,8 @@ export default {
     },
     getListsByLists(userId) {
         return axios.get(`/lists/user/${userId}`);
+    },
+    getReviewByUserId(userId){
+        return axios.get(`/reviews/user/${userId}`);
     }
 }

@@ -43,6 +43,9 @@ export default new Vuex.Store({
     reviews(state) {
       return state.reviews;
     },
+    getUserReviews(state,id) {
+      return state.reviews.find(reviews => reviews.user_id === id);
+    },
     lists(state){
       return state.lists
     },
@@ -114,7 +117,8 @@ export default new Vuex.Store({
     },
     SET_ALL_LISTS(state,lists){
       state.lists = lists;
-    }
+    },
+
 
 
 
@@ -139,6 +143,13 @@ export default new Vuex.Store({
         state.commit("SET_ALL_LISTS",arrayFromApi);
       }).catch( err => console.error(err));
     }, 
+
+    loadUserReviews(state,user) {
+      GameServices.getReviewByUserId(user).then (response => {
+        const arrayFromApi = response.data;
+        state.commit("SET_ALL_LISTS",arrayFromApi);
+      }).catch( err => console.error(err));
+    },
 
     updateGame(state, gameObject) {
       //Find the game object in state
