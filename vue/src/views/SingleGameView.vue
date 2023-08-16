@@ -101,25 +101,30 @@
       <div class="list-column">
     <h1>Your Lists</h1>
   <label class="listy">
-    <input type="checkbox">
+    <input type="checkbox" v-model="list[0].checked">
     <div class="list-names">Currently Playing</div>
   </label>
   <label class="listy">
-    <input type="checkbox">
+    <input type="checkbox" v-model="list[1].checked">
     <div class="list-names">Want to Play</div>
   </label>
   <label class="listy">
-    <input type="checkbox">
+    <input type="checkbox" v-model="list[2].checked">
     <div class="list-names">Finished Games</div>
   </label>
   <label class="listy">
-    <input type="checkbox">
+    <input type="checkbox" v-model="list[3].checked">
     <div class="list-names">Favorite Games</div>
   </label>
   <label class="listy">
-    <input type="checkbox">
+    <input type="checkbox" v-model="list[4].checked">
     <div class="list-names">Game Library</div>
       </label>
+      <button
+            class="add-to-lists"
+            @click="addGameToLists(list)"
+            >Add
+          </button>
       </div>
       <div class="review-column">
         <ReviewDisplayVue :reviews="game.reviews" />
@@ -139,9 +144,46 @@ export default {
       gameId: 0,
       game: null,
       showForm: false,
+      list: [{
+        checked: false,
+        list_name: "Currently Playing",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      },
+      {
+        checked: false,
+        list_name: "Want To Play",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      },
+      {
+        checked: false,
+        list_name: "Finished Games",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      },
+      {
+        checked: false,
+        list_name: "Favorite Games",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      },
+      {
+        checked: false,
+        list_name: "Game Library",
+        game_id: this.$route.params.gameId,
+        user_id: this.$store.state.user.id
+      }]
     };
   },
   methods: {
+    addGameToLists(list){
+      list.forEach(currentList => {
+        if(currentList.checked){
+          GameServices.addGameToLists(currentList);
+        }
+      });
+    },
     updateGame() {
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
