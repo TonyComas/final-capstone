@@ -144,6 +144,7 @@ export default {
       gameId: 0,
       game: null,
       showForm: false,
+      allReviews: this.$store.getters.reviews,
       list: [{
         checked: false,
         list_name: "Currently Playing",

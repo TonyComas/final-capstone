@@ -143,9 +143,11 @@ export default new Vuex.Store({
     }, 
 
     loadUserReviews(state,user) {
+      setTimeout(() => this.isHidden = false, 50);
       GameServices.getReviewByUserId(user).then (response => {
-        const arrayFromApi = response.data;
-        state.commit("SET_ALL_REVIEWS",arrayFromApi);
+        const arrayFromApi2 = response.data;
+        console.log("Loading reviews from store", arrayFromApi2)
+        state.commit("SET_ALL_REVIEWS",arrayFromApi2);
       }).catch( err => console.error(err));
     },
 
