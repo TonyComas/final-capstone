@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="whole_page">
     <div class="user_lists" v-if="filteredLists.length > 0">
       <h1>Your List</h1>
 
@@ -62,6 +62,7 @@ export default {
   },
   methods: {},
   created() {
+    
     this.$store.dispatch("loadLists", this.$store.state.user.id);
     this.$store.dispatch("loadUserReviews",this.$store.state.user.id);
   },
@@ -69,4 +70,9 @@ export default {
 </script>
 
 <style scoped>
+.whole_page {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "left right";
+}
 </style>
