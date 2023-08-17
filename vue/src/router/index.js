@@ -14,6 +14,7 @@ import PlayGamesView from '../views/PlayGamesView.vue'
 import UserLists from '../views/UserLists.vue'
 import PongView from '../views/PongView.vue'
 import AsteroidsView from '../views/AsteroidsView.vue'
+import TetrisView from '../views/TetrisView.vue'
 import SingleListView from '../views/SingleListView.vue'
 Vue.use(Router)
 
@@ -104,6 +105,11 @@ const router = new Router({
       path: '/asteroids',
       name: 'asteroids',
       component: AsteroidsView
+    },
+    {
+      path: '/tetris',
+      name: 'tetris',
+      component: TetrisView
     },
     {
       path: '/list/:id',
