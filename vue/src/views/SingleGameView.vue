@@ -438,7 +438,7 @@ export default {
   font-weight: 400;
   line-height: 1.2;
   margin: 0px;
-  padding: 0.5em 0.8em;
+  padding: 0.5em 0.6em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -568,7 +568,7 @@ img.logo {
   font-weight: 400;
   line-height: 1.2;
   margin: 0px;
-  padding: 0.5em 1em;
+  padding: 0.5em 1.0em;
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
@@ -628,6 +628,56 @@ img.logo {
   box-shadow: 0 0 20px 20px #e74c3c inset;
 }
 
+.remove-from-lists {
+  font-size: 10px;
+  height: 30px;
+  border-radius: 30px;
+  border-width: 1px;
+  text-align: right;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-left: 5px;
+  padding-top: 0.6em;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 200ms ease-in-out, color 200ms ease-in-out;
+  font-family: "Press Start 2P", cursive;
+}
+
+.remove-from-lists:hover,
+.remove-from-lists:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.remove-from-lists:hover {
+  background-color: rgb(107, 7, 7);
+  font-size: 12.8px;
+  box-shadow: 0 0 20px 20px #e74c3c inset;
+}
+
 .update-button {
   font-size: 10px;
   height: 20px;
@@ -675,7 +725,6 @@ img.logo {
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
   position: relative;
   z-index: 1;
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
