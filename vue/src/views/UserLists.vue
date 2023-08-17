@@ -70,9 +70,16 @@ export default {
 </script>
 
 <style scoped>
+.user_lists{
+  float:left;
+}
+.user_reviews{
+  /* display: inline-block;
+  text-align: center; */
+}
 .whole_page {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "left right";
+  grid-template-rows: auto auto 50vw;
+  grid-template-areas: "left left right";
 }
 </style>

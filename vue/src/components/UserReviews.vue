@@ -1,7 +1,8 @@
 <template>
   <div class="UserReviewsDiv">
     <img class="logo_card" v-bind:src="this.selectedGame.game_logo"  />
-    <img src="" alt="">
+    
+    <div class="review_body">
       <img
           src="../assets/giphy.gif"
           v-bind:title="userReviews.rating + ' Star Review'"
@@ -13,7 +14,7 @@
           <!-- {{userReviews.game_id}} -->
           </h3>
       <p>{{userReviews.review_body}}</p>
-
+    </div>
 
   </div>
 </template>
@@ -59,10 +60,11 @@ img.logo_card {
   border-radius: 15px;
   margin-left: 15px;
   background-color: white;
-  float: right;
+  float: left;
 }
-.UserReviewsDiv{
+.review_body{
   margin-bottom: 45px;
+  padding-left:15px;
 }
 
 </style>
