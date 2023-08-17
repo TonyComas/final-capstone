@@ -146,6 +146,9 @@ export default {
       gameId: 0,
       game: null,
       showForm: false,
+
+      allReviews: this.$store.getters.reviews,
+
       ifPopup: false,
       list: [
         {
@@ -388,9 +391,6 @@ export default {
   height: 16px;
   width: 16px;
   border: 1px solid transparent;
-}
-
-.listy input[type="checkbox"] {
 }
 
 .listy .list-names::after {

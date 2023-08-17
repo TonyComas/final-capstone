@@ -35,10 +35,11 @@ export default {
   name: "user_lists",
   data() {
     return {
-      userId: 0,
+      userId: this.$store.state.user.id,
       lists: [],
       listId: 0,
-      reviews: []
+      reviews: [],
+      allReviews: this.$store.getters.reviews,
     };
   },
   computed: {
@@ -53,10 +54,8 @@ export default {
     filteredReviews() {
         const userReviews = this.$store.getters.reviews;
         let filteredReviews = [];
-        userReviews.forEach( review => {
-        if (review.userId === this.$store.state.user.id) {
+        userReviews.forEach((review) => {
             filteredReviews.push(review);
-        }
         })
         return filteredReviews;
     }
