@@ -80,12 +80,24 @@ public class JdbcUserDao implements UserDao {
         try {
             int newUserId = jdbcTemplate.queryForObject(insertUserSql, int.class, user.getUsername(), password_hash, ssRole);
             newUser = getUserById(newUserId);
+            addUserLists(newUserId);
+
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
         return newUser;
+    }
+
+    private void addUserLists(int user_id){
+        String sql = "INSERT INTO lists (list_name, user_id) VALUES\n" +
+                "('Currently Playing', ?),\n" +
+                "('Want To Play', ?),\n" +
+                "('Finished Games', ?),\n" +
+                "('Favorite Games', ?),\n" +
+                "('Game Library', ?);";
+        jdbcTemplate.update(sql, user_id, user_id, user_id, user_id,user_id);
     }
 
     private User mapRowToUser(SqlRowSet rs) {
