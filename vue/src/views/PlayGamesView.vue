@@ -7,7 +7,9 @@
         <div id="asteroids">
             <router-link :to="{ name: 'asteroids' }" class="nav-link">Asteroids</router-link>
         </div>
-        
+        <div id="tetris">
+            <router-link :to="{ name: 'tetris' }" class="nav-link">Tetris</router-link>
+        </div>
   </div>
 </template>
 

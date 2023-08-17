@@ -1,7 +1,15 @@
 <template>
   <div class="UserReviewsDiv">
+    <router-link
+        :to="{
+          name: 'single-game-view',
+          params: {
+            gameId: this.selectedGame.game_id,
+          },
+        }"
+    >
     <img class="logo_card" v-bind:src="this.selectedGame.game_logo"  />
-    
+    </router-link>
     <div class="review_body">
       <img
           src="../assets/giphy.gif"
