@@ -4,7 +4,7 @@
         :to="{
           name: 'single-game-view',
           params: {
-            gameId: this.selectedGame.gameId,
+            gameId: this.selectedGame.game_id,
           },
         }">
     <img class="logo_card" v-bind:src="this.selectedGame.game_logo"  />
