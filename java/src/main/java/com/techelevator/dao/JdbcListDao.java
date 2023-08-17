@@ -65,6 +65,17 @@ public class JdbcListDao implements ListDao{
     }
 
     @Override
+    public boolean deleteGameFromList(int game_id, int list_id) {
+        String sql = "DELETE FROM games_list WHERE game_id = ? AND list_id = ?;";
+        try{
+            jdbcTemplate.update(sql, game_id, list_id);
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
+    }
+
+    @Override
     public int getListIdFromListNameAndUserId(int user_id, String list_name){
         String sql = "SELECT list_id FROM lists WHERE list_name = ? AND user_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, list_name, user_id);

@@ -43,6 +43,13 @@ public class ListController {
         int list_id = listDao.getListIdFromListNameAndUserId(gameToList.getUser_id(), gameToList.getList_name());
         return listDao.addGameToList(gameToList.getGame_id(), list_id);
     }
+
+    @RequestMapping(path = "/game", method = RequestMethod.DELETE)
+    public boolean deleteGameFromList(@RequestBody GameToList gameToList){
+        int list_id = listDao.getListIdFromListNameAndUserId(gameToList.getUser_id(), gameToList.getList_name());
+        return listDao.deleteGameFromList(gameToList.getGame_id(), list_id);
+    }
+
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<GameList> getListOfListOfGames(Principal principal) {
         List<GameList> outerArray = new ArrayList<>();

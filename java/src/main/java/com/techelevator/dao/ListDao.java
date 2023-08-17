@@ -15,5 +15,7 @@ public interface ListDao {
 
     boolean addGameToList(int game_id, int list_id);
 
+    boolean deleteGameFromList(int game_id, int list_id);
+
     int getListIdFromListNameAndUserId(int user_id, String list_name);
 }

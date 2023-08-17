@@ -3,37 +3,35 @@
     <div class="single-game" v-if="game">
       <div class="game-column">
         <!-- <div class="img-button-cluster"> -->
-          <img class="logo" v-bind:src="game.game_logo" alt="" />
-          <div>
-        </div>
-          <div class="button-container">
-            <div class="buttons">
-              <input
-                v-if="$store.getters.isAdmin === true"
-                class="delete-button"
-                type="button"
-                value="Remove"
-                @click="deleteGame(game.game_id)"
-              />
-              <button
-                class="update-button"
-                v-if="$store.getters.isAdmin === true"
-                v-on:click="showForm = !showForm"
-              >
-                Update
-              </button>
-              <router-link
-                v-bind:to="{
-                  name: 'add-review',
-                  params: { id: game.game_id },
-                }"
-                class="add-review-button"
-              >
-                Add Review
-              </router-link>
-            </div>
+        <img class="logo" v-bind:src="game.game_logo" alt="" />
+        <div></div>
+        <div class="button-container">
+          <div class="buttons">
+            <input
+              v-if="$store.getters.isAdmin === true"
+              class="delete-button"
+              type="button"
+              value="Remove"
+              @click="deleteGame(game.game_id)"
+            />
+            <button
+              class="update-button"
+              v-if="$store.getters.isAdmin === true"
+              v-on:click="showForm = !showForm"
+            >
+              Update
+            </button>
+            <router-link
+              v-bind:to="{
+                name: 'add-review',
+                params: { id: game.game_id },
+              }"
+              class="add-review-button"
+            >
+              Add Review
+            </router-link>
           </div>
-        
+        </div>
 
         <div class="game_info" v-if="!showForm">
           <p id="name"><span>Game Name</span>: {{ game.game_name }}</p>
@@ -59,31 +57,31 @@
         >
           <label for="Game Name">Game Name</label>
           <input type="text" v-model="game.game_name" placeholder="Game Name" />
-         
+
           <label for="Description">Description</label>
           <input
             type="text"
             v-model="game.description"
             placeholder="Description"
           />
-         
+
           <label for="Release Date">Release Date</label>
           <input type="date" v-model="game.release_date" />
-         
+
           <label for="Developers">Developers</label>
           <input
             type="text"
             v-model="game.developer_names"
             placeholder="Developers"
           />
-         
+
           <label for="Publishers">Publishers</label>
           <input
             type="text"
             v-model="game.publisher_names"
             placeholder="Publishers"
           />
-        
+
           <label for="Genres">Genres</label>
           <input type="text" v-model="game.genres" placeholder="Genres" />
           <button class="update-button">Update</button>
@@ -99,43 +97,42 @@
         </div>
       </div>
       <div class="list-column">
-    <h1>Your Lists</h1>
-  <label class="listy">
-    <input type="checkbox" v-model="list[0].checked">
-    <div class="list-names">Currently Playing</div>
-  </label>
-  <label class="listy">
-    <input type="checkbox" v-model="list[1].checked">
-    <div class="list-names">Want to Play</div>
-  </label>
-  <label class="listy">
-    <input type="checkbox" v-model="list[2].checked">
-    <div class="list-names">Finished Games</div>
-  </label>
-  <label class="listy">
-    <input type="checkbox" v-model="list[3].checked">
-    <div class="list-names">Favorite Games</div>
-  </label>
-  <label class="listy">
-    <input type="checkbox" v-model="list[4].checked">
-    <div class="list-names">Game Library</div>
-      </label>
-      <button
-            class="add-to-lists"
-            @click="addGameToLists(list)"
-            >Add to lists
-          </button>
-          <div class="popup" ref="popup">
-            <div class="popup-content" v-if="ifPopup">
-            Success!
-            </div>
-            </div>
+        <h1>Your Lists</h1>
+        <label class="listy">
+          <input type="checkbox" v-model="list[0].checked" />
+          <div class="list-names">Currently Playing</div>
+        </label>
+        <label class="listy">
+          <input type="checkbox" v-model="list[1].checked" />
+          <div class="list-names">Want to Play</div>
+        </label>
+        <label class="listy">
+          <input type="checkbox" v-model="list[2].checked" />
+          <div class="list-names">Finished Games</div>
+        </label>
+        <label class="listy">
+          <input type="checkbox" v-model="list[3].checked" />
+          <div class="list-names">Favorite Games</div>
+        </label>
+        <label class="listy">
+          <input type="checkbox" v-model="list[4].checked" />
+          <div class="list-names">Game Library</div>
+        </label>
+        <button class="add-to-lists" @click="addGameToLists(list)">
+          Add to lists
+        </button>
+        <button class="remove-from-lists" @click="deleteGameFromLists(list)">
+          Remove from lists
+        </button>
+        <div class="popup" ref="popup">
+          <div class="popup-content" v-if="ifPopup">Success!</div>
+        </div>
       </div>
       <div class="review-column">
         <ReviewDisplayVue :reviews="game.reviews" />
       </div>
     </div>
-    </div>
+  </div>
 </template>
 <script>
 import GameServices from "@/services/GameServices.js";
@@ -150,61 +147,76 @@ export default {
       game: null,
       showForm: false,
       ifPopup: false,
-      list: [{
-        checked: false,
-        list_name: "Currently Playing",
-        game_id: this.$route.params.gameId,
-        user_id: this.$store.state.user.id
-      },
-      {
-        checked: false,
-        list_name: "Want To Play",
-        game_id: this.$route.params.gameId,
-        user_id: this.$store.state.user.id
-      },
-      {
-        checked: false,
-        list_name: "Finished Games",
-        game_id: this.$route.params.gameId,
-        user_id: this.$store.state.user.id
-      },
-      {
-        checked: false,
-        list_name: "Favorite Games",
-        game_id: this.$route.params.gameId,
-        user_id: this.$store.state.user.id
-      },
-      {
-        checked: false,
-        list_name: "Game Library",
-        game_id: this.$route.params.gameId,
-        user_id: this.$store.state.user.id
-      }]
+      list: [
+        {
+          checked: false,
+          list_name: "Currently Playing",
+          game_id: this.$route.params.gameId,
+          user_id: this.$store.state.user.id,
+        },
+        {
+          checked: false,
+          list_name: "Want To Play",
+          game_id: this.$route.params.gameId,
+          user_id: this.$store.state.user.id,
+        },
+        {
+          checked: false,
+          list_name: "Finished Games",
+          game_id: this.$route.params.gameId,
+          user_id: this.$store.state.user.id,
+        },
+        {
+          checked: false,
+          list_name: "Favorite Games",
+          game_id: this.$route.params.gameId,
+          user_id: this.$store.state.user.id,
+        },
+        {
+          checked: false,
+          list_name: "Game Library",
+          game_id: this.$route.params.gameId,
+          user_id: this.$store.state.user.id,
+        },
+      ],
     };
   },
   methods: {
-    addGameToLists(list){
-      list.forEach(currentList => {
-        if(currentList.checked){
+    addGameToLists(list) {
+      list.forEach((currentList) => {
+        if (currentList.checked) {
           GameServices.addGameToLists(currentList);
+          currentList.checked = false;
         }
       });
       this.ifPopup = true;
       this.showPopup();
     },
+
+    deleteGameFromLists(list) {
+      list.forEach((currentList) => {
+        if (currentList.checked) {
+          GameServices.deleteGameFromLists(currentList);
+          currentList.checked = false;
+        }
+      });
+      this.ifPopup = true;
+      this.showPopup();
+    },
+
     showPopup() {
       if (this.ifPopup) {
-      setTimeout(() => {
-        this.ifPopup = false; 
-      }, 1500); 
-    }
+        setTimeout(() => {
+          this.ifPopup = false;
+        }, 1500);
+      }
     },
-  
+
     updateGame() {
       this.$store.dispatch("updateGame", this.game);
       this.toggleForm();
     },
-    
+
     deleteGame(gameId) {
       GameServices.deleteGame(gameId).then((response) => {
         if (response.status === 200) {
@@ -283,7 +295,7 @@ export default {
   font-weight: 700;
   position: relative;
   z-index: 1;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 
@@ -311,7 +323,6 @@ export default {
   --font-family-headings: "Inter", sans-serif;
 }
 
-
 .listy {
   display: inline-flex;
   color: var(--color-text);
@@ -321,7 +332,7 @@ export default {
   align-items: center;
   line-height: 1;
   border-radius: 5px;
-  
+
   padding: 5px 7px 5px 7px;
   user-select: none;
 }
