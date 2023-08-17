@@ -84,6 +84,14 @@
 
           <label for="Genres">Genres</label>
           <input type="text" v-model="game.genres" placeholder="Genres" />
+
+          <label for="Image">Image Url</label>
+          <input
+            type="text"
+            v-model="game.game_logo"
+            placeholder="Image Url"
+          />
+
           <button class="update-button">Update</button>
         </form>
 
@@ -199,6 +207,7 @@ export default {
     deleteGameFromLists(list) {
       list.forEach((currentList) => {
         if (currentList.checked) {
+          console.log(currentList);
           GameServices.deleteGameFromLists(currentList);
           currentList.checked = false;
         }

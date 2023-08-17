@@ -44,7 +44,7 @@ public class ListController {
         return listDao.addGameToList(gameToList.getGame_id(), list_id);
     }
 
-    @RequestMapping(path = "/game", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/game", method = RequestMethod.PUT)
     public boolean deleteGameFromList(@RequestBody GameToList gameToList){
         int list_id = listDao.getListIdFromListNameAndUserId(gameToList.getUser_id(), gameToList.getList_name());
         return listDao.deleteGameFromList(gameToList.getGame_id(), list_id);
