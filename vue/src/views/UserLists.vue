@@ -82,4 +82,14 @@ export default {
   grid-template-rows: auto auto 50vw;
   grid-template-areas: "left left right";
 }
+
+.user_reviews {
+    margin-left: 217px;
+}
+
+img.logo_card {
+    margin-right: 15px;
+}
+
+
 </style>

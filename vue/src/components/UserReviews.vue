@@ -10,7 +10,7 @@
           v-for="n in userReviews.rating"
           v-bind:key="n"
         />
-      <h3 class="name" >{{userReviews.review_title}}
+      <h3 class="name user_reviews_card" >- {{userReviews.review_title}}
           <!-- {{userReviews.game_id}} -->
           </h3>
       <p>{{userReviews.review_body}}</p>
@@ -59,12 +59,19 @@ img.logo_card {
   object-fit: contain;
   border-radius: 15px;
   margin-left: 15px;
+  margin-right: 15px;
   background-color: white;
   float: left;
 }
 .review_body{
   margin-bottom: 45px;
   padding-left:15px;
+}
+
+h3.user_reviews_card {
+  vertical-align: middle;
+  margin-top: 7px;
+  margin-left: 5px;
 }
 
 </style>

@@ -79,7 +79,8 @@ export default {
 .review-title {
   display: inline;
   font-size: 22px;
-  line-height: 35px;
+  line-height: 45px;
+  margin-left: 9px;
 }
 
 .delete-review-button {
