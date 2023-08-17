@@ -4,10 +4,9 @@
         :to="{
           name: 'single-game-view',
           params: {
-            gameId: this.selectedGame.game_id,
+            gameId: this.selectedGame.gameId,
           },
-        }"
-    >
+        }">
     <img class="logo_card" v-bind:src="this.selectedGame.game_logo"  />
     </router-link>
     <div class="review_body">
@@ -49,7 +48,14 @@ export default {
       console.log(this.selectedGame.game_name)
       // this.state.games.find(game => game.game_id === this.gameId)
       
-    }
+    },
+    // redirect(){
+    //   this.$router.push({
+    //       name: 'single-game-view',
+    //       params: {
+    //         gameId: this.game.game_id,
+    //       }})
+    // }
   },
   created() {
   
